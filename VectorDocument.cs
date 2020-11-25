@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace programmingWF
 {
@@ -38,74 +39,48 @@ namespace programmingWF
         public static double Dx => dx;
         public static double Dy => dy;
         public static int Size => VectorDocuments.Count;
-
         public static void AddCircle()
         {
             VectorDocuments.Add(new Circle());
-        }
+        } //Функция добавления окружности
         public static void AddRectangle()
         {
             VectorDocuments.Add(new Rectangle());
-        }
-        public static void EditDocument()
+        } //Функция добавления четырёхугольника
+        public static void LabelDocRefresh(Form1 parrent)
         {
-            while (true)
+            parrent.labelDocScale.Text = $"x{scale}";
+            parrent.labelDocAngle.Text = $"{angle}°";
+            parrent.labelDocCenter.Text = $"({x}; {y})";
+            parrent.listView1.Items.Clear();
+            ListViewDoc(parrent);
+            if (Size != 0) parrent.clearDocumentButton.Enabled = true;
+        } //Функция обновления списка
+        public static void EditDocument(Form1 parrent)
+        {
+            parrent.documentDialog.textBoxDocScale.Text = Convert.ToString(scale);
+            parrent.documentDialog.textBoxDocAngle.Text = Convert.ToString(angle);
+            parrent.documentDialog.textBoxDocX.Text = Convert.ToString(x);
+            parrent.documentDialog.textBoxDocY.Text = Convert.ToString(y);
+            if (parrent.documentDialog.ShowDialogForm(parrent))
             {
-                int ans;
-                Console.Write("\nВведите:\n" +
-                              "'1' - Чтобы изменить масштаб документа\n" +
-                              "'2' - Чтобы изменить угол документа\n" +
-                              "'3' - Чтобы изменить центр документа\n" +
-                              "'4' - Чтобы вывести информацию о документе\n" +
-                              "'0' - Чтобы выйти в меню\n" +
-                              "ВВОД: ");
-                ans = Convert.ToInt32(Console.ReadLine());
-                switch (ans)
-                {
-                    case 1:
-                        Console.Write("Новый масштаб документа: ");
-                        Scale = Convert.ToDouble(Console.ReadLine());
-                        return;
-                    case 2:
-                        Console.Write("Новый угол документа: ");
-                        Angle = Convert.ToDouble(Console.ReadLine());
-                        return;
-                    case 3:
-                        while (true)
-                        {
-                            Console.Write("Новые координаты центра в формате 'x y': ");
-                            string temp = Console.ReadLine();
-                            string[] splitString = temp.Split(' ');
-                            if (splitString.Length == 2 &&
-                                double.TryParse(splitString[0], out double _x) &&
-                                double.TryParse(splitString[1], out double _y))
-                            {
-                                dx = _x - x;
-                                dy = _y - y;
-                                x = _x;
-                                y = _y;
-                                foreach (var element in VectorDocuments)
-                                    element.CenterEdit();
-                                break;
-                            }
-                            Console.Write("\nНеверный ввод. Попробуйте ещё раз\n");
-                        }
-                        return;
-                    case 4:
-                        Console.Write("Сведения о документе\n" +
-                                      $"Центр документа: ({x}, {y})\n" +
-                                      $"Масштаб документа: x{scale}\n" +
-                                      $"Угол поворота документа: {angle}°\n" +
-                                      $"Количество фигур: {Size}\n");
-                        return;
-                    case 0:
-                        return;
-                    default:
-                        Console.Write("\nВыбран неверный вариант. Попробуйте ещё раз\n");
-                        break;
-                }
+                Scale = Form4.memberMean[0];
+                Angle = Form4.memberMean[1];
+                double _x = Form4.memberMean[2];
+                double _y = Form4.memberMean[3];
+                dx = _x - x;
+                dy = _y - y;
+                x = _x;
+                y = _y;
+                foreach (var element in VectorDocuments)
+                    element.CenterEdit();
+                LabelDocRefresh(parrent);
+                parrent.groupBoxCircle.Visible = false;
+                parrent.groupBoxCircle.Enabled = false;
+                parrent.groupBoxRectangle.Enabled = false;
+                parrent.groupBoxRectangle.Visible = false;
             }
-        }
+        } //Функция изменения параметров документа
         public static void Serialize()
         {
             FieldInfo[] fields = typeof(VectorDocument).GetFields(BindingFlags.Static | BindingFlags.NonPublic);
@@ -121,8 +96,9 @@ namespace programmingWF
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(f, a);
             f.Close();
-        }
-        public static void Deserialize()
+
+        } //Функция сериализации
+        public static void Deserialize(Form1 parrent)
         {
             FieldInfo[] fields = typeof(VectorDocument).GetFields(BindingFlags.Static | BindingFlags.NonPublic);
             object[,] a;
@@ -137,7 +113,8 @@ namespace programmingWF
                     field.SetValue(null, a[i, 1]);
                 i++;
             };
-        }
+            LabelDocRefresh(parrent);
+        } //Функция десериализации
         public static void ClearDocument()
         {
             VectorDocuments.Clear();
@@ -145,18 +122,23 @@ namespace programmingWF
             angle = 0;
             x = 0;
             y = 0;
-        }
+        } //Функция очистки документа
+        public static void ListViewDoc(Form1 parrent)
+        {
+            foreach (var element in VectorDocuments)
+                parrent.listView1.Items.Add(element.ListViewStr());
+        } //Функция изменения списка в приложении
         public static void DeleteFigure(int index)
         {
             VectorDocuments.Remove(VectorDocuments[index]);
-        }
+        } //Функция удаления фигуры
         public static VectorDocument GetFigure(int index)
         {
             return VectorDocuments[index];
-        }
-
-        public virtual void ShowDialogForm(Form1 parrent, int index = -1) {}
-        public virtual void SelectFigure(Form1 parrent) {}
+        } //Функция получения ссылки на фигуру
+        public virtual ListViewItem ListViewStr() { return null; } //Виртуальная функция добавления параметров фигуры в список приложения
+        public virtual void ShowDialogForm(Form1 parrent, int index = -1) {} //Виртуальная функция диалога свойств фигуры
+        public virtual void SelectFigure(Form1 parrent) {} //Виртуальная функция выделения фигуры
         public virtual void ChangeFigure() {} //Виртуальная функция изменения свойств фигуры
     }
 }

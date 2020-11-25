@@ -6,7 +6,12 @@ namespace programmingWF
     [Serializable]
     class Rectangle : VectorDocument
     {
-        private Form2 dialogRectangle = new Form2();
+        private void Edit()
+        {
+            d = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+            c = 2 * d * Math.Sqrt(2);
+            s = d * d / 2;
+        }
         private byte red, green, blue, alpha;
         private double x1, y1, x2, y2, d, c, s;
         public Rectangle()
@@ -15,17 +20,19 @@ namespace programmingWF
         }
         public override void ShowDialogForm(Form1 parrent, int index)
         {
-            dialogRectangle.textBoxX1.Text = Convert.ToString(x1);
-            dialogRectangle.textBoxY1.Text = Convert.ToString(y1);
-            dialogRectangle.textBoxX2.Text = Convert.ToString(x2);
-            dialogRectangle.textBoxY2.Text = Convert.ToString(y2);
-            dialogRectangle.textBoxR.Text = Convert.ToString(red);
-            dialogRectangle.textBoxG.Text = Convert.ToString(green);
-            dialogRectangle.textBoxB.Text = Convert.ToString(blue);
-            dialogRectangle.textBoxA.Text = Convert.ToString(alpha);
-            dialogRectangle.ShowDialogForm(parrent, index);
-            ChangeFigure();
-            SelectFigure(parrent);
+            parrent.dialogRectangle.textBoxX1.Text = Convert.ToString(x1);
+            parrent.dialogRectangle.textBoxY1.Text = Convert.ToString(y1);
+            parrent.dialogRectangle.textBoxX2.Text = Convert.ToString(x2);
+            parrent.dialogRectangle.textBoxY2.Text = Convert.ToString(y2);
+            parrent.dialogRectangle.textBoxR.Text = Convert.ToString(red);
+            parrent.dialogRectangle.textBoxG.Text = Convert.ToString(green);
+            parrent.dialogRectangle.textBoxB.Text = Convert.ToString(blue);
+            parrent.dialogRectangle.textBoxA.Text = Convert.ToString(alpha);
+            if (parrent.dialogRectangle.ShowDialogForm(parrent, index))
+            {
+                ChangeFigure();
+                SelectFigure(parrent);
+            }
         }
         public override void SelectFigure(Form1 parrent)
         {
@@ -33,7 +40,7 @@ namespace programmingWF
             parrent.groupBoxCircle.Enabled = false;
             parrent.groupBoxRectangle.Enabled = true;
             parrent.groupBoxRectangle.Visible = true;
-            parrent.labelRectangleVertex.Text = $"({x1}; {y1}), ({x2}; {y2})";
+            parrent.labelRectangleVertex.Text = $"({Math.Round(x1, 2)}; {Math.Round(y1, 2)}), ({Math.Round(x2, 2)}; {Math.Round(y2, 2)})";
             parrent.labelRectangleD.Text = $"{Math.Round(d, 2)}";
             parrent.labelRectangleC.Text = $"{Math.Round(c, 2)}";
             parrent.labelRectangleS.Text = $"{Math.Round(s, 2)}";
@@ -50,6 +57,13 @@ namespace programmingWF
             blue = Form2.colorMean[2];
             alpha = Form2.colorMean[3];
             Edit();
+        }
+        public override ListViewItem ListViewStr()
+        {
+            ListViewItem item = new ListViewItem("Прямоугольник");
+            item.SubItems.Add($"({x1}; {y1}), ({x2}, {y2})");
+            item.SubItems.Add($"{red}:{green}:{blue}:{alpha}");
+            return item;
         }
         protected override void AngleEdit()
         {
@@ -74,12 +88,6 @@ namespace programmingWF
             y1 += Dy;
             x2 += Dx;
             y2 += Dy;
-        }
-        private void Edit()
-        {
-            d = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-            c = 2 * d * Math.Sqrt(2);
-            s = d * d / 2;
         }
     }
 }

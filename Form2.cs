@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace programmingWF
 {
+    [Serializable]
     public partial class Form2 : Form
     {
         public static readonly double[] memberMean = new double[4];
@@ -13,7 +14,7 @@ namespace programmingWF
             InitializeComponent();
         }
 
-        public void ShowDialogForm(Form1 parrent, int index = - 1)
+        public bool ShowDialogForm(Form1 parrent, int index = - 1)
         {
             while (true)
             {
@@ -44,14 +45,14 @@ namespace programmingWF
                             parrent.listView1.Items.Add(item);
                         }
                         parrent.clearDocumentButton.Enabled = true;
-                        break;
+                        return true;
                     }
                     catch (Exception)
                     {
                         MessageBox.Show("Введены неверные значения");
                     }
                 }
-                else break;
+                else return false;
             }
         }
     }

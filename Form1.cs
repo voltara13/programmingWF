@@ -3,12 +3,17 @@ using System.Windows.Forms;
 
 namespace programmingWF
 {
+    [Serializable]
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
         }
+        public Form2 dialogRectangle = new Form2();
+        public Form3 dialogCircle = new Form3();
+        public Form4 documentDialog = new Form4();
         private void addRectangleButton_Click(object sender, EventArgs e)
         {
             Form2 dialogRectangle = new Form2();
@@ -33,18 +38,19 @@ namespace programmingWF
             groupBoxCircle.Enabled = false;
             groupBoxRectangle.Enabled = false;
             groupBoxRectangle.Visible = false;
+            if (VectorDocument.Size == 0) clearDocumentButton.Enabled = false;
         }
         private void saveDocumentButton_Click(object sender, EventArgs e)
         {
-
+            VectorDocument.Serialize();
         }
         private void loadDocumentButton_Click(object sender, EventArgs e)
         {
-
+            VectorDocument.Deserialize(this);
         }
         private void changeDocumentButton_Click(object sender, EventArgs e)
         {
-
+            VectorDocument.EditDocument(this);
         }
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
