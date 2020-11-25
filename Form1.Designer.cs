@@ -29,11 +29,11 @@
         {
             this.addRectangleButton = new System.Windows.Forms.Button();
             this.addCircleButton = new System.Windows.Forms.Button();
-            this.cleadDocumentButton = new System.Windows.Forms.Button();
+            this.clearDocumentButton = new System.Windows.Forms.Button();
             this.saveDocumentButton = new System.Windows.Forms.Button();
             this.loadDocumentButton = new System.Windows.Forms.Button();
             this.deleteElementButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.changeDocumentButton = new System.Windows.Forms.Button();
             this.groupBoxDocument = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,16 +45,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView1 = new System.Windows.Forms.ListView();
-            this.groupBoxRectangle = new System.Windows.Forms.GroupBox();
-            this.groupBoxCircle = new System.Windows.Forms.GroupBox();
-            this.labelCircleCenter = new System.Windows.Forms.Label();
-            this.labelCircleC = new System.Windows.Forms.Label();
-            this.labelCircleS = new System.Windows.Forms.Label();
-            this.labelCircleColor = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.labelRectangleVertex = new System.Windows.Forms.Label();
             this.labelRectangleD = new System.Windows.Forms.Label();
             this.labelRectangleC = new System.Windows.Forms.Label();
@@ -65,9 +55,21 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBoxCircle = new System.Windows.Forms.GroupBox();
+            this.groupBoxRectangle = new System.Windows.Forms.GroupBox();
+            this.labelCircleR = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.labelCircleCenter = new System.Windows.Forms.Label();
+            this.labelCircleC = new System.Windows.Forms.Label();
+            this.labelCircleS = new System.Windows.Forms.Label();
+            this.labelCircleColor = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.groupBoxDocument.SuspendLayout();
-            this.groupBoxRectangle.SuspendLayout();
             this.groupBoxCircle.SuspendLayout();
+            this.groupBoxRectangle.SuspendLayout();
             this.SuspendLayout();
             // 
             // addRectangleButton
@@ -78,7 +80,7 @@
             this.addRectangleButton.TabIndex = 0;
             this.addRectangleButton.Text = "Добавить четырёхугольник";
             this.addRectangleButton.UseVisualStyleBackColor = true;
-            this.addRectangleButton.Click += new System.EventHandler(this.button1_Click);
+            this.addRectangleButton.Click += new System.EventHandler(this.addRectangleButton_Click);
             // 
             // addCircleButton
             // 
@@ -88,17 +90,18 @@
             this.addCircleButton.TabIndex = 1;
             this.addCircleButton.Text = "Добавить окружность";
             this.addCircleButton.UseVisualStyleBackColor = true;
-            this.addCircleButton.Click += new System.EventHandler(this.button2_Click);
+            this.addCircleButton.Click += new System.EventHandler(this.addCircleButton_Click);
             // 
-            // cleadDocumentButton
+            // clearDocumentButton
             // 
-            this.cleadDocumentButton.Location = new System.Drawing.Point(345, 71);
-            this.cleadDocumentButton.Name = "cleadDocumentButton";
-            this.cleadDocumentButton.Size = new System.Drawing.Size(160, 23);
-            this.cleadDocumentButton.TabIndex = 2;
-            this.cleadDocumentButton.Text = "Очистить документ";
-            this.cleadDocumentButton.UseVisualStyleBackColor = true;
-            this.cleadDocumentButton.Click += new System.EventHandler(this.button3_Click);
+            this.clearDocumentButton.Enabled = false;
+            this.clearDocumentButton.Location = new System.Drawing.Point(345, 71);
+            this.clearDocumentButton.Name = "clearDocumentButton";
+            this.clearDocumentButton.Size = new System.Drawing.Size(160, 23);
+            this.clearDocumentButton.TabIndex = 2;
+            this.clearDocumentButton.Text = "Очистить документ";
+            this.clearDocumentButton.UseVisualStyleBackColor = true;
+            this.clearDocumentButton.Click += new System.EventHandler(this.clearDocumentButton_Click);
             // 
             // saveDocumentButton
             // 
@@ -108,7 +111,7 @@
             this.saveDocumentButton.TabIndex = 3;
             this.saveDocumentButton.Text = "Сохранить документ";
             this.saveDocumentButton.UseVisualStyleBackColor = true;
-            this.saveDocumentButton.Click += new System.EventHandler(this.button4_Click);
+            this.saveDocumentButton.Click += new System.EventHandler(this.saveDocumentButton_Click);
             // 
             // loadDocumentButton
             // 
@@ -118,7 +121,7 @@
             this.loadDocumentButton.TabIndex = 4;
             this.loadDocumentButton.Text = "Загрузить документ";
             this.loadDocumentButton.UseVisualStyleBackColor = true;
-            this.loadDocumentButton.Click += new System.EventHandler(this.button5_Click);
+            this.loadDocumentButton.Click += new System.EventHandler(this.loadDocumentButton_Click);
             // 
             // deleteElementButton
             // 
@@ -129,15 +132,17 @@
             this.deleteElementButton.TabIndex = 6;
             this.deleteElementButton.Text = "Удалить элемент";
             this.deleteElementButton.UseVisualStyleBackColor = true;
+            this.deleteElementButton.Click += new System.EventHandler(this.deleteElementButton_Click);
             // 
-            // button1
+            // changeDocumentButton
             // 
-            this.button1.Location = new System.Drawing.Point(345, 189);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Изменить документ";
-            this.button1.UseVisualStyleBackColor = true;
+            this.changeDocumentButton.Location = new System.Drawing.Point(345, 189);
+            this.changeDocumentButton.Name = "changeDocumentButton";
+            this.changeDocumentButton.Size = new System.Drawing.Size(160, 23);
+            this.changeDocumentButton.TabIndex = 7;
+            this.changeDocumentButton.Text = "Изменить документ";
+            this.changeDocumentButton.UseVisualStyleBackColor = true;
+            this.changeDocumentButton.Click += new System.EventHandler(this.changeDocumentButton_Click);
             // 
             // groupBoxDocument
             // 
@@ -159,9 +164,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(65, 53);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(22, 13);
+            this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "0 0";
+            this.label6.Text = "(0; 0)";
             // 
             // label5
             // 
@@ -186,9 +191,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(65, 40);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.Size = new System.Drawing.Size(17, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "0";
+            this.label4.Text = "0°";
             // 
             // label2
             // 
@@ -198,7 +203,6 @@
             this.label2.Size = new System.Drawing.Size(18, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "x1";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -240,120 +244,8 @@
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
-            // 
-            // groupBoxRectangle
-            // 
-            this.groupBoxRectangle.Controls.Add(this.groupBoxCircle);
-            this.groupBoxRectangle.Controls.Add(this.labelRectangleVertex);
-            this.groupBoxRectangle.Controls.Add(this.labelRectangleD);
-            this.groupBoxRectangle.Controls.Add(this.labelRectangleC);
-            this.groupBoxRectangle.Controls.Add(this.labelRectangleS);
-            this.groupBoxRectangle.Controls.Add(this.labelRectangleColor);
-            this.groupBoxRectangle.Controls.Add(this.label11);
-            this.groupBoxRectangle.Controls.Add(this.label10);
-            this.groupBoxRectangle.Controls.Add(this.label9);
-            this.groupBoxRectangle.Controls.Add(this.label8);
-            this.groupBoxRectangle.Controls.Add(this.label7);
-            this.groupBoxRectangle.Enabled = false;
-            this.groupBoxRectangle.Location = new System.Drawing.Point(12, 224);
-            this.groupBoxRectangle.Name = "groupBoxRectangle";
-            this.groupBoxRectangle.Size = new System.Drawing.Size(167, 86);
-            this.groupBoxRectangle.TabIndex = 0;
-            this.groupBoxRectangle.TabStop = false;
-            this.groupBoxRectangle.Text = "Четырёхугольник";
-            this.groupBoxRectangle.Visible = false;
-            // 
-            // groupBoxCircle
-            // 
-            this.groupBoxCircle.Controls.Add(this.labelCircleCenter);
-            this.groupBoxCircle.Controls.Add(this.labelCircleC);
-            this.groupBoxCircle.Controls.Add(this.labelCircleS);
-            this.groupBoxCircle.Controls.Add(this.labelCircleColor);
-            this.groupBoxCircle.Controls.Add(this.label17);
-            this.groupBoxCircle.Controls.Add(this.label18);
-            this.groupBoxCircle.Controls.Add(this.label19);
-            this.groupBoxCircle.Controls.Add(this.label21);
-            this.groupBoxCircle.Enabled = false;
-            this.groupBoxCircle.Location = new System.Drawing.Point(6, 0);
-            this.groupBoxCircle.Name = "groupBoxCircle";
-            this.groupBoxCircle.Size = new System.Drawing.Size(167, 86);
-            this.groupBoxCircle.TabIndex = 10;
-            this.groupBoxCircle.TabStop = false;
-            this.groupBoxCircle.Text = "Окружность";
-            this.groupBoxCircle.Visible = false;
-            // 
-            // labelCircleCenter
-            // 
-            this.labelCircleCenter.AutoSize = true;
-            this.labelCircleCenter.Location = new System.Drawing.Point(88, 20);
-            this.labelCircleCenter.Name = "labelCircleCenter";
-            this.labelCircleCenter.Size = new System.Drawing.Size(41, 13);
-            this.labelCircleCenter.TabIndex = 9;
-            this.labelCircleCenter.Text = "label13";
-            // 
-            // labelCircleC
-            // 
-            this.labelCircleC.AutoSize = true;
-            this.labelCircleC.Location = new System.Drawing.Point(88, 34);
-            this.labelCircleC.Name = "labelCircleC";
-            this.labelCircleC.Size = new System.Drawing.Size(41, 13);
-            this.labelCircleC.TabIndex = 8;
-            this.labelCircleC.Text = "label13";
-            // 
-            // labelCircleS
-            // 
-            this.labelCircleS.AutoSize = true;
-            this.labelCircleS.Location = new System.Drawing.Point(88, 47);
-            this.labelCircleS.Name = "labelCircleS";
-            this.labelCircleS.Size = new System.Drawing.Size(41, 13);
-            this.labelCircleS.TabIndex = 7;
-            this.labelCircleS.Text = "label12";
-            // 
-            // labelCircleColor
-            // 
-            this.labelCircleColor.AutoSize = true;
-            this.labelCircleColor.Location = new System.Drawing.Point(88, 60);
-            this.labelCircleColor.Name = "labelCircleColor";
-            this.labelCircleColor.Size = new System.Drawing.Size(41, 13);
-            this.labelCircleColor.TabIndex = 6;
-            this.labelCircleColor.Text = "label12";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(7, 60);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(74, 13);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "Цвет (RGBA):";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(7, 47);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 13);
-            this.label18.TabIndex = 3;
-            this.label18.Text = "Площадь:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(7, 34);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 13);
-            this.label19.TabIndex = 2;
-            this.label19.Text = "Длина:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(7, 20);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(41, 13);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Центр:";
             // 
             // labelRectangleVertex
             // 
@@ -445,29 +337,162 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Вершины:";
             // 
+            // groupBoxCircle
+            // 
+            this.groupBoxCircle.Controls.Add(this.labelCircleR);
+            this.groupBoxCircle.Controls.Add(this.label13);
+            this.groupBoxCircle.Controls.Add(this.labelCircleCenter);
+            this.groupBoxCircle.Controls.Add(this.labelCircleC);
+            this.groupBoxCircle.Controls.Add(this.labelCircleS);
+            this.groupBoxCircle.Controls.Add(this.labelCircleColor);
+            this.groupBoxCircle.Controls.Add(this.label17);
+            this.groupBoxCircle.Controls.Add(this.label18);
+            this.groupBoxCircle.Controls.Add(this.label19);
+            this.groupBoxCircle.Controls.Add(this.label21);
+            this.groupBoxCircle.Enabled = false;
+            this.groupBoxCircle.Location = new System.Drawing.Point(12, 218);
+            this.groupBoxCircle.Name = "groupBoxCircle";
+            this.groupBoxCircle.Size = new System.Drawing.Size(194, 97);
+            this.groupBoxCircle.TabIndex = 10;
+            this.groupBoxCircle.TabStop = false;
+            this.groupBoxCircle.Text = "Окружность";
+            this.groupBoxCircle.Visible = false;
+            // 
+            // groupBoxRectangle
+            // 
+            this.groupBoxRectangle.Controls.Add(this.labelRectangleVertex);
+            this.groupBoxRectangle.Controls.Add(this.labelRectangleD);
+            this.groupBoxRectangle.Controls.Add(this.labelRectangleC);
+            this.groupBoxRectangle.Controls.Add(this.labelRectangleS);
+            this.groupBoxRectangle.Controls.Add(this.labelRectangleColor);
+            this.groupBoxRectangle.Controls.Add(this.label11);
+            this.groupBoxRectangle.Controls.Add(this.label10);
+            this.groupBoxRectangle.Controls.Add(this.label9);
+            this.groupBoxRectangle.Controls.Add(this.label8);
+            this.groupBoxRectangle.Controls.Add(this.label7);
+            this.groupBoxRectangle.Enabled = false;
+            this.groupBoxRectangle.Location = new System.Drawing.Point(12, 218);
+            this.groupBoxRectangle.Name = "groupBoxRectangle";
+            this.groupBoxRectangle.Size = new System.Drawing.Size(194, 97);
+            this.groupBoxRectangle.TabIndex = 11;
+            this.groupBoxRectangle.TabStop = false;
+            this.groupBoxRectangle.Text = "Четырёхугольник";
+            this.groupBoxRectangle.Visible = false;
+            // 
+            // labelCircleR
+            // 
+            this.labelCircleR.AutoSize = true;
+            this.labelCircleR.Location = new System.Drawing.Point(88, 60);
+            this.labelCircleR.Name = "labelCircleR";
+            this.labelCircleR.Size = new System.Drawing.Size(41, 13);
+            this.labelCircleR.TabIndex = 11;
+            this.labelCircleR.Text = "label12";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 60);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Радиус:";
+            // 
+            // labelCircleCenter
+            // 
+            this.labelCircleCenter.AutoSize = true;
+            this.labelCircleCenter.Location = new System.Drawing.Point(88, 20);
+            this.labelCircleCenter.Name = "labelCircleCenter";
+            this.labelCircleCenter.Size = new System.Drawing.Size(41, 13);
+            this.labelCircleCenter.TabIndex = 9;
+            this.labelCircleCenter.Text = "label13";
+            // 
+            // labelCircleC
+            // 
+            this.labelCircleC.AutoSize = true;
+            this.labelCircleC.Location = new System.Drawing.Point(88, 34);
+            this.labelCircleC.Name = "labelCircleC";
+            this.labelCircleC.Size = new System.Drawing.Size(41, 13);
+            this.labelCircleC.TabIndex = 8;
+            this.labelCircleC.Text = "label13";
+            // 
+            // labelCircleS
+            // 
+            this.labelCircleS.AutoSize = true;
+            this.labelCircleS.Location = new System.Drawing.Point(88, 47);
+            this.labelCircleS.Name = "labelCircleS";
+            this.labelCircleS.Size = new System.Drawing.Size(41, 13);
+            this.labelCircleS.TabIndex = 7;
+            this.labelCircleS.Text = "label12";
+            // 
+            // labelCircleColor
+            // 
+            this.labelCircleColor.AutoSize = true;
+            this.labelCircleColor.Location = new System.Drawing.Point(87, 73);
+            this.labelCircleColor.Name = "labelCircleColor";
+            this.labelCircleColor.Size = new System.Drawing.Size(41, 13);
+            this.labelCircleColor.TabIndex = 6;
+            this.labelCircleColor.Text = "label12";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 73);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 13);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Цвет (RGBA):";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 47);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(57, 13);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Площадь:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(7, 34);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "Длина:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(7, 20);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(41, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Центр:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 312);
+            this.ClientSize = new System.Drawing.Size(516, 342);
             this.Controls.Add(this.groupBoxRectangle);
+            this.Controls.Add(this.groupBoxCircle);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.groupBoxDocument);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.changeDocumentButton);
             this.Controls.Add(this.deleteElementButton);
             this.Controls.Add(this.loadDocumentButton);
             this.Controls.Add(this.saveDocumentButton);
-            this.Controls.Add(this.cleadDocumentButton);
+            this.Controls.Add(this.clearDocumentButton);
             this.Controls.Add(this.addCircleButton);
             this.Controls.Add(this.addRectangleButton);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBoxDocument.ResumeLayout(false);
             this.groupBoxDocument.PerformLayout();
-            this.groupBoxRectangle.ResumeLayout(false);
-            this.groupBoxRectangle.PerformLayout();
             this.groupBoxCircle.ResumeLayout(false);
             this.groupBoxCircle.PerformLayout();
+            this.groupBoxRectangle.ResumeLayout(false);
+            this.groupBoxRectangle.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -476,42 +501,44 @@
 
         private System.Windows.Forms.Button addRectangleButton;
         private System.Windows.Forms.Button addCircleButton;
-        private System.Windows.Forms.Button cleadDocumentButton;
         private System.Windows.Forms.Button saveDocumentButton;
         private System.Windows.Forms.Button loadDocumentButton;
         private System.Windows.Forms.Button deleteElementButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button changeDocumentButton;
         private System.Windows.Forms.GroupBox groupBoxDocument;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox groupBoxRectangle;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label labelRectangleC;
-        private System.Windows.Forms.Label labelRectangleS;
-        private System.Windows.Forms.Label labelRectangleColor;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label labelRectangleD;
-        private System.Windows.Forms.Label labelRectangleVertex;
-        private System.Windows.Forms.GroupBox groupBoxCircle;
-        private System.Windows.Forms.Label labelCircleCenter;
-        private System.Windows.Forms.Label labelCircleC;
-        private System.Windows.Forms.Label labelCircleS;
-        private System.Windows.Forms.Label labelCircleColor;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
         public System.Windows.Forms.ListView listView1;
+        public System.Windows.Forms.Label labelRectangleC;
+        public System.Windows.Forms.Label labelRectangleS;
+        public System.Windows.Forms.Label labelRectangleColor;
+        public System.Windows.Forms.Label labelRectangleD;
+        public System.Windows.Forms.Label labelRectangleVertex;
+        public System.Windows.Forms.GroupBox groupBoxCircle;
+        public System.Windows.Forms.Label labelCircleCenter;
+        public System.Windows.Forms.Label labelCircleC;
+        public System.Windows.Forms.Label labelCircleS;
+        public System.Windows.Forms.Label labelCircleColor;
+        public System.Windows.Forms.Button clearDocumentButton;
+        public System.Windows.Forms.Label labelCircleR;
+        private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.GroupBox groupBoxRectangle;
     }
 }
 

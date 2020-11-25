@@ -5,11 +5,12 @@ namespace programmingWF
     [Serializable]
     class Circle : VectorDocument
     {
+        private Form3 dialogCircle = new Form3();
         public Circle()
         {
             ChangeFigure();
         }
-        private int red, green, blue, alpha;
+        private byte red, green, blue, alpha;
         private double x, y, r, c, s;
         private void Edit()
         {
@@ -28,39 +29,41 @@ namespace programmingWF
             r *= _Scale;
             Edit();
         }
-        protected override void CenterEdit()
+        public override void ShowDialogForm(Form1 parrent, int index = -1)
         {
-            x += Dx;
-            y += Dy;
+            dialogCircle.textBoxX.Text = Convert.ToString(x);
+            dialogCircle.textBoxY.Text = Convert.ToString(y);
+            dialogCircle.textBoxRadius.Text = Convert.ToString(r);
+            dialogCircle.textBoxR.Text = Convert.ToString(red);
+            dialogCircle.textBoxG.Text = Convert.ToString(green);
+            dialogCircle.textBoxB.Text = Convert.ToString(blue);
+            dialogCircle.textBoxA.Text = Convert.ToString(alpha);
+            dialogCircle.ShowDialogForm(parrent, index);
+            ChangeFigure();
+            SelectFigure(parrent);
         }
-        protected override void ChangeFigure()
+        public override void SelectFigure(Form1 parrent)
         {
-            while (true)
-            {
-                Console.Write("Введите координаты центра, радиус и цвет в формате 'x y r RED GREEN BLUE ALPHA'\nВВОД: ");
-                string temp = Console.ReadLine();
-                string[] splitString = temp.Split(' ');
-                if (splitString.Length == 7 &&
-                    double.TryParse(splitString[0], out double _x) &&
-                    double.TryParse(splitString[1], out double _y) &&
-                    double.TryParse(splitString[2], out double _r) &&
-                    int.TryParse(splitString[3], out int _red) &&
-                    int.TryParse(splitString[4], out int _green) &&
-                    int.TryParse(splitString[5], out int _blue) &&
-                    int.TryParse(splitString[6], out int _alpha))
-                {
-                    x = _x;
-                    y = _y;
-                    r = _r;
-                    red = _red;
-                    green = _green;
-                    blue = _blue;
-                    alpha = _alpha;
-                    Edit();
-                    break;
-                }
-                Console.Write("\nНеверный ввод. Попробуйте ещё раз\n");
-            }
+            parrent.groupBoxRectangle.Enabled = false;
+            parrent.groupBoxRectangle.Visible = false;
+            parrent.groupBoxCircle.Visible = true;
+            parrent.groupBoxCircle.Enabled = true;
+            parrent.labelCircleCenter.Text = $"({x}; {y})";
+            parrent.labelCircleC.Text = $"{Math.Round(c, 2)}";
+            parrent.labelCircleS.Text = $"{Math.Round(s, 2)}";
+            parrent.labelCircleR.Text = $"{Math.Round(r, 2)}";
+            parrent.labelCircleColor.Text = $"{red}:{green}:{blue}:{alpha}";
+        }
+        public override void ChangeFigure()
+        {
+            x = Form3.memberMean[0];
+            y = Form3.memberMean[1];
+            r = Form3.memberMean[2];
+            red = Form3.colorMean[0];
+            green = Form3.colorMean[1];
+            blue = Form3.colorMean[2];
+            alpha = Form3.colorMean[3];
+            Edit();
         }
     }
 }

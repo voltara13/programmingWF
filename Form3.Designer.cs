@@ -39,13 +39,13 @@ namespace programmingWF
             this.textBoxR = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxRadius = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.textBoxY = new System.Windows.Forms.TextBox();
             this.textBoxX = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBoxRadius = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +65,7 @@ namespace programmingWF
             this.groupBox3.Size = new System.Drawing.Size(177, 128);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Цвет в RGBA";
+            this.groupBox3.Text = "Цвет в RGBA (0-255)";
             // 
             // textBoxA
             // 
@@ -146,6 +146,22 @@ namespace programmingWF
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Центр и радиус";
             // 
+            // textBoxRadius
+            // 
+            this.textBoxRadius.Location = new System.Drawing.Point(26, 73);
+            this.textBoxRadius.Name = "textBoxRadius";
+            this.textBoxRadius.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRadius.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "R:";
+            // 
             // textBoxY
             // 
             this.textBoxY.Location = new System.Drawing.Point(26, 46);
@@ -188,24 +204,9 @@ namespace programmingWF
             this.button1.Text = "ОК";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBoxRadius
-            // 
-            this.textBoxRadius.Location = new System.Drawing.Point(26, 73);
-            this.textBoxRadius.Name = "textBoxRadius";
-            this.textBoxRadius.Size = new System.Drawing.Size(100, 20);
-            this.textBoxRadius.TabIndex = 8;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 76);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "R:";
-            // 
             // Form3
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 177);
@@ -226,21 +227,21 @@ namespace programmingWF
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBoxA;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxB;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxG;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxR;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBoxY;
-        private System.Windows.Forms.TextBox textBoxX;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBoxRadius;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox textBoxA;
+        public System.Windows.Forms.TextBox textBoxB;
+        public System.Windows.Forms.TextBox textBoxG;
+        public System.Windows.Forms.TextBox textBoxR;
+        public System.Windows.Forms.TextBox textBoxY;
+        public System.Windows.Forms.TextBox textBoxX;
+        public System.Windows.Forms.TextBox textBoxRadius;
     }
 }

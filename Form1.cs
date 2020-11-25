@@ -5,54 +5,55 @@ namespace programmingWF
 {
     public partial class Form1 : Form
     {
-        private Form2 RectangleDialog = new Form2();
         public Form1()
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void addRectangleButton_Click(object sender, EventArgs e)
         {
-            RectangleDialog.ShowDialogRectangle(this);
-            //groupBoxCircle.Visible = false;
-            //groupBoxCircle.Enabled = false;
-            //groupBoxRectangle.Enabled = true;
-            //groupBoxRectangle.Visible = true;
-
+            Form2 dialogRectangle = new Form2();
+            dialogRectangle.ShowDialogForm(this);
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void addCircleButton_Click(object sender, EventArgs e)
         {
-            //VectorDocument.AddCircle();
-            //groupBoxRectangle.Visible = false;
-            //groupBoxRectangle.Enabled = false;
-            //groupBoxCircle.Enabled = true;
-            //groupBoxCircle.Visible = true;
+            Form3 dialogCircle = new Form3();
+            dialogCircle.ShowDialogForm(this);
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void clearDocumentButton_Click(object sender, EventArgs e)
         {
-
+            VectorDocument.ClearDocument();
+            Controls.Clear();
+            InitializeComponent();
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void deleteElementButton_Click(object sender, EventArgs e)
         {
-            
+            VectorDocument.DeleteFigure(listView1.SelectedIndices[0]);
+            listView1.Items.RemoveAt(listView1.SelectedIndices[0]);
+            groupBoxCircle.Visible = false;
+            groupBoxCircle.Enabled = false;
+            groupBoxRectangle.Enabled = false;
+            groupBoxRectangle.Visible = false;
         }
-
-        private void button5_Click(object sender, EventArgs e)
+        private void saveDocumentButton_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void label2_Click(object sender, EventArgs e)
+        private void loadDocumentButton_Click(object sender, EventArgs e)
         {
 
         }
+        private void changeDocumentButton_Click(object sender, EventArgs e)
+        {
 
+        }
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            RectangleDialog.ShowDialogRectangle(this, listView1.SelectedIndices[0]);
+            VectorDocument.GetFigure(listView1.SelectedIndices[0]).ShowDialogForm(this, listView1.SelectedIndices[0]);
+        }
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            VectorDocument.GetFigure(listView1.SelectedIndices[0]).SelectFigure(this);
+            deleteElementButton.Enabled = true;
         }
     }
 }

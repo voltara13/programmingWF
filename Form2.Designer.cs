@@ -63,7 +63,6 @@ namespace programmingWF
             this.button1.TabIndex = 0;
             this.button1.Text = "ОК";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -170,7 +169,7 @@ namespace programmingWF
             this.groupBox3.Size = new System.Drawing.Size(177, 156);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Цвет в RGBA";
+            this.groupBox3.Text = "Цвет в RGBA (0-255)";
             // 
             // textBoxA
             // 
@@ -268,18 +267,18 @@ namespace programmingWF
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxY1;
-        private System.Windows.Forms.TextBox textBoxX1;
-        private System.Windows.Forms.TextBox textBoxY2;
-        private System.Windows.Forms.TextBox textBoxX2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBoxA;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxB;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxG;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxR;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox textBoxY1;
+        public System.Windows.Forms.TextBox textBoxX1;
+        public System.Windows.Forms.TextBox textBoxY2;
+        public System.Windows.Forms.TextBox textBoxX2;
+        public System.Windows.Forms.TextBox textBoxA;
+        public System.Windows.Forms.TextBox textBoxB;
+        public System.Windows.Forms.TextBox textBoxG;
+        public System.Windows.Forms.TextBox textBoxR;
     }
 }

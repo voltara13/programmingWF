@@ -1,61 +1,55 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace programmingWF
 {
     [Serializable]
     class Rectangle : VectorDocument
     {
+        private Form2 dialogRectangle = new Form2();
+        private byte red, green, blue, alpha;
+        private double x1, y1, x2, y2, d, c, s;
         public Rectangle()
         {
             ChangeFigure();
         }
-        public override double X1
+        public override void ShowDialogForm(Form1 parrent, int index)
         {
-            get => x1;
-            set => x1 = value;
+            dialogRectangle.textBoxX1.Text = Convert.ToString(x1);
+            dialogRectangle.textBoxY1.Text = Convert.ToString(y1);
+            dialogRectangle.textBoxX2.Text = Convert.ToString(x2);
+            dialogRectangle.textBoxY2.Text = Convert.ToString(y2);
+            dialogRectangle.textBoxR.Text = Convert.ToString(red);
+            dialogRectangle.textBoxG.Text = Convert.ToString(green);
+            dialogRectangle.textBoxB.Text = Convert.ToString(blue);
+            dialogRectangle.textBoxA.Text = Convert.ToString(alpha);
+            dialogRectangle.ShowDialogForm(parrent, index);
+            ChangeFigure();
+            SelectFigure(parrent);
         }
-        public override double Y1
+        public override void SelectFigure(Form1 parrent)
         {
-            get => y1;
-            set => y1 = value;
+            parrent.groupBoxCircle.Visible = false;
+            parrent.groupBoxCircle.Enabled = false;
+            parrent.groupBoxRectangle.Enabled = true;
+            parrent.groupBoxRectangle.Visible = true;
+            parrent.labelRectangleVertex.Text = $"({x1}; {y1}), ({x2}; {y2})";
+            parrent.labelRectangleD.Text = $"{Math.Round(d, 2)}";
+            parrent.labelRectangleC.Text = $"{Math.Round(c, 2)}";
+            parrent.labelRectangleS.Text = $"{Math.Round(s, 2)}";
+            parrent.labelRectangleColor.Text = $"{red}:{green}:{blue}:{alpha}";
         }
-        public override double X2
+        public override void ChangeFigure()
         {
-            get => x2;
-            set => x2 = value;
-        }
-        public override double Y2
-        {
-            get => y2;
-            set => y2 = value;
-        }
-        public override byte Red
-        {
-            get => red;
-            set => red = value;
-        }
-        public override byte Green
-        {
-            get => green;
-            set => green = value;
-        }
-        public override byte Blue
-        {
-            get => blue;
-            set => blue = value;
-        }
-        public override byte Alpha
-        {
-            get => alpha;
-            set => alpha = value;
-        }
-        private byte red, green, blue, alpha;
-        private double x1, y1, x2, y2, d, c, s;
-        private void Edit()
-        {
-            d = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-            c = 2 * d * Math.Sqrt(2);
-            s = d * d / 2;
+            x1 = Form2.memberMean[0];
+            y1 = Form2.memberMean[1];
+            x2 = Form2.memberMean[2];
+            y2 = Form2.memberMean[3];
+            red = Form2.colorMean[0];
+            green = Form2.colorMean[1];
+            blue = Form2.colorMean[2];
+            alpha = Form2.colorMean[3];
+            Edit();
         }
         protected override void AngleEdit()
         {
@@ -81,17 +75,11 @@ namespace programmingWF
             x2 += Dx;
             y2 += Dy;
         }
-        protected override void ChangeFigure()
+        private void Edit()
         {
-            x1 = Form2.memberMean[0];
-            y1 = Form2.memberMean[1];
-            x2 = Form2.memberMean[2];
-            y2 = Form2.memberMean[3];
-            red = Form2.colorMean[0];
-            green = Form2.colorMean[1];
-            blue = Form2.colorMean[2];
-            alpha = Form2.colorMean[3];
-            Edit();
+            d = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+            c = 2 * d * Math.Sqrt(2);
+            s = d * d / 2;
         }
     }
 }

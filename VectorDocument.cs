@@ -15,7 +15,6 @@ namespace programmingWF
         protected virtual void ScaleEdit() {} //Виртуальная функция изменения масштаба фигуры
         protected virtual void AngleEdit() {} //Виртуальная функция изменения угла фигуры
         protected virtual void CenterEdit() {} //Виртуальная функция изменения центра фигуры
-        protected virtual void ChangeFigure() {} //Виртуальная функция изменения свойств фигуры
         protected static double Scale
         {
             get => scale;
@@ -39,6 +38,7 @@ namespace programmingWF
         public static double Dx => dx;
         public static double Dy => dy;
         public static int Size => VectorDocuments.Count;
+
         public static void AddCircle()
         {
             VectorDocuments.Add(new Circle());
@@ -146,18 +146,17 @@ namespace programmingWF
             x = 0;
             y = 0;
         }
+        public static void DeleteFigure(int index)
+        {
+            VectorDocuments.Remove(VectorDocuments[index]);
+        }
         public static VectorDocument GetFigure(int index)
         {
             return VectorDocuments[index];
         }
-        public virtual double X1 { get; set; }
-        public virtual double Y1 { get; set; }
-        public virtual double X2 { get; set; }
-        public virtual double Y2 { get; set; }
-        public virtual byte Red{ get; set; }
-        public virtual byte Green { get; set; }
-        public virtual byte Blue { get; set; }
-        public virtual byte Alpha { get; set; }
-        public VectorDocument this[int index] => VectorDocuments[index];
+
+        public virtual void ShowDialogForm(Form1 parrent, int index = -1) {}
+        public virtual void SelectFigure(Form1 parrent) {}
+        public virtual void ChangeFigure() {} //Виртуальная функция изменения свойств фигуры
     }
 }
