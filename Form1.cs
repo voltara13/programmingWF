@@ -61,5 +61,17 @@ namespace programmingWF
             VectorDocument.GetFigure(listView1.SelectedIndices[0]).SelectFigure(this);
             deleteElementButton.Enabled = true;
         }
+
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (listView1.SelectedIndices.Count == 0)
+            {
+                groupBoxCircle.Visible = false;
+                groupBoxCircle.Enabled = false;
+                groupBoxRectangle.Enabled = false;
+                groupBoxRectangle.Visible = false;
+                deleteElementButton.Enabled = false;
+            }
+        }
     }
 }

@@ -67,7 +67,7 @@ namespace programmingWF
         }
         protected override void AngleEdit()
         {
-            double _x1 = x1, _y1 = y1, _x2 = x2, _y2 = y2, _Angle = Angle * Math.PI / 180; ;
+            double _x1 = x1, _y1 = y1, _x2 = x2, _y2 = y2, _Angle = Dangle * Math.PI / 180; ;
             x1 = _x1 * Math.Cos(_Angle) - _y1 * Math.Sin(_Angle);
             y1 = _x1 * Math.Sin(_Angle) + _y1 * Math.Cos(_Angle);
             x2 = _x2 * Math.Cos(_Angle) - _y2 * Math.Sin(_Angle);

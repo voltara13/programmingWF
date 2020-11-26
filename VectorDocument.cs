@@ -10,7 +10,7 @@ namespace programmingWF
     [Serializable]
     class VectorDocument
     {
-        private static double scale = 1, angle = 0, x = 0, y = 0, dx, dy;
+        private static double scale = 1, angle = 0, x = 0, y = 0, dx, dy, dangle;
         private static List<VectorDocument> VectorDocuments = new List<VectorDocument>();
         protected virtual void PrintDescription() {} //Виртуальная функция вывода свойств фигуры
         protected virtual void ScaleEdit() {} //Виртуальная функция изменения масштаба фигуры
@@ -31,6 +31,7 @@ namespace programmingWF
             get => angle;
             set
             {
+                dangle = value - angle;
                 angle = value;
                 foreach (var element in VectorDocuments)
                     element.AngleEdit();
@@ -38,6 +39,7 @@ namespace programmingWF
         }
         public static double Dx => dx;
         public static double Dy => dy;
+        public static double Dangle => dangle;
         public static int Size => VectorDocuments.Count;
         public static void AddCircle()
         {
