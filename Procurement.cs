@@ -3,20 +3,11 @@ using System.Collections.Generic;
 
 namespace programmingWF
 {
-    public class Procurement
+    public class Procurement : WareHouse
     {
-        private string barCode;
-        private string organization;
-        private string name;
-        private string note;
-        private string status = "Ожидание";
-        private int count;
-        private double cost;
-        private DateTime date;
-
         public Procurement(string barCode, string organization, string name, string note, double cost, DateTime date, int count)
         {
-            this.barCode = barCode;
+            barCode = barCode;
             this.organization = organization;
             this.name = name;
             this.note = note;
