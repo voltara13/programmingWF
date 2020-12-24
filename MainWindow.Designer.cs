@@ -30,6 +30,7 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageIndicators = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelTotalCount = new System.Windows.Forms.Label();
             this.labelBalance = new System.Windows.Forms.Label();
@@ -57,7 +58,7 @@
             this.buttonCancelPurchase = new System.Windows.Forms.Button();
             this.buttonClosePurchase = new System.Windows.Forms.Button();
             this.buttonAddPurchase = new System.Windows.Forms.Button();
-            this.listViewPurchases = new System.Windows.Forms.ListView();
+            this.listViewProcurement = new System.Windows.Forms.ListView();
             this.columnHeaderPurchases1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderPurchases2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderPurchases3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -98,9 +99,9 @@
             this.columnHeaderTransactions5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderTransactions6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderTransactions7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.tabPageIndicators.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBoxExecuted.SuspendLayout();
             this.groupBoxWaiting.SuspendLayout();
@@ -109,7 +110,6 @@
             this.tabPageSales.SuspendLayout();
             this.tabPageInventory.SuspendLayout();
             this.tabPageTransactions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -139,6 +139,15 @@
             this.tabPageIndicators.TabIndex = 0;
             this.tabPageIndicators.Text = "Показатели";
             this.tabPageIndicators.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::programmingWF.Properties.Resources.img;
+            this.pictureBox1.Location = new System.Drawing.Point(484, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(290, 338);
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
             // 
             // groupBox1
             // 
@@ -384,7 +393,7 @@
             this.tabPageProcurement.Controls.Add(this.buttonCancelPurchase);
             this.tabPageProcurement.Controls.Add(this.buttonClosePurchase);
             this.tabPageProcurement.Controls.Add(this.buttonAddPurchase);
-            this.tabPageProcurement.Controls.Add(this.listViewPurchases);
+            this.tabPageProcurement.Controls.Add(this.listViewProcurement);
             this.tabPageProcurement.Location = new System.Drawing.Point(4, 22);
             this.tabPageProcurement.Name = "tabPageProcurement";
             this.tabPageProcurement.Padding = new System.Windows.Forms.Padding(3);
@@ -431,10 +440,11 @@
             this.buttonAddPurchase.TabIndex = 1;
             this.buttonAddPurchase.Text = "Открыть позицию";
             this.buttonAddPurchase.UseVisualStyleBackColor = true;
+            this.buttonAddPurchase.Click += new System.EventHandler(this.buttonAddPurchase_Click);
             // 
-            // listViewPurchases
+            // listViewProcurement
             // 
-            this.listViewPurchases.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewProcurement.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderPurchases1,
             this.columnHeaderPurchases2,
             this.columnHeaderPurchases3,
@@ -443,14 +453,14 @@
             this.columnHeaderPurchases6,
             this.columnHeaderPurchases7,
             this.columnHeaderPurchases8});
-            this.listViewPurchases.GridLines = true;
-            this.listViewPurchases.HideSelection = false;
-            this.listViewPurchases.Location = new System.Drawing.Point(3, 3);
-            this.listViewPurchases.Name = "listViewPurchases";
-            this.listViewPurchases.Size = new System.Drawing.Size(635, 343);
-            this.listViewPurchases.TabIndex = 0;
-            this.listViewPurchases.UseCompatibleStateImageBehavior = false;
-            this.listViewPurchases.View = System.Windows.Forms.View.Details;
+            this.listViewProcurement.GridLines = true;
+            this.listViewProcurement.HideSelection = false;
+            this.listViewProcurement.Location = new System.Drawing.Point(3, 3);
+            this.listViewProcurement.Name = "listViewProcurement";
+            this.listViewProcurement.Size = new System.Drawing.Size(635, 343);
+            this.listViewProcurement.TabIndex = 0;
+            this.listViewProcurement.UseCompatibleStateImageBehavior = false;
+            this.listViewProcurement.View = System.Windows.Forms.View.Details;
             // 
             // columnHeaderPurchases1
             // 
@@ -732,15 +742,6 @@
             this.columnHeaderTransactions7.Text = "Примечание";
             this.columnHeaderTransactions7.Width = 139;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::programmingWF.Properties.Resources.img;
-            this.pictureBox1.Location = new System.Drawing.Point(484, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(290, 338);
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -751,6 +752,7 @@
             this.Text = "Система складского учёта";
             this.tabControl.ResumeLayout(false);
             this.tabPageIndicators.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxExecuted.ResumeLayout(false);
@@ -763,14 +765,11 @@
             this.tabPageSales.ResumeLayout(false);
             this.tabPageInventory.ResumeLayout(false);
             this.tabPageTransactions.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageIndicators;
         private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.TabPage tabPageProcurement;
@@ -794,7 +793,6 @@
         private System.Windows.Forms.Label labelPurchaseCount3;
         private System.Windows.Forms.Label labelSale3;
         private System.Windows.Forms.Label labelSaleCount3;
-        private System.Windows.Forms.ListView listViewPurchases;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases1;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases2;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases3;
@@ -841,6 +839,8 @@
         private System.Windows.Forms.ColumnHeader columnHeaderInventory4;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory5;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory6;
+        private System.Windows.Forms.ListView listViewProcurement;
+        private System.Windows.Forms.TabControl tabControl;
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace programmingWF
 {
-    class Sales : Warehouse
+    public class Inventory
     {
 
     }

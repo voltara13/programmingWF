@@ -1,7 +1,7 @@
 ﻿
 namespace programmingWF
 {
-    partial class PurchaseWindow
+    partial class ProcurementWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,9 @@ namespace programmingWF
             this.numericCount = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonAccept = new System.Windows.Forms.Button();
+            this.textBoxCost = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +117,7 @@ namespace programmingWF
             // 
             // textBoxNote
             // 
-            this.textBoxNote.Location = new System.Drawing.Point(117, 136);
+            this.textBoxNote.Location = new System.Drawing.Point(117, 162);
             this.textBoxNote.Name = "textBoxNote";
             this.textBoxNote.Size = new System.Drawing.Size(124, 20);
             this.textBoxNote.TabIndex = 11;
@@ -122,7 +125,7 @@ namespace programmingWF
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 139);
+            this.label6.Location = new System.Drawing.Point(12, 165);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 13);
             this.label6.TabIndex = 10;
@@ -137,7 +140,7 @@ namespace programmingWF
             // 
             // numericCount
             // 
-            this.numericCount.Location = new System.Drawing.Point(117, 111);
+            this.numericCount.Location = new System.Drawing.Point(117, 110);
             this.numericCount.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -150,7 +153,7 @@ namespace programmingWF
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(218, 113);
+            this.label7.Location = new System.Drawing.Point(221, 112);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(23, 13);
             this.label7.TabIndex = 14;
@@ -159,18 +162,46 @@ namespace programmingWF
             // buttonAccept
             // 
             this.buttonAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonAccept.Location = new System.Drawing.Point(81, 162);
+            this.buttonAccept.Location = new System.Drawing.Point(81, 197);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(75, 23);
             this.buttonAccept.TabIndex = 15;
             this.buttonAccept.Text = "OK";
             this.buttonAccept.UseVisualStyleBackColor = true;
             // 
-            // PurchaseWindow
+            // textBoxCost
+            // 
+            this.textBoxCost.Location = new System.Drawing.Point(117, 136);
+            this.textBoxCost.Name = "textBoxCost";
+            this.textBoxCost.Size = new System.Drawing.Size(98, 20);
+            this.textBoxCost.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 139);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Цена:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(221, 139);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(27, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "руб.";
+            // 
+            // ProcurementWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(251, 195);
+            this.ClientSize = new System.Drawing.Size(251, 234);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBoxCost);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.buttonAccept);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.numericCount);
@@ -185,7 +216,7 @@ namespace programmingWF
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxBarcode);
             this.Controls.Add(this.label1);
-            this.Name = "PurchaseWindow";
+            this.Name = "ProcurementWindow";
             this.Text = "Закупка";
             ((System.ComponentModel.ISupportInitialize)(this.numericCount)).EndInit();
             this.ResumeLayout(false);
@@ -209,5 +240,8 @@ namespace programmingWF
         private System.Windows.Forms.NumericUpDown numericCount;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttonAccept;
+        private System.Windows.Forms.TextBox textBoxCost;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
