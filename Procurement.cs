@@ -1,37 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace programmingWF
 {
-    public class Procurement
+    internal class Procurement : WareHouse
     {
-        private string barCode;
-        private string organization;
-        private string name;
-        private string note;
-        private string status = "Ожидание";
-        private int count;
-        private double cost;
-        private DateTime date;
-
-        public Procurement(string barCode, string organization, string name, string note, double cost, DateTime date, int count)
+        protected internal Procurement(string barCode, string organization, string name, string note, double costBuy, DateTime dueDate, int count)
         {
-            this.barCode = barCode;
-            this.organization = organization;
-            this.name = name;
-            this.note = note;
-            this.date = date;
-            this.cost = cost;
-            this.count = count;
+            BarCode = barCode;
+            Organization = organization;
+            Name = name;
+            Note = note;
+            DueDate = dueDate;
+            CostBuy = costBuy;
+            Count = count;
         }
-
-        public string BarCode => barCode;
-        public string Organization => organization;
-        public string Name => name;
-        public string Note => note;
-        public string Status => status;
-        public double Cost => cost;
-        public int Count => count;
-        public DateTime Date => date;
+        protected internal override ListViewItem GetListViewItem()
+        {
+            ListViewItem item = new ListViewItem(BarCode);
+            item.SubItems.Add(DueDate.ToShortDateString());
+            item.SubItems.Add(Organization);
+            item.SubItems.Add(Name);
+            item.SubItems.Add(Count.ToString());
+            item.SubItems.Add(CostBuy.ToString());
+            item.SubItems.Add(GetStatusString());
+            item.SubItems.Add(Note);
+            return item;
+        }
+        protected internal override ListView GetListView(MainWindow parent)
+        {
+            return parent.listViewProcurement;
+        }
     }
 }
