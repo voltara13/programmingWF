@@ -36,8 +36,8 @@
             this.labelBalance = new System.Windows.Forms.Label();
             this.labelTotal = new System.Windows.Forms.Label();
             this.labelBalanceCount = new System.Windows.Forms.Label();
-            this.labelBidCount = new System.Windows.Forms.Label();
-            this.labelBid = new System.Windows.Forms.Label();
+            this.labelPositionsCount = new System.Windows.Forms.Label();
+            this.labelPositions = new System.Windows.Forms.Label();
             this.groupBoxExecuted = new System.Windows.Forms.GroupBox();
             this.labelPurchase1 = new System.Windows.Forms.Label();
             this.labelPurchaseCount1 = new System.Windows.Forms.Label();
@@ -82,12 +82,13 @@
             this.buttonAddSale = new System.Windows.Forms.Button();
             this.buttonCloseSale = new System.Windows.Forms.Button();
             this.tabPageInventory = new System.Windows.Forms.TabPage();
-            this.listViewInventory = new System.Windows.Forms.ListView();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeaderInventory1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInventory2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInventory3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInventory4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInventory5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderInventory6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageTransactions = new System.Windows.Forms.TabPage();
             this.listViewTransactions = new System.Windows.Forms.ListView();
             this.columnHeaderTransactions0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -154,8 +155,8 @@
             this.groupBox1.Controls.Add(this.labelBalance);
             this.groupBox1.Controls.Add(this.labelTotal);
             this.groupBox1.Controls.Add(this.labelBalanceCount);
-            this.groupBox1.Controls.Add(this.labelBidCount);
-            this.groupBox1.Controls.Add(this.labelBid);
+            this.groupBox1.Controls.Add(this.labelPositionsCount);
+            this.groupBox1.Controls.Add(this.labelPositions);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(261, 9);
             this.groupBox1.Name = "groupBox1";
@@ -204,25 +205,25 @@
             this.labelBalanceCount.TabIndex = 19;
             this.labelBalanceCount.Text = "0";
             // 
-            // labelBidCount
+            // labelPositionsCount
             // 
-            this.labelBidCount.AutoSize = true;
-            this.labelBidCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelBidCount.Location = new System.Drawing.Point(91, 134);
-            this.labelBidCount.Name = "labelBidCount";
-            this.labelBidCount.Size = new System.Drawing.Size(35, 37);
-            this.labelBidCount.TabIndex = 17;
-            this.labelBidCount.Text = "0";
+            this.labelPositionsCount.AutoSize = true;
+            this.labelPositionsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPositionsCount.Location = new System.Drawing.Point(91, 134);
+            this.labelPositionsCount.Name = "labelPositionsCount";
+            this.labelPositionsCount.Size = new System.Drawing.Size(35, 37);
+            this.labelPositionsCount.TabIndex = 17;
+            this.labelPositionsCount.Text = "0";
             // 
-            // labelBid
+            // labelPositions
             // 
-            this.labelBid.AutoSize = true;
-            this.labelBid.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelBid.Location = new System.Drawing.Point(6, 171);
-            this.labelBid.Name = "labelBid";
-            this.labelBid.Size = new System.Drawing.Size(204, 25);
-            this.labelBid.TabIndex = 16;
-            this.labelBid.Text = "Позиций на складе";
+            this.labelPositions.AutoSize = true;
+            this.labelPositions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPositions.Location = new System.Drawing.Point(6, 171);
+            this.labelPositions.Name = "labelPositions";
+            this.labelPositions.Size = new System.Drawing.Size(204, 25);
+            this.labelPositions.TabIndex = 16;
+            this.labelPositions.Text = "Позиций на складе";
             // 
             // groupBoxExecuted
             // 
@@ -420,7 +421,6 @@
             this.buttonCancelPurchase.TabIndex = 3;
             this.buttonCancelPurchase.Text = "Отменить позицию";
             this.buttonCancelPurchase.UseVisualStyleBackColor = true;
-            this.buttonCancelPurchase.Click += new System.EventHandler(this.buttonCancelPurchase_Click);
             // 
             // buttonClosePurchase
             // 
@@ -431,7 +431,6 @@
             this.buttonClosePurchase.TabIndex = 2;
             this.buttonClosePurchase.Text = "Закрыть позицию";
             this.buttonClosePurchase.UseVisualStyleBackColor = true;
-            this.buttonClosePurchase.Click += new System.EventHandler(this.buttonClosePurchase_Click);
             // 
             // buttonAddPurchase
             // 
@@ -454,7 +453,6 @@
             this.columnHeaderPurchases6,
             this.columnHeaderPurchases7,
             this.columnHeaderPurchases8});
-            this.listViewProcurement.FullRowSelect = true;
             this.listViewProcurement.GridLines = true;
             this.listViewProcurement.HideSelection = false;
             this.listViewProcurement.Location = new System.Drawing.Point(3, 3);
@@ -463,7 +461,6 @@
             this.listViewProcurement.TabIndex = 0;
             this.listViewProcurement.UseCompatibleStateImageBehavior = false;
             this.listViewProcurement.View = System.Windows.Forms.View.Details;
-            this.listViewProcurement.SelectedIndexChanged += new System.EventHandler(this.listViewProcurement_SelectedIndexChanged);
             // 
             // columnHeaderPurchases1
             // 
@@ -619,7 +616,7 @@
             // 
             // tabPageInventory
             // 
-            this.tabPageInventory.Controls.Add(this.listViewInventory);
+            this.tabPageInventory.Controls.Add(this.listView1);
             this.tabPageInventory.Location = new System.Drawing.Point(4, 22);
             this.tabPageInventory.Name = "tabPageInventory";
             this.tabPageInventory.Size = new System.Drawing.Size(782, 355);
@@ -627,22 +624,23 @@
             this.tabPageInventory.Text = "Инвентарь";
             this.tabPageInventory.UseVisualStyleBackColor = true;
             // 
-            // listViewInventory
+            // listView1
             // 
-            this.listViewInventory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderInventory1,
             this.columnHeaderInventory2,
             this.columnHeaderInventory3,
             this.columnHeaderInventory4,
-            this.columnHeaderInventory5});
-            this.listViewInventory.GridLines = true;
-            this.listViewInventory.HideSelection = false;
-            this.listViewInventory.Location = new System.Drawing.Point(3, 3);
-            this.listViewInventory.Name = "listViewInventory";
-            this.listViewInventory.Size = new System.Drawing.Size(428, 343);
-            this.listViewInventory.TabIndex = 9;
-            this.listViewInventory.UseCompatibleStateImageBehavior = false;
-            this.listViewInventory.View = System.Windows.Forms.View.Details;
+            this.columnHeaderInventory5,
+            this.columnHeaderInventory6});
+            this.listView1.GridLines = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(3, 3);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(561, 343);
+            this.listView1.TabIndex = 9;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // columnHeaderInventory1
             // 
@@ -666,8 +664,13 @@
             // 
             // columnHeaderInventory5
             // 
-            this.columnHeaderInventory5.Text = "Примечание";
-            this.columnHeaderInventory5.Width = 84;
+            this.columnHeaderInventory5.Text = "Цена отпускная";
+            this.columnHeaderInventory5.Width = 97;
+            // 
+            // columnHeaderInventory6
+            // 
+            this.columnHeaderInventory6.Text = "Примечание";
+            this.columnHeaderInventory6.Width = 84;
             // 
             // tabPageTransactions
             // 
@@ -772,8 +775,8 @@
         private System.Windows.Forms.TabPage tabPageProcurement;
         private System.Windows.Forms.TabPage tabPageSales;
         private System.Windows.Forms.TabPage tabPageTransactions;
-        private System.Windows.Forms.Label labelBidCount;
-        private System.Windows.Forms.Label labelBid;
+        private System.Windows.Forms.Label labelPositionsCount;
+        private System.Windows.Forms.Label labelPositions;
         private System.Windows.Forms.GroupBox groupBoxExecuted;
         private System.Windows.Forms.Label labelPurchase1;
         private System.Windows.Forms.Label labelPurchaseCount1;
@@ -803,6 +806,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases6;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases7;
         private System.Windows.Forms.Button buttonCancelSale;
+        private System.Windows.Forms.ListView listViewSale;
         private System.Windows.Forms.ColumnHeader columnHeaderSale1;
         private System.Windows.Forms.ColumnHeader columnHeaderSale2;
         private System.Windows.Forms.ColumnHeader columnHeaderSale3;
@@ -812,7 +816,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderSale7;
         private System.Windows.Forms.Button buttonAddSale;
         private System.Windows.Forms.Button buttonCloseSale;
-        internal System.Windows.Forms.ListView listViewTransactions;
+        private System.Windows.Forms.ListView listViewTransactions;
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions0;
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions2;
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions3;
@@ -828,15 +832,15 @@
         private System.Windows.Forms.ColumnHeader columnHeaderSale8;
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions1;
         private System.Windows.Forms.TabPage tabPageInventory;
-        public System.Windows.Forms.ListView listViewInventory;
+        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory1;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory2;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory3;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory4;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory5;
-        protected internal System.Windows.Forms.ListView listViewSale;
-        protected internal System.Windows.Forms.ListView listViewProcurement;
-        protected internal System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.ColumnHeader columnHeaderInventory6;
+        private System.Windows.Forms.ListView listViewProcurement;
+        private System.Windows.Forms.TabControl tabControl;
     }
 }
 

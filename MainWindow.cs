@@ -1,90 +1,118 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Threading;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace programmingWF
 {
     public partial class MainWindow : Form
     {
-        protected internal ObservableCollection<WareHouse> Procurements = new ObservableCollection<WareHouse>();
-        protected internal ObservableCollection<WareHouse> Sales = new ObservableCollection<WareHouse>();
-        protected internal ObservableCollection<WareHouse> Inventory = new ObservableCollection<WareHouse>();
-        protected internal ObservableCollection<WareHouse> Transactions = new ObservableCollection<WareHouse>();
-        private int countBid;
-        private int countTotal;
-        private int countPurch;
-        private int countSale;
-        private int countWaitPurch;
-        private int countWaitSale;
-        private int countOverDuePurch;
-        private int countOverDueSale;
+        protected internal ObservableCollection<Procurement> procurements = new ObservableCollection<Procurement>();
+        protected internal ObservableCollection<Sale> sales = new ObservableCollection<Sale>();
+        protected internal ObservableCollection<Transaction> transactions = new ObservableCollection<Transaction>();
+        protected internal ObservableCollection<Inventory> inventories = new ObservableCollection<Inventory>();
+
         public MainWindow()
         {
-            Procurements.CollectionChanged += CollectionChanged;
-            Sales.CollectionChanged += CollectionChanged;
-            Inventory.CollectionChanged += CollectionChanged;
-            Transactions.CollectionChanged += CollectionChanged;
+            procurements.CollectionChanged += Procurement_CollectionChanged;
+            sales.CollectionChanged += Sale_CollectionChanged;
+            transactions.CollectionChanged += Transaction_CollectionChanged;
+            inventories.CollectionChanged += Inventory_CollectionChanged;
             InitializeComponent();
+            
         }
-        private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+
+        private void Procurement_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    var newItem = e.NewItems[0] as WareHouse; 
-                    newItem.GetListView(this).Items.Add(newItem.GetListViewItem());
+                    Procurement newItem = e.NewItems[0] as Procurement;
+                    ListViewItem item = new ListViewItem(newItem.BarCode);
+                    item.SubItems.Add(newItem.Date.ToString());
+                    item.SubItems.Add(newItem.Organization);
+                    item.SubItems.Add(newItem.Name);
+                    item.SubItems.Add(newItem.Count.ToString());
+                    item.SubItems.Add(newItem.Cost.ToString());
+                    item.SubItems.Add(newItem.Status);
+                    item.SubItems.Add(newItem.Note);
+                    listViewProcurement.Items.Add(item);
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    Procurement oldUser = e.OldItems[0] as Procurement;
+                    Console.WriteLine($"Удален объект: ");
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    Procurement replacedUser = e.OldItems[0] as Procurement;
+                    Procurement replacingUser = e.NewItems[0] as Procurement;
+                    Console.WriteLine($"Объект ");
+                    break;
+            }
+        }
+
+        private void Sale_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    Sale newUser = e.NewItems[0] as Sale;
+                    Console.WriteLine($"Добавлен новый объект: ");
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    Sale oldUser = e.OldItems[0] as Sale;
+                    Console.WriteLine($"Удален объект: ");
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    Sale replacedUser = e.OldItems[0] as Sale;
+                    Sale replacingUser = e.NewItems[0] as Sale;
+                    Console.WriteLine($"Объект ");
+                    break;
+            }
+        }
+
+        private void Transaction_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    Transaction newUser = e.NewItems[0] as Transaction;
+                    Console.WriteLine($"Добавлен новый объект: ");
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    Transaction oldUser = e.OldItems[0] as Transaction;
+                    Console.WriteLine($"Удален объект: ");
                     break;
                 case NotifyCollectionChangedAction.Replace:
-                    var newReplaceItem = e.NewItems[0] as WareHouse;
-                    var items = newReplaceItem.GetListView(this).Items;
-                    items[e.OldStartingIndex] = newReplaceItem.GetListViewItem();
+                    Transaction replacedUser = e.OldItems[0] as Transaction;
+                    Transaction replacingUser = e.NewItems[0] as Transaction;
+                    Console.WriteLine($"Объект ");
                     break;
             }
         }
+        private void Inventory_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    Inventory newUser = e.NewItems[0] as Inventory;
+                    Console.WriteLine($"Добавлен новый объект: ");
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    Inventory oldUser = e.OldItems[0] as Inventory;
+                    Console.WriteLine($"Удален объект: ");
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    Inventory replacedUser = e.OldItems[0] as Inventory;
+                    Inventory replacingUser = e.NewItems[0] as Inventory;
+                    Console.WriteLine($"Объект ");
+                    break;
+            }
+        }
+
         private void buttonAddPurchase_Click(object sender, EventArgs e)
         {
-            new ProcurementWindow(this);
-        }
-        private void buttonClosePurchase_Click(object sender, EventArgs e)
-        {
-            var index = listViewProcurement.SelectedIndices[0];
-            var itemProcurement = Procurements[index];
-            itemProcurement.CurStatus = WareHouse.Status.Completed;
-            Procurements[index] = itemProcurement;
-            var itemTransaction = Transactions[index];
-            itemProcurement.CurStatus = WareHouse.Status.Completed;
-            Transactions[index] = itemTransaction;
-            countPurch += 1;
-            labelPurchaseCount1.Text = countPurch.ToString();
-            countBid += 1;
-            labelBidCount.Text = countBid.ToString();
-        }
-        private void buttonCancelPurchase_Click(object sender, EventArgs e)
-        {
-            var index = listViewProcurement.SelectedIndices[0];
-            var itemProcurement = Procurements[index];
-            itemProcurement.CurStatus = WareHouse.Status.Canceled;
-            Procurements[index] = itemProcurement;
-            var itemTransaction = Transactions[index];
-            itemTransaction.CurStatus = WareHouse.Status.Canceled;
-            Transactions[index] = itemTransaction;
-        }
-        private void listViewProcurement_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                var index = listViewProcurement.SelectedIndices[0];
-                if (Procurements[index].CurStatus == WareHouse.Status.Canceled) return;
-                buttonCancelPurchase.Enabled = true;
-                buttonClosePurchase.Enabled = true;
-            }
-            catch (System.ArgumentOutOfRangeException)
-            {
-                buttonCancelPurchase.Enabled = false;
-                buttonClosePurchase.Enabled = false;
-            }
+            ProcurementWindow window = new ProcurementWindow(this);
         }
     }
 }
