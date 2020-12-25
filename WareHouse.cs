@@ -26,7 +26,7 @@ namespace programmingWF
         protected string GetStatusString()
         {
             switch (CurStatus)
-            {
+    {
                 case Status.Canceled:
                     return "Отменено";
                 case Status.Expectation:
