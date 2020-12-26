@@ -4,12 +4,8 @@ namespace programmingWF
 {
     internal class Inventory : WareHouse
     {
-        protected internal Inventory(string barCode, string name, string note, double costBuy, int count)
+        protected internal Inventory(string barCode, string name, string note, double cost, int count) : base(barCode, name, count, cost)
         {
-            BarCode = barCode;
-            Name = name;
-            Cost = costBuy;
-            Count = count;
             Note = note;
         }
         protected internal override ListViewItem GetListViewItem()
@@ -25,9 +21,9 @@ namespace programmingWF
         {
             return parent.listViewInventory;
         }
-        protected internal override bool Comparison(string str)
+         protected internal override bool Comparison(string str)
         {
-            return string.CompareOrdinal(str, BarCode) == 0;
+            return str == BarCode;
         }
     }
 }

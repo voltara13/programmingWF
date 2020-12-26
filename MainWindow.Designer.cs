@@ -54,7 +54,6 @@
             this.labelSale3 = new System.Windows.Forms.Label();
             this.labelSaleCount3 = new System.Windows.Forms.Label();
             this.tabPageProcurement = new System.Windows.Forms.TabPage();
-            this.buttonCsvPurchase = new System.Windows.Forms.Button();
             this.buttonCancelPurchase = new System.Windows.Forms.Button();
             this.buttonClosePurchase = new System.Windows.Forms.Button();
             this.buttonAddPurchase = new System.Windows.Forms.Button();
@@ -68,7 +67,6 @@
             this.columnHeaderPurchases7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderPurchases8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageSales = new System.Windows.Forms.TabPage();
-            this.buttonCsvSale = new System.Windows.Forms.Button();
             this.buttonCancelSale = new System.Windows.Forms.Button();
             this.listViewSale = new System.Windows.Forms.ListView();
             this.columnHeaderSale1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -388,7 +386,6 @@
             // 
             // tabPageProcurement
             // 
-            this.tabPageProcurement.Controls.Add(this.buttonCsvPurchase);
             this.tabPageProcurement.Controls.Add(this.buttonCancelPurchase);
             this.tabPageProcurement.Controls.Add(this.buttonClosePurchase);
             this.tabPageProcurement.Controls.Add(this.buttonAddPurchase);
@@ -400,16 +397,6 @@
             this.tabPageProcurement.TabIndex = 1;
             this.tabPageProcurement.Text = "Закупки";
             this.tabPageProcurement.UseVisualStyleBackColor = true;
-            // 
-            // buttonCsvPurchase
-            // 
-            this.buttonCsvPurchase.Enabled = false;
-            this.buttonCsvPurchase.Location = new System.Drawing.Point(647, 93);
-            this.buttonCsvPurchase.Name = "buttonCsvPurchase";
-            this.buttonCsvPurchase.Size = new System.Drawing.Size(127, 23);
-            this.buttonCsvPurchase.TabIndex = 4;
-            this.buttonCsvPurchase.Text = "Сохранить таблицу";
-            this.buttonCsvPurchase.UseVisualStyleBackColor = true;
             // 
             // buttonCancelPurchase
             // 
@@ -457,6 +444,7 @@
             this.listViewProcurement.FullRowSelect = true;
             this.listViewProcurement.GridLines = true;
             this.listViewProcurement.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewProcurement.HideSelection = false;
             this.listViewProcurement.Location = new System.Drawing.Point(3, 3);
             this.listViewProcurement.MultiSelect = false;
             this.listViewProcurement.Name = "listViewProcurement";
@@ -469,7 +457,7 @@
             // columnHeaderPurchases1
             // 
             this.columnHeaderPurchases1.Text = "Штрихкод";
-            this.columnHeaderPurchases1.Width = 63;
+            this.columnHeaderPurchases1.Width = 80;
             // 
             // columnHeaderPurchases2
             // 
@@ -494,11 +482,12 @@
             // columnHeaderPurchases6
             // 
             this.columnHeaderPurchases6.Text = "Цена";
+            this.columnHeaderPurchases6.Width = 56;
             // 
             // columnHeaderPurchases7
             // 
             this.columnHeaderPurchases7.Text = "Статус";
-            this.columnHeaderPurchases7.Width = 72;
+            this.columnHeaderPurchases7.Width = 58;
             // 
             // columnHeaderPurchases8
             // 
@@ -507,7 +496,6 @@
             // 
             // tabPageSales
             // 
-            this.tabPageSales.Controls.Add(this.buttonCsvSale);
             this.tabPageSales.Controls.Add(this.buttonCancelSale);
             this.tabPageSales.Controls.Add(this.listViewSale);
             this.tabPageSales.Controls.Add(this.buttonAddSale);
@@ -519,16 +507,6 @@
             this.tabPageSales.TabIndex = 2;
             this.tabPageSales.Text = "Продажи";
             this.tabPageSales.UseVisualStyleBackColor = true;
-            // 
-            // buttonCsvSale
-            // 
-            this.buttonCsvSale.Enabled = false;
-            this.buttonCsvSale.Location = new System.Drawing.Point(647, 93);
-            this.buttonCsvSale.Name = "buttonCsvSale";
-            this.buttonCsvSale.Size = new System.Drawing.Size(127, 23);
-            this.buttonCsvSale.TabIndex = 8;
-            this.buttonCsvSale.Text = "Сохранить таблицу";
-            this.buttonCsvSale.UseVisualStyleBackColor = true;
             // 
             // buttonCancelSale
             // 
@@ -555,6 +533,7 @@
             this.listViewSale.FullRowSelect = true;
             this.listViewSale.GridLines = true;
             this.listViewSale.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewSale.HideSelection = false;
             this.listViewSale.Location = new System.Drawing.Point(3, 3);
             this.listViewSale.MultiSelect = false;
             this.listViewSale.Name = "listViewSale";
@@ -567,7 +546,7 @@
             // columnHeaderSale1
             // 
             this.columnHeaderSale1.Text = "Штрихкод";
-            this.columnHeaderSale1.Width = 62;
+            this.columnHeaderSale1.Width = 73;
             // 
             // columnHeaderSale2
             // 
@@ -596,7 +575,7 @@
             // columnHeaderSale7
             // 
             this.columnHeaderSale7.Text = "Статус";
-            this.columnHeaderSale7.Width = 72;
+            this.columnHeaderSale7.Width = 62;
             // 
             // columnHeaderSale8
             // 
@@ -605,6 +584,7 @@
             // 
             // buttonAddSale
             // 
+            this.buttonAddSale.Enabled = false;
             this.buttonAddSale.Location = new System.Drawing.Point(647, 6);
             this.buttonAddSale.Name = "buttonAddSale";
             this.buttonAddSale.Size = new System.Drawing.Size(127, 23);
@@ -646,7 +626,7 @@
             this.listViewInventory.HideSelection = false;
             this.listViewInventory.Location = new System.Drawing.Point(3, 3);
             this.listViewInventory.Name = "listViewInventory";
-            this.listViewInventory.Size = new System.Drawing.Size(428, 343);
+            this.listViewInventory.Size = new System.Drawing.Size(773, 343);
             this.listViewInventory.TabIndex = 9;
             this.listViewInventory.UseCompatibleStateImageBehavior = false;
             this.listViewInventory.View = System.Windows.Forms.View.Details;
@@ -654,27 +634,27 @@
             // columnHeaderInventory1
             // 
             this.columnHeaderInventory1.Text = "Штрихкод";
-            this.columnHeaderInventory1.Width = 62;
+            this.columnHeaderInventory1.Width = 112;
             // 
             // columnHeaderInventory2
             // 
             this.columnHeaderInventory2.Text = "Наименование";
-            this.columnHeaderInventory2.Width = 92;
+            this.columnHeaderInventory2.Width = 219;
             // 
             // columnHeaderInventory3
             // 
             this.columnHeaderInventory3.Text = "Количество";
-            this.columnHeaderInventory3.Width = 79;
+            this.columnHeaderInventory3.Width = 95;
             // 
             // columnHeaderInventory4
             // 
             this.columnHeaderInventory4.Text = "Цена закупочная";
-            this.columnHeaderInventory4.Width = 102;
+            this.columnHeaderInventory4.Width = 178;
             // 
             // columnHeaderInventory5
             // 
             this.columnHeaderInventory5.Text = "Примечание";
-            this.columnHeaderInventory5.Width = 84;
+            this.columnHeaderInventory5.Width = 165;
             // 
             // tabPageTransactions
             // 
@@ -827,8 +807,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions5;
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions6;
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions7;
-        private System.Windows.Forms.Button buttonCsvPurchase;
-        private System.Windows.Forms.Button buttonCsvSale;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases8;

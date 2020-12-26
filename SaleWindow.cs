@@ -9,8 +9,10 @@ namespace programmingWF
         public SaleWindow(MainWindow parent)
         {
             InitializeComponent();
+
             foreach (var elm in parent.Inventory)
                 comboBoxName.Items.Add(elm.Name);
+
             while (true)
             {
                 if (ShowDialog(parent) == DialogResult.OK)
@@ -20,6 +22,7 @@ namespace programmingWF
                         var item = parent.Inventory[comboBoxName.SelectedIndex];
                         if (numericCount.Value > item.Count)
                             numericCount.Value = item.Count;
+
                         parent.Sales.Add(new Sale(
                             item.BarCode,
                             textBoxOrganization.Text,
@@ -28,6 +31,7 @@ namespace programmingWF
                             Convert.ToDouble(textBoxCostSale.Text.Replace(',', '.')),
                             dateTimePicker.Value.Date,
                             Convert.ToInt32(numericCount.Value)));
+
                         parent.Transactions.Add(new Transaction(
                             item.BarCode,
                             textBoxOrganization.Text,
@@ -36,6 +40,7 @@ namespace programmingWF
                             Convert.ToInt32(numericCount.Value),
                             Transaction.Type.Sale,
                             parent.Sales.Last().Num));
+
                         return;
                     }
                     catch (System.FormatException)

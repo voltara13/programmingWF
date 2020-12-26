@@ -101,6 +101,7 @@ namespace programmingWF
             labelProcurementCount1.Text = (countProc += 1).ToString();
             labelProcurementCount2.Text = (countWaitProc -= 1).ToString();
             labelBidCount.Text = Inventory.Count.ToString();
+            buttonAddSale.Enabled = true;
         }
 
         private void buttonCancelPurchase_Click(object sender, EventArgs e)
@@ -163,6 +164,7 @@ namespace programmingWF
             labelSaleCount1.Text = (countSale += 1).ToString();
             labelSaleCount2.Text = (countWaitSale -= 1).ToString();
             labelBidCount.Text = Inventory.Count.ToString();
+            if (Inventory.Count == 0) buttonAddSale.Enabled = false;
         }
 
         private void buttonCancelSale_Click(object sender, EventArgs e)
