@@ -61,12 +61,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data.cs" />
+    <Compile Include="FormSerialisor.cs" />
+    <Compile Include="InitialDialogue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InitialDialogue.Designer.cs">
+      <DependentUpon>InitialDialogue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventory.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewWareHouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewWareHouse.Designer.cs">
+      <DependentUpon>NewWareHouse.cs</DependentUpon>
     </Compile>
     <Compile Include="Procurement.cs" />
     <Compile Include="SaleWindow.cs">
@@ -86,8 +100,14 @@
     <Compile Include="Sale.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="WareHouse.cs" />
+    <EmbeddedResource Include="InitialDialogue.resx">
+      <DependentUpon>InitialDialogue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewWareHouse.resx">
+      <DependentUpon>NewWareHouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleWindow.resx">
       <DependentUpon>SaleWindow.cs</DependentUpon>

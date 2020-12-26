@@ -20,6 +20,7 @@ namespace programmingWF
 
         public MainWindow()
         {
+            FormSerialisor.Deserialise(this, Application.StartupPath + @"\serialise.xml");
             Procurements.CollectionChanged += CollectionChanged;
             Sales.CollectionChanged += CollectionChanged;
             Inventory.CollectionChanged += CollectionChanged;
@@ -98,9 +99,11 @@ namespace programmingWF
                     itemProcurement.Count));
             }
 
+            labelBidCount.Text = Inventory.Count.ToString();
             labelProcurementCount1.Text = (countProc += 1).ToString();
             labelProcurementCount2.Text = (countWaitProc -= 1).ToString();
-            labelBidCount.Text = Inventory.Count.ToString();
+            if (DateTime.Now > itemProcurement.DueDate)
+                labelProcurementCount3.Text = (countOverDuePurch += 1).ToString();
             buttonAddSale.Enabled = true;
         }
 
@@ -161,9 +164,11 @@ namespace programmingWF
             }
             else Inventory.RemoveAt(indexInventory);
 
+            labelBidCount.Text = Inventory.Count.ToString();
             labelSaleCount1.Text = (countSale += 1).ToString();
             labelSaleCount2.Text = (countWaitSale -= 1).ToString();
-            labelBidCount.Text = Inventory.Count.ToString();
+            if (DateTime.Now > itemSale.DueDate)
+                labelSaleCount3.Text = (countOverDueSale += 1).ToString();
             if (Inventory.Count == 0) buttonAddSale.Enabled = false;
         }
 
@@ -195,6 +200,11 @@ namespace programmingWF
                 buttonCancelSale.Enabled = false;
                 buttonCloseSale.Enabled = false;
             }
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            FormSerialisor.Serialise(this, Application.StartupPath + @"\serialise.xml");
         }
     }
 }

@@ -14,13 +14,24 @@ namespace programmingWF
             Cost = cost;
         }
 
+        protected internal string Num { get; set; } = TransactionEncoding();
+        protected internal string Organization { get; set; }
+        protected internal string Note { get; set; }
+        protected internal int Count { get; set; }
+        protected internal Status CurStatus { get; set; } = Status.Expectation;
+        protected internal DateTime DueDate { get; set; }
+        protected internal DateTime CreateDate { get; } = DateTime.Now.Date;
+        protected internal string BarCode { get; }
+        protected internal string Name { get; }
+        protected internal double Cost { get; }
+        protected internal abstract ListView GetListView(MainWindow parent);
         protected internal enum Status
         {
             Canceled,
             Expectation,
             Completed
         }
-        protected internal Status CurStatus { get; set; } = Status.Expectation;
+
         protected internal virtual ListViewItem GetListViewItem()
         {
             var item = new ListViewItem(BarCode);
@@ -33,16 +44,6 @@ namespace programmingWF
             item.SubItems.Add(Note);
             return item;
         }
-        protected internal abstract ListView GetListView(MainWindow parent);
-        protected internal string Num { get; set; } = TransactionEncoding();
-        protected internal string BarCode { get; set; }
-        protected internal string Organization { get; set; }
-        protected internal string Name { get; set; }
-        protected internal string Note { get; set; }
-        protected internal double Cost { get; set; }
-        protected internal int Count { get; set; }
-        protected internal DateTime DueDate { get; set; }
-        protected internal DateTime CreateDate { get; } = DateTime.Now.Date;
 
         protected internal string GetStatusString()
         {
@@ -59,14 +60,14 @@ namespace programmingWF
             }
         }
 
-        private static string TransactionEncoding()
-        {
-            return string.Concat(DateTime.Now.ToString("yyyy’-‘MM’-‘dd’T’HH’:’mm’:’ss.fffffffK").Where(char.IsDigit));
-        }
-
         protected internal virtual bool Comparison(string str)
         {
             return str == Num;
+        }
+
+        private static string TransactionEncoding()
+        {
+            return string.Concat(DateTime.Now.ToString("yyyy’-‘MM’-‘dd’T’HH’:’mm’:’ss.fffffffK").Where(char.IsDigit));
         }
     }
 }

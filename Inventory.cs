@@ -8,6 +8,7 @@ namespace programmingWF
         {
             Note = note;
         }
+
         protected internal override ListViewItem GetListViewItem()
         {
             var item = new ListViewItem(BarCode);
@@ -17,10 +18,12 @@ namespace programmingWF
             item.SubItems.Add(Note);
             return item;
         }
+
         protected internal override ListView GetListView(MainWindow parent)
         {
             return parent.listViewInventory;
         }
+
          protected internal override bool Comparison(string str)
         {
             return str == BarCode;

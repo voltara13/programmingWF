@@ -30,6 +30,7 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageIndicators = new System.Windows.Forms.TabPage();
+            this.buttonExport = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelTotalCount = new System.Windows.Forms.Label();
@@ -50,7 +51,7 @@
             this.labelSaleCount2 = new System.Windows.Forms.Label();
             this.groupBoxOverdue = new System.Windows.Forms.GroupBox();
             this.labelPurchase3 = new System.Windows.Forms.Label();
-            this.labelPurchaseCount3 = new System.Windows.Forms.Label();
+            this.labelProcurementCount3 = new System.Windows.Forms.Label();
             this.labelSale3 = new System.Windows.Forms.Label();
             this.labelSaleCount3 = new System.Windows.Forms.Label();
             this.tabPageProcurement = new System.Windows.Forms.TabPage();
@@ -124,6 +125,7 @@
             // 
             // tabPageIndicators
             // 
+            this.tabPageIndicators.Controls.Add(this.buttonExport);
             this.tabPageIndicators.Controls.Add(this.pictureBox1);
             this.tabPageIndicators.Controls.Add(this.groupBox1);
             this.tabPageIndicators.Controls.Add(this.groupBoxExecuted);
@@ -137,12 +139,23 @@
             this.tabPageIndicators.Text = "Показатели";
             this.tabPageIndicators.UseVisualStyleBackColor = true;
             // 
+            // buttonExport
+            // 
+            this.buttonExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonExport.Location = new System.Drawing.Point(485, 310);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(289, 36);
+            this.buttonExport.TabIndex = 22;
+            this.buttonExport.Text = "Экспорт данных";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::programmingWF.Properties.Resources.img;
             this.pictureBox1.Location = new System.Drawing.Point(484, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(290, 338);
+            this.pictureBox1.Size = new System.Drawing.Size(290, 295);
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
@@ -333,7 +346,7 @@
             // groupBoxOverdue
             // 
             this.groupBoxOverdue.Controls.Add(this.labelPurchase3);
-            this.groupBoxOverdue.Controls.Add(this.labelPurchaseCount3);
+            this.groupBoxOverdue.Controls.Add(this.labelProcurementCount3);
             this.groupBoxOverdue.Controls.Add(this.labelSale3);
             this.groupBoxOverdue.Controls.Add(this.labelSaleCount3);
             this.groupBoxOverdue.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -354,15 +367,15 @@
             this.labelPurchase3.TabIndex = 3;
             this.labelPurchase3.Text = "Купля";
             // 
-            // labelPurchaseCount3
+            // labelProcurementCount3
             // 
-            this.labelPurchaseCount3.AutoSize = true;
-            this.labelPurchaseCount3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPurchaseCount3.Location = new System.Drawing.Point(57, 28);
-            this.labelPurchaseCount3.Name = "labelPurchaseCount3";
-            this.labelPurchaseCount3.Size = new System.Drawing.Size(35, 37);
-            this.labelPurchaseCount3.TabIndex = 4;
-            this.labelPurchaseCount3.Text = "0";
+            this.labelProcurementCount3.AutoSize = true;
+            this.labelProcurementCount3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelProcurementCount3.Location = new System.Drawing.Point(57, 28);
+            this.labelProcurementCount3.Name = "labelProcurementCount3";
+            this.labelProcurementCount3.Size = new System.Drawing.Size(35, 37);
+            this.labelProcurementCount3.TabIndex = 4;
+            this.labelProcurementCount3.Text = "0";
             // 
             // labelSale3
             // 
@@ -622,9 +635,12 @@
             this.columnHeaderInventory3,
             this.columnHeaderInventory4,
             this.columnHeaderInventory5});
+            this.listViewInventory.FullRowSelect = true;
             this.listViewInventory.GridLines = true;
+            this.listViewInventory.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewInventory.HideSelection = false;
             this.listViewInventory.Location = new System.Drawing.Point(3, 3);
+            this.listViewInventory.MultiSelect = false;
             this.listViewInventory.Name = "listViewInventory";
             this.listViewInventory.Size = new System.Drawing.Size(773, 343);
             this.listViewInventory.TabIndex = 9;
@@ -678,7 +694,9 @@
             this.columnHeaderTransactions5,
             this.columnHeaderTransactions6,
             this.columnHeaderTransactions7});
+            this.listViewTransactions.FullRowSelect = true;
             this.listViewTransactions.GridLines = true;
+            this.listViewTransactions.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewTransactions.HideSelection = false;
             this.listViewTransactions.Location = new System.Drawing.Point(3, 3);
             this.listViewTransactions.Name = "listViewTransactions";
@@ -774,7 +792,7 @@
         private System.Windows.Forms.Label labelTotalCount;
         private System.Windows.Forms.GroupBox groupBoxOverdue;
         private System.Windows.Forms.Label labelPurchase3;
-        private System.Windows.Forms.Label labelPurchaseCount3;
+        private System.Windows.Forms.Label labelProcurementCount3;
         private System.Windows.Forms.Label labelSale3;
         private System.Windows.Forms.Label labelSaleCount3;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases1;
@@ -822,6 +840,7 @@
         protected internal System.Windows.Forms.ListView listViewSale;
         protected internal System.Windows.Forms.ListView listViewProcurement;
         protected internal System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.Button buttonExport;
     }
 }
 

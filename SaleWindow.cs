@@ -20,8 +20,8 @@ namespace programmingWF
                     try
                     {
                         var item = parent.Inventory[comboBoxName.SelectedIndex];
-                        if (numericCount.Value > item.Count)
-                            numericCount.Value = item.Count;
+
+                        numericCount.Maximum = item.Count;
 
                         parent.Sales.Add(new Sale(
                             item.BarCode,

@@ -1,0 +1,6 @@
+﻿namespace programmingWF
+{
+    class Data
+    {
+    }
+}
