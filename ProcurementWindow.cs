@@ -23,7 +23,7 @@ namespace programmingWF
                             throw new System.FormatException();
 
                         if (Convert.ToInt32(numericCount.Value) * Convert.ToDouble(textBoxCostBuy.Text) >
-                            parent.data.balance)
+                            parent.data.Balance)
                             throw new ArgumentException();
 
                         if (Convert.ToDouble(textBoxCostBuy.Text) < 0)

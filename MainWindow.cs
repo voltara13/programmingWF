@@ -20,7 +20,7 @@ namespace programmingWF
 
             new NewWareHouse(this);
             InitializeComponent();
-            labelBalanceCount.Text = data.balance + " руб.";
+            labelBalanceCount.Text = data.Balance + " руб.";
             labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
         }
 
@@ -63,7 +63,7 @@ namespace programmingWF
         private void buttonAddPurchase_Click(object sender, EventArgs e)
         {
             new ProcurementWindow(this);
-            labelProcurementCount2.Text = (data.countWaitProc += 1).ToString();
+            labelProcurementCount2.Text = (data.CountWaitProc += 1).ToString();
         }
 
         private void buttonClosePurchase_Click(object sender, EventArgs e)
@@ -95,15 +95,15 @@ namespace programmingWF
                     itemProcurement.Count));
             }
 
-            data.balance -= itemProcurement.Count * itemProcurement.Cost;
+            data.Balance -= itemProcurement.Count * itemProcurement.Cost;
 
             labelBidCount.Text = data.Inventory.Count.ToString();
-            labelProcurementCount1.Text = (data.countProc += 1).ToString();
-            labelProcurementCount2.Text = (data.countWaitProc -= 1).ToString();
-            labelBalanceCount.Text = data.balance + " руб.";
+            labelProcurementCount1.Text = (data.CountProc += 1).ToString();
+            labelProcurementCount2.Text = (data.CountWaitProc -= 1).ToString();
+            labelBalanceCount.Text = data.Balance + " руб.";
             labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
             if (DateTime.Now > itemProcurement.DueDate)
-                labelProcurementCount3.Text = (data.countOverDueProc += 1).ToString();
+                labelProcurementCount3.Text = (data.CountOverDueProc += 1).ToString();
             buttonAddSale.Enabled = true;
         }
 
@@ -119,7 +119,7 @@ namespace programmingWF
             itemTransaction.CurStatus = WareHouse.Status.Canceled;
             data.Transactions[indexTransaction] = itemTransaction;
 
-            labelProcurementCount2.Text = (data.countWaitProc -= 1).ToString();
+            labelProcurementCount2.Text = (data.CountWaitProc -= 1).ToString();
         }
 
         private void listViewProcurement_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace programmingWF
         private void buttonAddSale_Click(object sender, EventArgs e)
         {
             new SaleWindow(this);
-            labelSaleCount2.Text = (data.countWaitSale += 1).ToString();
+            labelSaleCount2.Text = (data.CountWaitSale += 1).ToString();
         }
 
         private void buttonCloseSale_Click(object sender, EventArgs e)
@@ -164,15 +164,15 @@ namespace programmingWF
             }
             else data.Inventory.RemoveAt(indexInventory);
 
-            data.balance += itemSale.Count * itemSale.Cost;
+            data.Balance += itemSale.Count * itemSale.Cost;
 
             labelBidCount.Text = data.Inventory.Count.ToString();
-            labelSaleCount1.Text = (data.countSale += 1).ToString();
-            labelSaleCount2.Text = (data.countWaitSale -= 1).ToString();
-            labelBalanceCount.Text = data.balance + " руб.";
+            labelSaleCount1.Text = (data.CountSale += 1).ToString();
+            labelSaleCount2.Text = (data.CountWaitSale -= 1).ToString();
+            labelBalanceCount.Text = data.Balance + " руб.";
             labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
             if (DateTime.Now > itemSale.DueDate)
-                labelSaleCount3.Text = (data.countOverDueSale += 1).ToString();
+                labelSaleCount3.Text = (data.CountOverDueSale += 1).ToString();
             if (data.Inventory.Count == 0) buttonAddSale.Enabled = false;
         }
 
@@ -188,7 +188,7 @@ namespace programmingWF
             itemTransaction.CurStatus = WareHouse.Status.Canceled;
             data.Transactions[indexTransaction] = itemTransaction;
 
-            labelSaleCount2.Text = (data.countWaitSale -= 1).ToString();
+            labelSaleCount2.Text = (data.CountWaitSale -= 1).ToString();
         }
 
         private void listViewSale_SelectedIndexChanged(object sender, EventArgs e)
@@ -253,15 +253,15 @@ namespace programmingWF
                 data.Inventory.CollectionChanged += CollectionChanged;
                 data.Transactions.CollectionChanged += CollectionChanged;
 
-                labelProcurementCount1.Text = data.countProc.ToString();
-                labelSaleCount1.Text = data.countSale.ToString();
-                labelProcurementCount2.Text = data.countWaitProc.ToString();
-                labelSaleCount2.Text = data.countWaitSale.ToString();
-                labelProcurementCount3.Text = data.countOverDueProc.ToString();
-                labelSaleCount3.Text = data.countOverDueSale.ToString();
+                labelProcurementCount1.Text = data.CountProc.ToString();
+                labelSaleCount1.Text = data.CountSale.ToString();
+                labelProcurementCount2.Text = data.CountWaitProc.ToString();
+                labelSaleCount2.Text = data.CountWaitSale.ToString();
+                labelProcurementCount3.Text = data.CountOverDueProc.ToString();
+                labelSaleCount3.Text = data.CountOverDueSale.ToString();
                 labelBidCount.Text = data.Inventory.Count.ToString();
                 labelTotalCount.Text = (data.Procurements.Count + data.Sales.Count).ToString();
-                labelBalanceCount.Text = data.balance.ToString();
+                labelBalanceCount.Text = data.Balance.ToString();
                 labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
 
                 buttonAddSale.Enabled = data.Inventory.Count != 0;
@@ -273,7 +273,7 @@ namespace programmingWF
         }
         private Font LabelChange(string str)
         {
-            return new Font(Font.Name, 145 / str.Length);
+            return new Font(Font.Name, 100 / (str.Length / 2) > 24 ? 24 : 100 / (str.Length / 2));
         }
     }
 }

@@ -18,7 +18,7 @@ namespace programmingWF
                         if (Convert.ToDouble(textBoxBalance.Text) <= 0)
                             throw new FormatException();
 
-                        parent.data.balance = Convert.ToDouble(textBoxBalance.Text.Replace(',', '.'));
+                        parent.data.Balance = Convert.ToDouble(textBoxBalance.Text.Replace(',', '.'));
                         return;
                     }
                     catch (System.FormatException)
