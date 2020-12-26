@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,22 +12,20 @@ namespace programmingWF
             Sale
         }
         private Type CurType { get; }
-        private readonly string Num;
         private readonly double Sum;
-        protected internal Transaction(string barCode, string organization, string name, double cost, int count, Type type)
+        protected internal Transaction(string barCode, string organization, string name, double cost, int count, Type type, string num)
         {
-            var rand = new Random();
             BarCode = barCode;
             Organization = organization;
             Name = name;
             Count = count;
             CurType = type;
             Sum = cost * count;
-            Num = Convert.ToString(rand.Next(100000, 999999));
+            Num = num;
         }
         protected internal override ListViewItem GetListViewItem()
         {
-            ListViewItem item = new ListViewItem(Num);
+            var item = new ListViewItem(Num);
             item.SubItems.Add(BarCode);
             item.SubItems.Add(CreateDate.ToShortDateString());
             item.SubItems.Add(Organization);

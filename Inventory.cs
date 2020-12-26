@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace programmingWF
 {
@@ -9,24 +8,26 @@ namespace programmingWF
         {
             BarCode = barCode;
             Name = name;
-            CostBuy = costBuy;
+            Cost = costBuy;
             Count = count;
             Note = note;
         }
         protected internal override ListViewItem GetListViewItem()
         {
-            ListViewItem item = new ListViewItem(BarCode);
+            var item = new ListViewItem(BarCode);
             item.SubItems.Add(Name);
             item.SubItems.Add(Count.ToString());
-            item.SubItems.Add(CostBuy.ToString());
-            item.SubItems.Add(CostSale.ToString());
+            item.SubItems.Add(Cost.ToString());
             item.SubItems.Add(Note);
             return item;
         }
-
         protected internal override ListView GetListView(MainWindow parent)
         {
             return parent.listViewInventory;
+        }
+        protected internal override bool Comparison(string str)
+        {
+            return string.CompareOrdinal(str, BarCode) == 0;
         }
     }
 }
