@@ -79,7 +79,7 @@ namespace programmingWF
             this.textBoxOrganization.Location = new System.Drawing.Point(117, 58);
             this.textBoxOrganization.Name = "textBoxOrganization";
             this.textBoxOrganization.Size = new System.Drawing.Size(124, 20);
-            this.textBoxOrganization.TabIndex = 5;
+            this.textBoxOrganization.TabIndex = 3;
             // 
             // label3
             // 
@@ -95,7 +95,7 @@ namespace programmingWF
             this.textBoxName.Location = new System.Drawing.Point(117, 84);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(124, 20);
-            this.textBoxName.TabIndex = 7;
+            this.textBoxName.TabIndex = 4;
             // 
             // label4
             // 
@@ -120,7 +120,7 @@ namespace programmingWF
             this.textBoxNote.Location = new System.Drawing.Point(117, 162);
             this.textBoxNote.Name = "textBoxNote";
             this.textBoxNote.Size = new System.Drawing.Size(124, 20);
-            this.textBoxNote.TabIndex = 11;
+            this.textBoxNote.TabIndex = 7;
             // 
             // label6
             // 
@@ -136,7 +136,7 @@ namespace programmingWF
             this.dateTimePicker.Location = new System.Drawing.Point(117, 32);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(124, 20);
-            this.dateTimePicker.TabIndex = 12;
+            this.dateTimePicker.TabIndex = 2;
             // 
             // numericCount
             // 
@@ -153,7 +153,7 @@ namespace programmingWF
             0});
             this.numericCount.Name = "numericCount";
             this.numericCount.Size = new System.Drawing.Size(98, 20);
-            this.numericCount.TabIndex = 13;
+            this.numericCount.TabIndex = 5;
             this.numericCount.Value = new decimal(new int[] {
             1,
             0,
@@ -175,7 +175,7 @@ namespace programmingWF
             this.buttonAccept.Location = new System.Drawing.Point(85, 188);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(75, 23);
-            this.buttonAccept.TabIndex = 15;
+            this.buttonAccept.TabIndex = 8;
             this.buttonAccept.Text = "OK";
             this.buttonAccept.UseVisualStyleBackColor = true;
             // 
@@ -184,7 +184,7 @@ namespace programmingWF
             this.textBoxCostBuy.Location = new System.Drawing.Point(117, 136);
             this.textBoxCostBuy.Name = "textBoxCostBuy";
             this.textBoxCostBuy.Size = new System.Drawing.Size(71, 20);
-            this.textBoxCostBuy.TabIndex = 17;
+            this.textBoxCostBuy.TabIndex = 6;
             // 
             // label8
             // 
@@ -206,6 +206,7 @@ namespace programmingWF
             // 
             // ProcurementWindow
             // 
+            this.AcceptButton = this.buttonAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(251, 219);

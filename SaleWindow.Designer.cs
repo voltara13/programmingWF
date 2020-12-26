@@ -61,7 +61,7 @@ namespace programmingWF
             this.textBoxOrganization.Location = new System.Drawing.Point(117, 32);
             this.textBoxOrganization.Name = "textBoxOrganization";
             this.textBoxOrganization.Size = new System.Drawing.Size(124, 20);
-            this.textBoxOrganization.TabIndex = 5;
+            this.textBoxOrganization.TabIndex = 2;
             // 
             // label3
             // 
@@ -86,7 +86,7 @@ namespace programmingWF
             this.textBoxNote.Location = new System.Drawing.Point(117, 136);
             this.textBoxNote.Name = "textBoxNote";
             this.textBoxNote.Size = new System.Drawing.Size(124, 20);
-            this.textBoxNote.TabIndex = 11;
+            this.textBoxNote.TabIndex = 6;
             // 
             // label6
             // 
@@ -102,7 +102,7 @@ namespace programmingWF
             this.dateTimePicker.Location = new System.Drawing.Point(117, 6);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(124, 20);
-            this.dateTimePicker.TabIndex = 12;
+            this.dateTimePicker.TabIndex = 1;
             // 
             // numericCount
             // 
@@ -119,7 +119,7 @@ namespace programmingWF
             0});
             this.numericCount.Name = "numericCount";
             this.numericCount.Size = new System.Drawing.Size(98, 20);
-            this.numericCount.TabIndex = 13;
+            this.numericCount.TabIndex = 4;
             this.numericCount.Value = new decimal(new int[] {
             1,
             0,
@@ -141,7 +141,7 @@ namespace programmingWF
             this.buttonAccept.Location = new System.Drawing.Point(85, 162);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(75, 23);
-            this.buttonAccept.TabIndex = 15;
+            this.buttonAccept.TabIndex = 7;
             this.buttonAccept.Text = "OK";
             this.buttonAccept.UseVisualStyleBackColor = true;
             // 
@@ -150,7 +150,7 @@ namespace programmingWF
             this.textBoxCostSale.Location = new System.Drawing.Point(117, 110);
             this.textBoxCostSale.Name = "textBoxCostSale";
             this.textBoxCostSale.Size = new System.Drawing.Size(71, 20);
-            this.textBoxCostSale.TabIndex = 17;
+            this.textBoxCostSale.TabIndex = 5;
             // 
             // label8
             // 
@@ -186,10 +186,11 @@ namespace programmingWF
             this.comboBoxName.Location = new System.Drawing.Point(117, 57);
             this.comboBoxName.Name = "comboBoxName";
             this.comboBoxName.Size = new System.Drawing.Size(124, 21);
-            this.comboBoxName.TabIndex = 19;
+            this.comboBoxName.TabIndex = 3;
             // 
             // SaleWindow
             // 
+            this.AcceptButton = this.buttonAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(251, 192);

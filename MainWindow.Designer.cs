@@ -147,7 +147,7 @@
             this.buttonImport.Location = new System.Drawing.Point(639, 310);
             this.buttonImport.Name = "buttonImport";
             this.buttonImport.Size = new System.Drawing.Size(135, 36);
-            this.buttonImport.TabIndex = 23;
+            this.buttonImport.TabIndex = 1;
             this.buttonImport.Text = "Импорт";
             this.buttonImport.UseVisualStyleBackColor = true;
             this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
@@ -158,7 +158,7 @@
             this.buttonExport.Location = new System.Drawing.Point(485, 310);
             this.buttonExport.Name = "buttonExport";
             this.buttonExport.Size = new System.Drawing.Size(135, 36);
-            this.buttonExport.TabIndex = 22;
+            this.buttonExport.TabIndex = 2;
             this.buttonExport.Text = "Экспорт";
             this.buttonExport.UseVisualStyleBackColor = true;
             this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
@@ -438,7 +438,7 @@
             this.buttonCancelPurchase.Location = new System.Drawing.Point(647, 64);
             this.buttonCancelPurchase.Name = "buttonCancelPurchase";
             this.buttonCancelPurchase.Size = new System.Drawing.Size(127, 23);
-            this.buttonCancelPurchase.TabIndex = 3;
+            this.buttonCancelPurchase.TabIndex = 5;
             this.buttonCancelPurchase.Text = "Отменить позицию";
             this.buttonCancelPurchase.UseVisualStyleBackColor = true;
             this.buttonCancelPurchase.Click += new System.EventHandler(this.buttonCancelPurchase_Click);
@@ -449,7 +449,7 @@
             this.buttonClosePurchase.Location = new System.Drawing.Point(647, 35);
             this.buttonClosePurchase.Name = "buttonClosePurchase";
             this.buttonClosePurchase.Size = new System.Drawing.Size(127, 23);
-            this.buttonClosePurchase.TabIndex = 2;
+            this.buttonClosePurchase.TabIndex = 4;
             this.buttonClosePurchase.Text = "Закрыть позицию";
             this.buttonClosePurchase.UseVisualStyleBackColor = true;
             this.buttonClosePurchase.Click += new System.EventHandler(this.buttonClosePurchase_Click);
@@ -459,7 +459,7 @@
             this.buttonAddPurchase.Location = new System.Drawing.Point(647, 6);
             this.buttonAddPurchase.Name = "buttonAddPurchase";
             this.buttonAddPurchase.Size = new System.Drawing.Size(127, 23);
-            this.buttonAddPurchase.TabIndex = 1;
+            this.buttonAddPurchase.TabIndex = 3;
             this.buttonAddPurchase.Text = "Открыть позицию";
             this.buttonAddPurchase.UseVisualStyleBackColor = true;
             this.buttonAddPurchase.Click += new System.EventHandler(this.buttonAddPurchase_Click);
@@ -484,6 +484,7 @@
             this.listViewProcurement.Name = "listViewProcurement";
             this.listViewProcurement.Size = new System.Drawing.Size(635, 343);
             this.listViewProcurement.TabIndex = 0;
+            this.listViewProcurement.TabStop = false;
             this.listViewProcurement.UseCompatibleStateImageBehavior = false;
             this.listViewProcurement.View = System.Windows.Forms.View.Details;
             this.listViewProcurement.SelectedIndexChanged += new System.EventHandler(this.listViewProcurement_SelectedIndexChanged);
@@ -548,7 +549,7 @@
             this.buttonCancelSale.Location = new System.Drawing.Point(647, 64);
             this.buttonCancelSale.Name = "buttonCancelSale";
             this.buttonCancelSale.Size = new System.Drawing.Size(127, 23);
-            this.buttonCancelSale.TabIndex = 7;
+            this.buttonCancelSale.TabIndex = 8;
             this.buttonCancelSale.Text = "Отменить позицию";
             this.buttonCancelSale.UseVisualStyleBackColor = true;
             this.buttonCancelSale.Click += new System.EventHandler(this.buttonCancelSale_Click);
@@ -622,7 +623,7 @@
             this.buttonAddSale.Location = new System.Drawing.Point(647, 6);
             this.buttonAddSale.Name = "buttonAddSale";
             this.buttonAddSale.Size = new System.Drawing.Size(127, 23);
-            this.buttonAddSale.TabIndex = 5;
+            this.buttonAddSale.TabIndex = 6;
             this.buttonAddSale.Text = "Открыть позицию";
             this.buttonAddSale.UseVisualStyleBackColor = true;
             this.buttonAddSale.Click += new System.EventHandler(this.buttonAddSale_Click);
@@ -633,7 +634,7 @@
             this.buttonCloseSale.Location = new System.Drawing.Point(647, 35);
             this.buttonCloseSale.Name = "buttonCloseSale";
             this.buttonCloseSale.Size = new System.Drawing.Size(127, 23);
-            this.buttonCloseSale.TabIndex = 6;
+            this.buttonCloseSale.TabIndex = 7;
             this.buttonCloseSale.Text = "Закрыть позицию";
             this.buttonCloseSale.UseVisualStyleBackColor = true;
             this.buttonCloseSale.Click += new System.EventHandler(this.buttonCloseSale_Click);
