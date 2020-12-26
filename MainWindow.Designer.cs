@@ -30,6 +30,7 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageIndicators = new System.Windows.Forms.TabPage();
+            this.buttonImport = new System.Windows.Forms.Button();
             this.buttonExport = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -125,6 +126,7 @@
             // 
             // tabPageIndicators
             // 
+            this.tabPageIndicators.Controls.Add(this.buttonImport);
             this.tabPageIndicators.Controls.Add(this.buttonExport);
             this.tabPageIndicators.Controls.Add(this.pictureBox1);
             this.tabPageIndicators.Controls.Add(this.groupBox1);
@@ -139,14 +141,25 @@
             this.tabPageIndicators.Text = "Показатели";
             this.tabPageIndicators.UseVisualStyleBackColor = true;
             // 
+            // buttonImport
+            // 
+            this.buttonImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonImport.Location = new System.Drawing.Point(639, 310);
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.Size = new System.Drawing.Size(135, 36);
+            this.buttonImport.TabIndex = 23;
+            this.buttonImport.Text = "Импорт";
+            this.buttonImport.UseVisualStyleBackColor = true;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
+            // 
             // buttonExport
             // 
             this.buttonExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonExport.Location = new System.Drawing.Point(485, 310);
             this.buttonExport.Name = "buttonExport";
-            this.buttonExport.Size = new System.Drawing.Size(289, 36);
+            this.buttonExport.Size = new System.Drawing.Size(135, 36);
             this.buttonExport.TabIndex = 22;
-            this.buttonExport.Text = "Экспорт данных";
+            this.buttonExport.Text = "Экспорт";
             this.buttonExport.UseVisualStyleBackColor = true;
             this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
             // 
@@ -184,6 +197,7 @@
             this.labelTotalCount.Size = new System.Drawing.Size(35, 37);
             this.labelTotalCount.TabIndex = 2;
             this.labelTotalCount.Text = "0";
+            this.labelTotalCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelBalance
             // 
@@ -207,13 +221,13 @@
             // 
             // labelBalanceCount
             // 
-            this.labelBalanceCount.AutoSize = true;
             this.labelBalanceCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelBalanceCount.Location = new System.Drawing.Point(91, 250);
+            this.labelBalanceCount.Location = new System.Drawing.Point(6, 250);
             this.labelBalanceCount.Name = "labelBalanceCount";
-            this.labelBalanceCount.Size = new System.Drawing.Size(35, 37);
+            this.labelBalanceCount.Size = new System.Drawing.Size(204, 37);
             this.labelBalanceCount.TabIndex = 19;
             this.labelBalanceCount.Text = "0";
+            this.labelBalanceCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelBidCount
             // 
@@ -224,6 +238,7 @@
             this.labelBidCount.Size = new System.Drawing.Size(35, 37);
             this.labelBidCount.TabIndex = 17;
             this.labelBidCount.Text = "0";
+            this.labelBidCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelBid
             // 
@@ -268,6 +283,7 @@
             this.labelProcurementCount1.Size = new System.Drawing.Size(35, 37);
             this.labelProcurementCount1.TabIndex = 4;
             this.labelProcurementCount1.Text = "0";
+            this.labelProcurementCount1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelSale1
             // 
@@ -288,6 +304,7 @@
             this.labelSaleCount1.Size = new System.Drawing.Size(35, 37);
             this.labelSaleCount1.TabIndex = 6;
             this.labelSaleCount1.Text = "0";
+            this.labelSaleCount1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxWaiting
             // 
@@ -322,6 +339,7 @@
             this.labelProcurementCount2.Size = new System.Drawing.Size(35, 37);
             this.labelProcurementCount2.TabIndex = 4;
             this.labelProcurementCount2.Text = "0";
+            this.labelProcurementCount2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelSale2
             // 
@@ -342,6 +360,7 @@
             this.labelSaleCount2.Size = new System.Drawing.Size(35, 37);
             this.labelSaleCount2.TabIndex = 6;
             this.labelSaleCount2.Text = "0";
+            this.labelSaleCount2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxOverdue
             // 
@@ -376,6 +395,7 @@
             this.labelProcurementCount3.Size = new System.Drawing.Size(35, 37);
             this.labelProcurementCount3.TabIndex = 4;
             this.labelProcurementCount3.Text = "0";
+            this.labelProcurementCount3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelSale3
             // 
@@ -396,6 +416,7 @@
             this.labelSaleCount3.Size = new System.Drawing.Size(35, 37);
             this.labelSaleCount3.TabIndex = 6;
             this.labelSaleCount3.Text = "0";
+            this.labelSaleCount3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabPageProcurement
             // 
@@ -841,6 +862,7 @@
         protected internal System.Windows.Forms.ListView listViewProcurement;
         protected internal System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.Button buttonImport;
     }
 }
 

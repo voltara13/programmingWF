@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace programmingWF
 {
+    [Serializable]
     internal class Transaction : WareHouse
     {
         protected internal Transaction(string barCode, string organization, string name, double cost, int count, Type type, string num) : base(barCode, name, count, cost)
@@ -13,6 +14,8 @@ namespace programmingWF
             Sum = cost * count;
             Num = num;
         }
+
+        protected internal double Sum { get; }
 
         protected internal enum Type
         {
@@ -64,8 +67,6 @@ namespace programmingWF
                     throw new ArgumentOutOfRangeException();
             }
         }
-
-        private readonly double Sum;
         private Type CurType { get; }
     }
 }

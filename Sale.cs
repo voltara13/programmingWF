@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace programmingWF
 {
+    [Serializable]
     internal class Sale : WareHouse
     {
         protected internal Sale(string barCode, string organization, string name, string note, double cost, DateTime dueDate, int count) 

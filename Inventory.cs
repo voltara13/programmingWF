@@ -1,7 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace programmingWF
 {
+    [Serializable]
     internal class Inventory : WareHouse
     {
         protected internal Inventory(string barCode, string name, string note, double cost, int count) : base(barCode, name, count, cost)

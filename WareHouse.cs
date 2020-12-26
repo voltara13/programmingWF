@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace programmingWF
 {
+    [Serializable]
     public abstract class WareHouse
     {
         protected WareHouse(string barCode, string name, int count, double cost)

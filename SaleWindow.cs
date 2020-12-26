@@ -10,7 +10,7 @@ namespace programmingWF
         {
             InitializeComponent();
 
-            foreach (var elm in parent.Inventory)
+            foreach (var elm in parent.data.Inventory)
                 comboBoxName.Items.Add(elm.Name);
 
             while (true)
@@ -19,11 +19,18 @@ namespace programmingWF
                 {
                     try
                     {
-                        var item = parent.Inventory[comboBoxName.SelectedIndex];
+                        var item = parent.data.Inventory[comboBoxName.SelectedIndex];
 
                         numericCount.Maximum = item.Count;
 
-                        parent.Sales.Add(new Sale(
+                        if (Convert.ToDouble(textBoxCostSale.Text) < 0)
+                            throw new FormatException();
+
+                        if (Convert.ToInt32(numericCount.Value) * Convert.ToDouble(textBoxCostSale.Text) >
+                            parent.data.balance)
+                            throw new ArgumentException();
+
+                        parent.data.Sales.Add(new Sale(
                             item.BarCode,
                             textBoxOrganization.Text,
                             item.Name,
@@ -32,20 +39,24 @@ namespace programmingWF
                             dateTimePicker.Value.Date,
                             Convert.ToInt32(numericCount.Value)));
 
-                        parent.Transactions.Add(new Transaction(
+                        parent.data.Transactions.Add(new Transaction(
                             item.BarCode,
                             textBoxOrganization.Text,
                             item.Name,
                             Convert.ToDouble(textBoxCostSale.Text.Replace(',', '.')),
                             Convert.ToInt32(numericCount.Value),
                             Transaction.Type.Sale,
-                            parent.Sales.Last().Num));
+                            parent.data.Sales.Last().Num));
 
                         return;
                     }
-                    catch (System.FormatException)
+                    catch (FormatException)
                     {
                         MessageBox.Show("Введены неверные значения");
+                    }
+                    catch (ArgumentException)
+                    {
+                        MessageBox.Show("Недостаточно средств");
                     }
                 }
                 else return;

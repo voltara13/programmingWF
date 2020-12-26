@@ -112,9 +112,19 @@ namespace programmingWF
             0,
             0,
             0});
+            this.numericCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericCount.Name = "numericCount";
             this.numericCount.Size = new System.Drawing.Size(98, 20);
             this.numericCount.TabIndex = 13;
+            this.numericCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label7
             // 

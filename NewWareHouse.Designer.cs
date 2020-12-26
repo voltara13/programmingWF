@@ -29,17 +29,17 @@ namespace programmingWF
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxBalance = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxBalance
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxBalance.Location = new System.Drawing.Point(12, 6);
+            this.textBoxBalance.Name = "textBoxBalance";
+            this.textBoxBalance.Size = new System.Drawing.Size(199, 20);
+            this.textBoxBalance.TabIndex = 1;
             // 
             // label2
             // 
@@ -62,12 +62,14 @@ namespace programmingWF
             // 
             // NewWareHouse
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(256, 64);
+            this.ControlBox = false;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxBalance);
             this.Name = "NewWareHouse";
             this.Text = "Введите баланс склада";
             this.ResumeLayout(false);
@@ -76,7 +78,7 @@ namespace programmingWF
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxBalance;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
     }

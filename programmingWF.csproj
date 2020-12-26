@@ -62,13 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data.cs" />
-    <Compile Include="FormSerialisor.cs" />
-    <Compile Include="InitialDialogue.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InitialDialogue.Designer.cs">
-      <DependentUpon>InitialDialogue.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inventory.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -100,9 +93,6 @@
     <Compile Include="Sale.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="WareHouse.cs" />
-    <EmbeddedResource Include="InitialDialogue.resx">
-      <DependentUpon>InitialDialogue.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
