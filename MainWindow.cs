@@ -11,6 +11,8 @@ namespace programmingWF
         protected internal ObservableCollection<WareHouse> Sales = new ObservableCollection<WareHouse>();
         protected internal ObservableCollection<WareHouse> Inventory = new ObservableCollection<WareHouse>();
         protected internal ObservableCollection<WareHouse> Transactions = new ObservableCollection<WareHouse>();
+        private int countProc;
+        private int countSale;
         private int countWaitProc;
         private int countWaitSale;
         private int countOverDuePurch;
@@ -96,7 +98,7 @@ namespace programmingWF
                     itemProcurement.Count));
             }
 
-            labelProcurementCount1.Text = Procurements.Count.ToString();
+            labelProcurementCount1.Text = (countProc += 1).ToString();
             labelProcurementCount2.Text = (countWaitProc -= 1).ToString();
             labelBidCount.Text = Inventory.Count.ToString();
         }
@@ -158,7 +160,7 @@ namespace programmingWF
             }
             else Inventory.RemoveAt(indexInventory);
 
-            labelSaleCount1.Text = Sales.Count.ToString();
+            labelSaleCount1.Text = (countSale += 1).ToString();
             labelSaleCount2.Text = (countWaitSale -= 1).ToString();
             labelBidCount.Text = Inventory.Count.ToString();
         }
