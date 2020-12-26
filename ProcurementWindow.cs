@@ -22,6 +22,10 @@ namespace programmingWF
                         if (index != - 1 && textBoxName.Text != parent.data.Inventory[index].Name)
                             throw new System.FormatException();
 
+                        if (Convert.ToInt32(numericCount.Value) * Convert.ToDouble(textBoxCostBuy.Text) >
+                            parent.data.balance)
+                            throw new ArgumentException();
+
                         if (Convert.ToDouble(textBoxCostBuy.Text) < 0)
                             throw new FormatException();
 
@@ -45,9 +49,13 @@ namespace programmingWF
 
                         return;
                     }
-                    catch (System.FormatException)
+                    catch (FormatException)
                     {
                         MessageBox.Show("Введены неверные значения");
+                    }
+                    catch (ArgumentException)
+                    {
+                        MessageBox.Show("Недостаточно средств");
                     }
                 }
                 else return;

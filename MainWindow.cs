@@ -131,7 +131,7 @@ namespace programmingWF
                 buttonCancelPurchase.Enabled = true;
                 buttonClosePurchase.Enabled = true;
             }
-            catch (System.ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
                 buttonCancelPurchase.Enabled = false;
                 buttonClosePurchase.Enabled = false;
@@ -200,7 +200,7 @@ namespace programmingWF
                 buttonCancelSale.Enabled = true;
                 buttonCloseSale.Enabled = true;
             }
-            catch (System.ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
                 buttonCancelSale.Enabled = false;
                 buttonCloseSale.Enabled = false;

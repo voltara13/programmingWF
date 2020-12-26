@@ -26,10 +26,6 @@ namespace programmingWF
                         if (Convert.ToDouble(textBoxCostSale.Text) < 0)
                             throw new FormatException();
 
-                        if (Convert.ToInt32(numericCount.Value) * Convert.ToDouble(textBoxCostSale.Text) >
-                            parent.data.balance)
-                            throw new ArgumentException();
-
                         parent.data.Sales.Add(new Sale(
                             item.BarCode,
                             textBoxOrganization.Text,
@@ -53,10 +49,6 @@ namespace programmingWF
                     catch (FormatException)
                     {
                         MessageBox.Show("Введены неверные значения");
-                    }
-                    catch (ArgumentException)
-                    {
-                        MessageBox.Show("Недостаточно средств");
                     }
                 }
                 else return;
