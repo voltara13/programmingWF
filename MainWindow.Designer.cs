@@ -441,7 +441,7 @@
             this.buttonCancelPurchase.TabIndex = 5;
             this.buttonCancelPurchase.Text = "Отменить позицию";
             this.buttonCancelPurchase.UseVisualStyleBackColor = true;
-            this.buttonCancelPurchase.Click += new System.EventHandler(this.buttonCancelPurchase_Click);
+            this.buttonCancelPurchase.Click += new System.EventHandler(this.buttonCancelProcurement_Click);
             // 
             // buttonClosePurchase
             // 
@@ -452,7 +452,7 @@
             this.buttonClosePurchase.TabIndex = 4;
             this.buttonClosePurchase.Text = "Закрыть позицию";
             this.buttonClosePurchase.UseVisualStyleBackColor = true;
-            this.buttonClosePurchase.Click += new System.EventHandler(this.buttonClosePurchase_Click);
+            this.buttonClosePurchase.Click += new System.EventHandler(this.buttonCloseProcurement_Click);
             // 
             // buttonAddPurchase
             // 
@@ -462,7 +462,7 @@
             this.buttonAddPurchase.TabIndex = 3;
             this.buttonAddPurchase.Text = "Открыть позицию";
             this.buttonAddPurchase.UseVisualStyleBackColor = true;
-            this.buttonAddPurchase.Click += new System.EventHandler(this.buttonAddPurchase_Click);
+            this.buttonAddPurchase.Click += new System.EventHandler(this.buttonAddProcurement_Click);
             // 
             // listViewProcurement
             // 

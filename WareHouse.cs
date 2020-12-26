@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -31,6 +32,12 @@ namespace programmingWF
             Canceled,
             Expectation,
             Completed
+        }
+
+        protected internal void WareHouseSet(Status status, int index, ObservableCollection<WareHouse> array)
+        {
+            CurStatus = status;
+            array[index] = this;
         }
 
         protected internal virtual ListViewItem GetListViewItem()

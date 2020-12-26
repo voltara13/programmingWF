@@ -68,5 +68,13 @@ namespace programmingWF
             }
         }
         private Type CurType { get; }
+
+        protected internal static void TransactionSet(Status status, string num, MainWindow parent)
+        {
+            var indexTransaction = parent.Search(parent.data.Transactions, num);
+            var itemTransaction = parent.data.Transactions[indexTransaction];
+            itemTransaction.CurStatus = status;
+            parent.data.Transactions[indexTransaction] = itemTransaction;
+        }
     }
 }

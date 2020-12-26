@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Drawing;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace programmingWF
 {
@@ -60,65 +61,48 @@ namespace programmingWF
             }
         }
 
-        private void buttonAddPurchase_Click(object sender, EventArgs e)
+        private void buttonAddProcurement_Click(object sender, EventArgs e)
         {
             new ProcurementWindow(this);
             labelProcurementCount2.Text = (data.CountWaitProc += 1).ToString();
         }
 
-        private void buttonClosePurchase_Click(object sender, EventArgs e)
+        private void buttonCloseProcurement_Click(object sender, EventArgs e)
         {
-            var indexProcurement = listViewProcurement.SelectedIndices[0];
-            var itemProcurement = data.Procurements[indexProcurement];
-            itemProcurement.CurStatus = WareHouse.Status.Completed;
-            data.Procurements[indexProcurement] = itemProcurement;
+            var item = ButtonClick(WareHouse.Status.Completed, data.Procurements, listViewProcurement);
 
-            var indexTransaction = Search(data.Transactions, itemProcurement.Num);
-            var itemTransaction = data.Transactions[indexTransaction];
-            itemTransaction.CurStatus = WareHouse.Status.Completed;
-            data.Transactions[indexTransaction] = itemTransaction;
-
-            var indexInventory = Search(data.Inventory, itemProcurement.BarCode);
+            var indexInventory = Search(data.Inventory, item.BarCode);
             if (indexInventory != -1)
             {
                 var itemInventory = data.Inventory[indexInventory];
-                itemInventory.Count += itemProcurement.Count;
+                itemInventory.Count += item.Count;
                 data.Inventory[indexInventory] = itemInventory;
             }
             else
             {
                 data.Inventory.Add(new Inventory(
-                    itemProcurement.BarCode,
-                    itemProcurement.Name,
-                    itemProcurement.Note,
-                    itemProcurement.Cost,
-                    itemProcurement.Count));
+                    item.BarCode,
+                    item.Name,
+                    item.Note,
+                    item.Cost,
+                    item.Count));
             }
 
-            data.Balance -= itemProcurement.Count * itemProcurement.Cost;
+            data.Balance -= item.Count * item.Cost;
 
             labelBidCount.Text = data.Inventory.Count.ToString();
             labelProcurementCount1.Text = (data.CountProc += 1).ToString();
             labelProcurementCount2.Text = (data.CountWaitProc -= 1).ToString();
             labelBalanceCount.Text = data.Balance + " руб.";
             labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
-            if (DateTime.Now > itemProcurement.DueDate)
+            if (DateTime.Now.Date > item.DueDate.Date)
                 labelProcurementCount3.Text = (data.CountOverDueProc += 1).ToString();
             buttonAddSale.Enabled = true;
         }
 
-        private void buttonCancelPurchase_Click(object sender, EventArgs e)
+        private void buttonCancelProcurement_Click(object sender, EventArgs e)
         {
-            var indexProcurement = listViewProcurement.SelectedIndices[0];
-            var itemProcurement = data.Procurements[indexProcurement];
-            itemProcurement.CurStatus = WareHouse.Status.Canceled;
-            data.Procurements[indexProcurement] = itemProcurement;
-
-            var indexTransaction = Search(data.Transactions, itemProcurement.Num);
-            var itemTransaction = data.Transactions[indexTransaction];
-            itemTransaction.CurStatus = WareHouse.Status.Canceled;
-            data.Transactions[indexTransaction] = itemTransaction;
-
+            ButtonClick(WareHouse.Status.Canceled, data.Procurements, listViewProcurement);
             labelProcurementCount2.Text = (data.CountWaitProc -= 1).ToString();
         }
 
@@ -145,49 +129,32 @@ namespace programmingWF
 
         private void buttonCloseSale_Click(object sender, EventArgs e)
         {
-            var indexSale = listViewSale.SelectedIndices[0];
-            var itemSale = data.Sales[indexSale];
-            itemSale.CurStatus = WareHouse.Status.Completed;
-            data.Sales[indexSale] = itemSale;
+            var item = ButtonClick(WareHouse.Status.Completed, data.Sales, listViewSale);
 
-            var indexTransaction = Search(data.Transactions, itemSale.Num);
-            var itemTransaction = data.Transactions[indexTransaction];
-            itemTransaction.CurStatus = WareHouse.Status.Completed;
-            data.Transactions[indexTransaction] = itemTransaction;
-
-            var indexInventory = Search(data.Inventory, itemSale.BarCode);
-            if (itemSale.Count < data.Inventory[indexInventory].Count)
+            var indexInventory = Search(data.Inventory, item.BarCode);
+            if (item.Count < data.Inventory[indexInventory].Count)
             {
                 var itemInventory = data.Inventory[indexInventory];
-                itemInventory.Count -= itemSale.Count;
+                itemInventory.Count -= item.Count;
                 data.Inventory[indexInventory] = itemInventory;
             }
             else data.Inventory.RemoveAt(indexInventory);
 
-            data.Balance += itemSale.Count * itemSale.Cost;
+            data.Balance += item.Count * item.Cost;
 
             labelBidCount.Text = data.Inventory.Count.ToString();
             labelSaleCount1.Text = (data.CountSale += 1).ToString();
             labelSaleCount2.Text = (data.CountWaitSale -= 1).ToString();
             labelBalanceCount.Text = data.Balance + " руб.";
             labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
-            if (DateTime.Now > itemSale.DueDate)
+            if (DateTime.Now.Date > item.DueDate.Date)
                 labelSaleCount3.Text = (data.CountOverDueSale += 1).ToString();
             if (data.Inventory.Count == 0) buttonAddSale.Enabled = false;
         }
 
         private void buttonCancelSale_Click(object sender, EventArgs e)
         {
-            var indexSale = listViewSale.SelectedIndices[0];
-            var itemSale = data.Sales[indexSale];
-            itemSale.CurStatus = WareHouse.Status.Canceled;
-            data.Sales[indexSale] = itemSale;
-
-            var indexTransaction = Search(data.Transactions, itemSale.Num);
-            var itemTransaction = data.Transactions[indexTransaction];
-            itemTransaction.CurStatus = WareHouse.Status.Canceled;
-            data.Transactions[indexTransaction] = itemTransaction;
-
+            ButtonClick(WareHouse.Status.Canceled, data.Sales, listViewSale);
             labelSaleCount2.Text = (data.CountWaitSale -= 1).ToString();
         }
 
@@ -271,11 +238,19 @@ namespace programmingWF
                 MessageBox.Show("Неправильный файл сериализации");
             }
         }
+
         private Font LabelChange(string str)
         {
             return new Font(Font.Name, 100 / (str.Length / 2) > 24 ? 24 : 100 / (str.Length / 2));
         }
+
+        private WareHouse ButtonClick(WareHouse.Status status, ObservableCollection<WareHouse> array, ListView listView)
+        {
+            var index = listView.SelectedIndices[0];
+            var item = array[index];
+            item.WareHouseSet(status, index, array);
+            Transaction.TransactionSet(status, item.Num, this);
+            return item;
+        }
     }
 }
-
-
