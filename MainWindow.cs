@@ -265,9 +265,7 @@ namespace programmingWF
                 MessageBoxIcon.Warning
             );
             if (dialog == DialogResult.Yes)
-            {
                 buttonExport_Click(this, EventArgs.Empty);
-            }
             e.Cancel = false;
         }
     }
