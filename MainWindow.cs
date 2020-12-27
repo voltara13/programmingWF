@@ -25,12 +25,14 @@ namespace programmingWF
                 MessageBoxIcon.Information
             );
             if (dialog == DialogResult.No || dialog == DialogResult.Yes && !Deserialize())
+            {
                 new NewWareHouse(this);
 
-            data.Procurements.CollectionChanged += CollectionChanged;
-            data.Sales.CollectionChanged += CollectionChanged;
-            data.Inventory.CollectionChanged += CollectionChanged;
-            data.Transactions.CollectionChanged += CollectionChanged;
+                data.Procurements.CollectionChanged += CollectionChanged;
+                data.Sales.CollectionChanged += CollectionChanged;
+                data.Inventory.CollectionChanged += CollectionChanged;
+                data.Transactions.CollectionChanged += CollectionChanged;
+            }
 
             MainWindow_SizeChanged(this, EventArgs.Empty);
             LabelChange(labelBalanceCount, data.Balance + " руб.");
@@ -198,6 +200,7 @@ namespace programmingWF
 
         private void buttonImport_Click(object sender, EventArgs e)
         {
+            SaveWareHouse();
             Deserialize();
         }
 
