@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Inventory">
-    <Position X="8.5" Y="7.5" Width="4.75" />
+    <Position X="8.75" Y="7.5" Width="4.75" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAgAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>Inventory.cs</FileName>
@@ -17,7 +17,7 @@
   <Class Name="programmingWF.MainWindow" Collapsed="true">
     <Position X="31" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ZjCgoKQkIDFMxwIBggCE/6QGACIIAACE9CDwHwBhASE=</HashCode>
+      <HashCode>ZjCgoCQkITFMjxKBggCE/4QOACJIABSE9CCwHwRhASU=</HashCode>
       <FileName>MainWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -29,9 +29,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Procurement">
-    <Position X="10" Y="11.75" Width="7.25" />
+    <Position X="6.25" Y="10.25" Width="7.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Procurement.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -50,9 +50,12 @@
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Sale">
-    <Position X="17.75" Y="11.75" Width="6.75" />
+    <Position X="21" Y="7.5" Width="6.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Sale.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -76,7 +79,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAEACAAAAgAAAAABQ=</HashCode>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAEACAAAAgAQAAABQ=</HashCode>
       <FileName>Transaction.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -93,7 +96,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>IAAAAIAAAAAAAiBBAAAAABQAAAQAEAAAAABBAAEAIAA=</HashCode>
+      <HashCode>IAAAAIAAAAAAAiBBAAAAABQAAAQAEAAAACBBAAEAIAA=</HashCode>
       <FileName>WareHouse.cs</FileName>
     </TypeIdentifier>
   </Class>

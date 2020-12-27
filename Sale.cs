@@ -20,7 +20,6 @@ namespace programmingWF
             return parent.listViewSale;
         }
 
-        delegate string del();
         protected internal override void WareHouseSet(Status status, int index, MainWindow parent)
         {
             if (status != Status.Completed) return;
