@@ -113,6 +113,9 @@
             // 
             // tabControl
             // 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabPageIndicators);
             this.tabControl.Controls.Add(this.tabPageProcurement);
             this.tabControl.Controls.Add(this.tabPageSales);
@@ -148,7 +151,7 @@
             this.buttonImport.Name = "buttonImport";
             this.buttonImport.Size = new System.Drawing.Size(135, 36);
             this.buttonImport.TabIndex = 1;
-            this.buttonImport.Text = "Импорт";
+            this.buttonImport.Text = "Загрузить";
             this.buttonImport.UseVisualStyleBackColor = true;
             this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
             // 
@@ -159,7 +162,7 @@
             this.buttonExport.Name = "buttonExport";
             this.buttonExport.Size = new System.Drawing.Size(135, 36);
             this.buttonExport.TabIndex = 2;
-            this.buttonExport.Text = "Экспорт";
+            this.buttonExport.Text = "Сохранить";
             this.buttonExport.UseVisualStyleBackColor = true;
             this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
             // 
@@ -774,6 +777,7 @@
             this.Controls.Add(this.tabControl);
             this.Name = "MainWindow";
             this.Text = "Система складского учёта";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.tabControl.ResumeLayout(false);
             this.tabPageIndicators.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -799,31 +803,22 @@
         private System.Windows.Forms.TabPage tabPageProcurement;
         private System.Windows.Forms.TabPage tabPageSales;
         private System.Windows.Forms.TabPage tabPageTransactions;
-        private System.Windows.Forms.Label labelBidCount;
         private System.Windows.Forms.Label labelBid;
         private System.Windows.Forms.GroupBox groupBoxExecuted;
         private System.Windows.Forms.Label labelPurchase1;
-        private System.Windows.Forms.Label labelProcurementCount1;
         private System.Windows.Forms.Label labelSale1;
-        private System.Windows.Forms.Label labelSaleCount1;
         private System.Windows.Forms.GroupBox groupBoxWaiting;
         private System.Windows.Forms.Label labelPurchase2;
-        private System.Windows.Forms.Label labelProcurementCount2;
         private System.Windows.Forms.Label labelSale2;
-        private System.Windows.Forms.Label labelSaleCount2;
-        private System.Windows.Forms.Label labelTotalCount;
         private System.Windows.Forms.GroupBox groupBoxOverdue;
         private System.Windows.Forms.Label labelPurchase3;
-        private System.Windows.Forms.Label labelProcurementCount3;
         private System.Windows.Forms.Label labelSale3;
-        private System.Windows.Forms.Label labelSaleCount3;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases1;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases2;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases3;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases4;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases5;
         private System.Windows.Forms.Label labelBalance;
-        private System.Windows.Forms.Label labelBalanceCount;
         private System.Windows.Forms.Button buttonCancelPurchase;
         private System.Windows.Forms.Button buttonClosePurchase;
         private System.Windows.Forms.Button buttonAddPurchase;
@@ -864,6 +859,15 @@
         protected internal System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Button buttonExport;
         private System.Windows.Forms.Button buttonImport;
+        protected internal System.Windows.Forms.Label labelBidCount;
+        protected internal System.Windows.Forms.Label labelProcurementCount1;
+        protected internal System.Windows.Forms.Label labelSaleCount1;
+        protected internal System.Windows.Forms.Label labelProcurementCount2;
+        protected internal System.Windows.Forms.Label labelSaleCount2;
+        protected internal System.Windows.Forms.Label labelTotalCount;
+        protected internal System.Windows.Forms.Label labelProcurementCount3;
+        protected internal System.Windows.Forms.Label labelSaleCount3;
+        protected internal System.Windows.Forms.Label labelBalanceCount;
     }
 }
 

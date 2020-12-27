@@ -4,7 +4,6 @@ using System.Collections.Specialized;
 using System.Drawing;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace programmingWF
 {
@@ -14,15 +13,15 @@ namespace programmingWF
 
         public MainWindow()
         {
+            InitializeComponent();
+
             data.Procurements.CollectionChanged += CollectionChanged;
             data.Sales.CollectionChanged += CollectionChanged;
             data.Inventory.CollectionChanged += CollectionChanged;
             data.Transactions.CollectionChanged += CollectionChanged;
 
             new NewWareHouse(this);
-            InitializeComponent();
-            labelBalanceCount.Text = data.Balance + " руб.";
-            labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
+            LabelChange(labelBalanceCount, data.Balance + " руб.");
         }
 
         protected internal int Search(ObservableCollection<WareHouse> array, string criterion)
@@ -43,7 +42,7 @@ namespace programmingWF
 
                     var newItem = e.NewItems[0] as WareHouse; 
                     newItem.GetListView(this).Items.Add(newItem.GetListViewItem());
-                    labelTotalCount.Text = (data.Procurements.Count + data.Sales.Count).ToString();
+                    LabelChange(labelTotalCount, (data.Procurements.Count + data.Sales.Count).ToString());
                     break;
 
                 case NotifyCollectionChangedAction.Remove:
@@ -64,7 +63,6 @@ namespace programmingWF
         private void buttonAddProcurement_Click(object sender, EventArgs e)
         {
             new ProcurementWindow(this);
-            labelProcurementCount2.Text = (data.CountWaitProc += 1).ToString();
         }
 
         private void buttonCloseProcurement_Click(object sender, EventArgs e)
@@ -90,13 +88,12 @@ namespace programmingWF
 
             data.Balance -= item.Count * item.Cost;
 
-            labelBidCount.Text = data.Inventory.Count.ToString();
-            labelProcurementCount1.Text = (data.CountProc += 1).ToString();
-            labelProcurementCount2.Text = (data.CountWaitProc -= 1).ToString();
-            labelBalanceCount.Text = data.Balance + " руб.";
-            labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
+            LabelChange(labelBidCount, data.Inventory.Count.ToString());
+            LabelChange(labelProcurementCount1, (data.CountProc += 1).ToString());
+            LabelChange(labelProcurementCount2, (data.CountWaitProc -= 1).ToString());
+            LabelChange(labelBalanceCount, data.Balance + " руб.");
             if (DateTime.Now.Date > item.DueDate.Date)
-                labelProcurementCount3.Text = (data.CountOverDueProc += 1).ToString();
+                LabelChange(labelProcurementCount3, (data.CountOverDueProc += 1).ToString());
             buttonAddSale.Enabled = true;
         }
 
@@ -124,7 +121,6 @@ namespace programmingWF
         private void buttonAddSale_Click(object sender, EventArgs e)
         {
             new SaleWindow(this);
-            labelSaleCount2.Text = (data.CountWaitSale += 1).ToString();
         }
 
         private void buttonCloseSale_Click(object sender, EventArgs e)
@@ -142,11 +138,10 @@ namespace programmingWF
 
             data.Balance += item.Count * item.Cost;
 
-            labelBidCount.Text = data.Inventory.Count.ToString();
-            labelSaleCount1.Text = (data.CountSale += 1).ToString();
-            labelSaleCount2.Text = (data.CountWaitSale -= 1).ToString();
-            labelBalanceCount.Text = data.Balance + " руб.";
-            labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
+            LabelChange(labelBidCount, data.Inventory.Count.ToString());
+            LabelChange(labelSaleCount1, (data.CountSale += 1).ToString());
+            LabelChange(labelSaleCount2, (data.CountWaitSale -= 1).ToString());
+            LabelChange(labelBalanceCount, data.Balance + " руб.");
             if (DateTime.Now.Date > item.DueDate.Date)
                 labelSaleCount3.Text = (data.CountOverDueSale += 1).ToString();
             if (data.Inventory.Count == 0) buttonAddSale.Enabled = false;
@@ -155,7 +150,7 @@ namespace programmingWF
         private void buttonCancelSale_Click(object sender, EventArgs e)
         {
             ButtonClick(WareHouse.Status.Canceled, data.Sales, listViewSale);
-            labelSaleCount2.Text = (data.CountWaitSale -= 1).ToString();
+            LabelChange(labelSaleCount2, (data.CountWaitSale -= 1).ToString());
         }
 
         private void listViewSale_SelectedIndexChanged(object sender, EventArgs e)
@@ -196,52 +191,60 @@ namespace programmingWF
                 Filter = "bin files (*.bin)|*.bin"
             };
 
-            if (openFileDialog.ShowDialog() != DialogResult.OK) return;
-
-            try
+            while (true)
             {
-                using (var fs = openFileDialog.OpenFile())
+                if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+
+                try
                 {
-                    var formatter = new BinaryFormatter();
-                    data = (Data)formatter.Deserialize(fs);
+                    using (var fs = openFileDialog.OpenFile())
+                    {
+                        var formatter = new BinaryFormatter();
+                        data = (Data)formatter.Deserialize(fs);
+                    }
+
+                    foreach (var elm in data.Procurements)
+                        listViewProcurement.Items.Add(elm.GetListViewItem());
+                    foreach (var elm in data.Sales)
+                        listViewSale.Items.Add(elm.GetListViewItem());
+                    foreach (var elm in data.Inventory)
+                        listViewInventory.Items.Add(elm.GetListViewItem());
+                    foreach (var elm in data.Transactions)
+                        listViewTransactions.Items.Add(elm.GetListViewItem());
+
+                    data.Procurements.CollectionChanged += CollectionChanged;
+                    data.Sales.CollectionChanged += CollectionChanged;
+                    data.Inventory.CollectionChanged += CollectionChanged;
+                    data.Transactions.CollectionChanged += CollectionChanged;
+
+                    LabelChange(labelProcurementCount1, data.CountProc.ToString());
+                    LabelChange(labelSaleCount1, data.CountSale.ToString());
+                    LabelChange(labelProcurementCount2, data.CountWaitProc.ToString());
+                    LabelChange(labelSaleCount2, data.CountWaitSale.ToString());
+                    LabelChange(labelProcurementCount3, data.CountOverDueProc.ToString());
+                    LabelChange(labelSaleCount3, data.CountOverDueSale.ToString());
+                    LabelChange(labelBidCount, data.Inventory.Count.ToString());
+                    LabelChange(labelTotalCount, (data.Procurements.Count + data.Sales.Count).ToString());
+                    LabelChange(labelBalanceCount, data.Balance + " руб.");
+
+                    buttonAddSale.Enabled = data.Inventory.Count != 0;
+
+                    return;
                 }
-
-                foreach (var elm in data.Procurements)
-                    listViewProcurement.Items.Add(elm.GetListViewItem());
-                foreach (var elm in data.Sales)
-                    listViewSale.Items.Add(elm.GetListViewItem());
-                foreach (var elm in data.Inventory)
-                    listViewInventory.Items.Add(elm.GetListViewItem());
-                foreach (var elm in data.Transactions)
-                    listViewTransactions.Items.Add(elm.GetListViewItem());
-
-                data.Procurements.CollectionChanged += CollectionChanged;
-                data.Sales.CollectionChanged += CollectionChanged;
-                data.Inventory.CollectionChanged += CollectionChanged;
-                data.Transactions.CollectionChanged += CollectionChanged;
-
-                labelProcurementCount1.Text = data.CountProc.ToString();
-                labelSaleCount1.Text = data.CountSale.ToString();
-                labelProcurementCount2.Text = data.CountWaitProc.ToString();
-                labelSaleCount2.Text = data.CountWaitSale.ToString();
-                labelProcurementCount3.Text = data.CountOverDueProc.ToString();
-                labelSaleCount3.Text = data.CountOverDueSale.ToString();
-                labelBidCount.Text = data.Inventory.Count.ToString();
-                labelTotalCount.Text = (data.Procurements.Count + data.Sales.Count).ToString();
-                labelBalanceCount.Text = data.Balance.ToString();
-                labelBalanceCount.Font = LabelChange(labelBalanceCount.Text);
-
-                buttonAddSale.Enabled = data.Inventory.Count != 0;
-            }
-            catch (System.Runtime.Serialization.SerializationException)
-            {
-                MessageBox.Show("Неправильный файл сериализации");
+                catch (System.Runtime.Serialization.SerializationException)
+                {
+                    MessageBox.Show("Неправильный файл сериализации");
+                }
             }
         }
 
-        private Font LabelChange(string str)
+        protected internal void LabelChange(Label label, string str)
         {
-            return new Font(Font.Name, 100 / (str.Length / 2) > 24 ? 24 : 100 / (str.Length / 2));
+            label.Text = str;
+            label.Font = new Font(Font.Name, 
+                100 / (str.Length / 2 == 0 ? 1 : str.Length / 2) > 24 ? 
+                    24 : 
+                    100 / (str.Length / 2 == 0 ? 1 : str.Length / 2));
         }
 
         private WareHouse ButtonClick(WareHouse.Status status, ObservableCollection<WareHouse> array, ListView listView)
@@ -251,6 +254,21 @@ namespace programmingWF
             item.WareHouseSet(status, index, array);
             Transaction.TransactionSet(status, item.Num, this);
             return item;
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var dialog = MessageBox.Show(
+                "Сохранить склад?",
+                "Предупреждение",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+            if (dialog == DialogResult.Yes)
+            {
+                buttonExport_Click(this, EventArgs.Empty);
+            }
+            e.Cancel = false;
         }
     }
 }

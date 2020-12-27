@@ -16,18 +16,17 @@ namespace programmingWF
                 {
                     try
                     {
-                        if (!textBoxBarcode.Text.Any(char.IsDigit))
-                            throw new System.FormatException();
                         var index = parent.Search(parent.data.Inventory, textBoxBarcode.Text);
-                        if (index != - 1 && textBoxName.Text != parent.data.Inventory[index].Name)
+                        if (textBoxOrganization.Text == "" ||
+                            textBoxName.Text == "" ||
+                            !textBoxBarcode.Text.Any(char.IsDigit) ||
+                            index != -1 && textBoxName.Text != parent.data.Inventory[index].Name ||
+                            Convert.ToDouble(textBoxCostBuy.Text) < 0)
                             throw new System.FormatException();
 
                         if (Convert.ToInt32(numericCount.Value) * Convert.ToDouble(textBoxCostBuy.Text) >
                             parent.data.Balance)
                             throw new ArgumentException();
-
-                        if (Convert.ToDouble(textBoxCostBuy.Text) < 0)
-                            throw new FormatException();
 
                         parent.data.Procurements.Add(new Procurement(
                             textBoxBarcode.Text,
@@ -47,6 +46,7 @@ namespace programmingWF
                             Transaction.Type.Purchase,
                             parent.data.Procurements.Last().Num));
 
+                        parent.LabelChange(parent.labelProcurementCount2, (parent.data.CountWaitProc += 1).ToString());
                         return;
                     }
                     catch (FormatException)

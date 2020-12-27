@@ -23,7 +23,8 @@ namespace programmingWF
 
                         numericCount.Maximum = item.Count;
 
-                        if (Convert.ToDouble(textBoxCostSale.Text) < 0)
+                        if (Convert.ToDouble(textBoxCostSale.Text) < 0 || 
+                            textBoxOrganization.Text == "")
                             throw new FormatException();
 
                         parent.data.Sales.Add(new Sale(
@@ -44,6 +45,7 @@ namespace programmingWF
                             Transaction.Type.Sale,
                             parent.data.Sales.Last().Num));
 
+                        parent.LabelChange(parent.labelSaleCount2, (parent.data.CountWaitSale += 1).ToString());
                         return;
                     }
                     catch (FormatException)
