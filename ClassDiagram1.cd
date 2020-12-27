@@ -1,78 +1,199 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
-  <Class Name="programmingWF.Data" Collapsed="true">
-    <Position X="22.75" Y="6.75" Width="1.5" />
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="programmingWF.Data">
+    <Position X="8" Y="1.75" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AACIAAAAAAAAAAgQAAiABAAIAAAAgAAAAAAAAgAAACA=</HashCode>
       <FileName>Data.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Inventory">
-    <Position X="8.75" Y="7.5" Width="4.75" />
+    <Position X="3.25" Y="6.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAgAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>Inventory.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.MainWindow">
-    <Position X="21" Y="0.5" Width="1.5" />
+    <Position X="14.5" Y="0.75" Width="3.5" />
+    <Members>
+      <Field Name="buttonAddPurchase" Hidden="true" />
+      <Field Name="buttonAddSale" Hidden="true" />
+      <Field Name="buttonCancelPurchase" Hidden="true" />
+      <Field Name="buttonCancelSale" Hidden="true" />
+      <Field Name="buttonClosePurchase" Hidden="true" />
+      <Field Name="buttonCloseSale" Hidden="true" />
+      <Field Name="buttonExport" Hidden="true" />
+      <Field Name="buttonImport" Hidden="true" />
+      <Field Name="buttonInventoryExcel" Hidden="true" />
+      <Field Name="buttonPurchaseExcel" Hidden="true" />
+      <Field Name="buttonSaleExcel" Hidden="true" />
+      <Field Name="buttonTransactionExcel" Hidden="true" />
+      <Field Name="columnHeaderInventory1" Hidden="true" />
+      <Field Name="columnHeaderInventory2" Hidden="true" />
+      <Field Name="columnHeaderInventory3" Hidden="true" />
+      <Field Name="columnHeaderInventory4" Hidden="true" />
+      <Field Name="columnHeaderPurchases1" Hidden="true" />
+      <Field Name="columnHeaderPurchases2" Hidden="true" />
+      <Field Name="columnHeaderPurchases3" Hidden="true" />
+      <Field Name="columnHeaderPurchases4" Hidden="true" />
+      <Field Name="columnHeaderPurchases5" Hidden="true" />
+      <Field Name="columnHeaderPurchases6" Hidden="true" />
+      <Field Name="columnHeaderPurchases7" Hidden="true" />
+      <Field Name="columnHeaderPurchases8" Hidden="true" />
+      <Field Name="columnHeaderSale1" Hidden="true" />
+      <Field Name="columnHeaderSale2" Hidden="true" />
+      <Field Name="columnHeaderSale3" Hidden="true" />
+      <Field Name="columnHeaderSale4" Hidden="true" />
+      <Field Name="columnHeaderSale5" Hidden="true" />
+      <Field Name="columnHeaderSale6" Hidden="true" />
+      <Field Name="columnHeaderSale7" Hidden="true" />
+      <Field Name="columnHeaderSale8" Hidden="true" />
+      <Field Name="columnHeaderTransactions0" Hidden="true" />
+      <Field Name="columnHeaderTransactions1" Hidden="true" />
+      <Field Name="columnHeaderTransactions2" Hidden="true" />
+      <Field Name="columnHeaderTransactions3" Hidden="true" />
+      <Field Name="columnHeaderTransactions4" Hidden="true" />
+      <Field Name="columnHeaderTransactions5" Hidden="true" />
+      <Field Name="columnHeaderTransactions6" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="groupBox1" Hidden="true" />
+      <Field Name="groupBoxExecuted" Hidden="true" />
+      <Field Name="groupBoxOverdue" Hidden="true" />
+      <Field Name="groupBoxWaiting" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelBalance" Hidden="true" />
+      <Field Name="labelBalanceCount" Hidden="true" />
+      <Field Name="labelBid" Hidden="true" />
+      <Field Name="labelBidCount" Hidden="true" />
+      <Field Name="labelProcurementCount1" Hidden="true" />
+      <Field Name="labelProcurementCount2" Hidden="true" />
+      <Field Name="labelProcurementCount3" Hidden="true" />
+      <Field Name="labelPurchase1" Hidden="true" />
+      <Field Name="labelPurchase2" Hidden="true" />
+      <Field Name="labelPurchase3" Hidden="true" />
+      <Field Name="labelSale1" Hidden="true" />
+      <Field Name="labelSale2" Hidden="true" />
+      <Field Name="labelSale3" Hidden="true" />
+      <Field Name="labelSaleCount1" Hidden="true" />
+      <Field Name="labelSaleCount2" Hidden="true" />
+      <Field Name="labelSaleCount3" Hidden="true" />
+      <Field Name="labelTotal" Hidden="true" />
+      <Field Name="labelTotalCount" Hidden="true" />
+      <Field Name="listViewInventory" Hidden="true" />
+      <Field Name="listViewProcurement" Hidden="true" />
+      <Field Name="listViewSale" Hidden="true" />
+      <Field Name="listViewTransactions" Hidden="true" />
+      <Field Name="pictureBox1" Hidden="true" />
+      <Field Name="tabControl" Hidden="true" />
+      <Field Name="tabPageIndicators" Hidden="true" />
+      <Field Name="tabPageInventory" Hidden="true" />
+      <Field Name="tabPageProcurement" Hidden="true" />
+      <Field Name="tabPageSales" Hidden="true" />
+      <Field Name="tabPageTransactions" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>ZjCgoCQkITFMjxKBggCE/4QOACJIABSE9CCwHwRhASU=</HashCode>
       <FileName>MainWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="programmingWF.NewWareHouse" Collapsed="true">
-    <Position X="22.75" Y="1.75" Width="1.5" />
+  <Class Name="programmingWF.NewWareHouse">
+    <Position X="24.75" Y="9" Width="2.25" />
+    <Members>
+      <Field Name="button1" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="textBoxBalance" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAABAAAACAAAACAAAIAAAEAAAAAAAAAAA=</HashCode>
       <FileName>NewWareHouse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Procurement">
-    <Position X="6.25" Y="9.75" Width="7.25" />
+    <Position X="1" Y="6.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Procurement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.ProcurementWindow">
-    <Position X="13.5" Y="0.5" Width="1.5" />
+    <Position X="21.75" Y="1.25" Width="2.5" />
+    <Members>
+      <Field Name="buttonAccept" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="dateTimePicker" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="label6" Hidden="true" />
+      <Field Name="label7" Hidden="true" />
+      <Field Name="label8" Hidden="true" />
+      <Field Name="label9" Hidden="true" />
+      <Field Name="numericCount" Hidden="true" />
+      <Field Name="textBoxBarcode" Hidden="true" />
+      <Field Name="textBoxCostBuy" Hidden="true" />
+      <Field Name="textBoxName" Hidden="true" />
+      <Field Name="textBoxNote" Hidden="true" />
+      <Field Name="textBoxOrganization" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AAIAAAAAACAAABACACCAAAgCABAAAAAAAAAAAAAAwCA=</HashCode>
       <FileName>ProcurementWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="programmingWF.Program">
-    <Position X="22.75" Y="2.75" Width="1.5" />
+  <Class Name="programmingWF.Program" Collapsed="true">
+    <Position X="22.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Sale">
-    <Position X="6.75" Y="11.75" Width="6.75" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
+    <Position X="9" Y="6.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Sale.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.SaleWindow">
-    <Position X="11.75" Y="0.5" Width="1.5" />
+    <Position X="20.5" Y="8.75" Width="2.5" />
+    <Members>
+      <Field Name="buttonAccept" Hidden="true" />
+      <Field Name="comboBoxName" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="dateTimePicker" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="label6" Hidden="true" />
+      <Field Name="label7" Hidden="true" />
+      <Field Name="label8" Hidden="true" />
+      <Field Name="label9" Hidden="true" />
+      <Field Name="numericCount" Hidden="true" />
+      <Field Name="textBoxCostSale" Hidden="true" />
+      <Field Name="textBoxNote" Hidden="true" />
+      <Field Name="textBoxOrganization" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>ABAAAAAAACAAABACACCAAAgCABAAAAAAQAAAAAAAQAA=</HashCode>
       <FileName>SaleWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Transaction">
-    <Position X="14" Y="7.5" Width="6.75" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
+    <Position X="6.25" Y="6.25" Width="2.5" />
     <NestedTypes>
-      <Enum Name="programmingWF.Transaction.Type">
+      <Enum Name="programmingWF.Transaction.Type" Collapsed="true">
         <TypeIdentifier>
           <NewMemberFileName>Transaction.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -84,12 +205,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.WareHouse">
-    <Position X="15.25" Y="0.5" Width="4.25" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
+    <Position X="4.75" Y="0.5" Width="2.5" />
     <NestedTypes>
-      <Enum Name="programmingWF.WareHouse.Status">
+      <Enum Name="programmingWF.WareHouse.Status" Collapsed="true">
         <TypeIdentifier>
           <NewMemberFileName>WareHouse.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -101,20 +219,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Properties.Resources" Collapsed="true">
-    <Position X="22.75" Y="6" Width="1.5" />
+    <Position X="21.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAEAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="programmingWF.Properties.Settings">
-    <Position X="22.75" Y="4" Width="1.5" />
+  <Class Name="programmingWF.Properties.Settings" Collapsed="true">
+    <Position X="23.5" Y="7" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
-  </Class>
-  <Class Name="System.Windows.Forms.Form" Collapsed="true">
-    <Position X="22.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
