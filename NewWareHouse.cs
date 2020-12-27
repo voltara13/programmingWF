@@ -23,7 +23,7 @@ namespace programmingWF
                     }
                     catch (System.FormatException)
                     {
-                        MessageBox.Show("Введены неверные значения");
+                        MessageBox.Show("Введен неверный баланс");
                     }
                 }
                 else return;

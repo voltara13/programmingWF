@@ -7,6 +7,13 @@ namespace programmingWF
     [Serializable]
     internal class Transaction : WareHouse
     {
+        /*Перечисляемый тип типа транзакции*/
+        protected internal enum Type
+        {
+            Purchase,
+            Sale
+        }
+        /*Конструктор дочернего класса с вызовом родительского конструктора*/
         protected internal Transaction(string barCode, string organization, string name, double cost, int count, Type type, string num) : base(barCode, name, count, cost)
         {
             Organization = organization;
@@ -14,15 +21,11 @@ namespace programmingWF
             Sum = cost * count;
             Num = num;
         }
-
-        protected internal double Sum { get; }
-
-        protected internal enum Type
-        {
-            Purchase,
-            Sale
-        }
-
+        /*Поле суммы*/
+        protected internal readonly double Sum;
+        /*Поле типа транзакции*/
+        private readonly Type CurType;
+        /*Виртуальная функция возврата строки для таблицы*/
         protected internal override ListViewItem GetListViewItem()
         {
             var item = new ListViewItem(Num);
@@ -36,12 +39,12 @@ namespace programmingWF
             item.SubItems[4].ForeColor = GetColor();
             return item;
         }
-
+        /*Абстрактная функция возврата действительной таблицы*/
         protected internal override ListView GetListView(MainWindow parent)
         {
             return parent.listViewTransactions;
         }
-
+        /*Функция возврата типа транзакции в виде строки*/
         private string GetTypeString()
         {
             switch (CurType)
@@ -54,7 +57,7 @@ namespace programmingWF
                     throw new ArgumentOutOfRangeException();
             }
         }
-
+        /*Функция возврата необходимого цвета*/
         private Color GetColor()
         {
             switch (CurType)
@@ -67,11 +70,10 @@ namespace programmingWF
                     throw new ArgumentOutOfRangeException();
             }
         }
-        private Type CurType { get; }
-
+        /*Функция смены статуса транзакции*/
         protected internal static void TransactionSet(Status status, string num, MainWindow parent)
         {
-            var indexTransaction = parent.Search(parent.data.Transactions, num);
+            var indexTransaction = Search(parent.data.Transactions, num);
             var itemTransaction = parent.data.Transactions[indexTransaction];
             itemTransaction.CurStatus = status;
             parent.data.Transactions[indexTransaction] = itemTransaction;
