@@ -159,7 +159,7 @@
             // buttonExport
             // 
             this.buttonExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonExport.Location = new System.Drawing.Point(485, 310);
+            this.buttonExport.Location = new System.Drawing.Point(484, 310);
             this.buttonExport.Name = "buttonExport";
             this.buttonExport.Size = new System.Drawing.Size(135, 36);
             this.buttonExport.TabIndex = 2;

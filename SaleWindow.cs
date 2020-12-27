@@ -19,6 +19,8 @@ namespace programmingWF
                 {
                     try
                     {
+                        if (comboBoxName.SelectedIndex == - 1)
+                            throw new FormatException();
                         var item = parent.data.Inventory[comboBoxName.SelectedIndex];
                         /*Проверяем введенные данные*/
                         if (Convert.ToDouble(textBoxCostSale.Text) < 0 ||
