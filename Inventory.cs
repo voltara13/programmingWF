@@ -22,7 +22,7 @@ namespace programmingWF
             return parent.listViewInventory;
         }
 
-         protected internal override bool Comparison(string str)
+        protected internal override bool Comparison(string str)
         {
             return str == BarCode;
         }

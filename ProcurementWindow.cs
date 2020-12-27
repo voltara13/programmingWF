@@ -16,11 +16,9 @@ namespace programmingWF
                 {
                     try
                     {
-                        var index = parent.Search(parent.data.Inventory, textBoxBarcode.Text);
                         if (textBoxOrganization.Text == "" ||
                             textBoxName.Text == "" ||
                             !textBoxBarcode.Text.Any(char.IsDigit) ||
-                            index != -1 && textBoxName.Text != parent.data.Inventory[index].Name ||
                             Convert.ToDouble(textBoxCostBuy.Text) < 0)
                             throw new System.FormatException();
 

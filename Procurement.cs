@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace programmingWF
@@ -24,6 +26,11 @@ namespace programmingWF
             if (status != Status.Completed) return;
             if (Count * Cost > parent.data.Balance)
                 throw new ArgumentException();
+
+            var flagBarCode = parent.data.Inventory.Any(elm => elm.BarCode == BarCode);
+            var flagName = parent.data.Inventory.Any(elm => elm.Name == Name);
+            if (flagBarCode && !flagName || !flagBarCode && flagName)
+                throw new MissingPrimaryKeyException();
 
             var indexInventory = parent.Search(parent.data.Inventory, BarCode);
             if (indexInventory != -1)

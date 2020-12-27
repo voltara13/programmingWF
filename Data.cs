@@ -10,7 +10,7 @@ namespace programmingWF
         protected internal ObservableCollection<WareHouse> Sales = new ObservableCollection<WareHouse>();
         protected internal ObservableCollection<WareHouse> Inventory = new ObservableCollection<WareHouse>();
         protected internal ObservableCollection<WareHouse> Transactions = new ObservableCollection<WareHouse>();
-        protected internal double Balance { get; set; } = 10000;
+        protected internal double Balance { get; set; }
         protected internal int CountProc { get; set; }
         protected internal int CountSale { get; set; }
         protected internal int CountWaitProc { get; set; }

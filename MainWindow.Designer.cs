@@ -116,18 +116,16 @@
             // 
             // tabControl
             // 
-            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabPageIndicators);
             this.tabControl.Controls.Add(this.tabPageProcurement);
             this.tabControl.Controls.Add(this.tabPageSales);
             this.tabControl.Controls.Add(this.tabPageInventory);
             this.tabControl.Controls.Add(this.tabPageTransactions);
-            this.tabControl.Location = new System.Drawing.Point(13, 13);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(789, 381);
+            this.tabControl.Size = new System.Drawing.Size(787, 378);
             this.tabControl.TabIndex = 0;
             // 
             // tabPageIndicators
@@ -142,7 +140,7 @@
             this.tabPageIndicators.Location = new System.Drawing.Point(4, 22);
             this.tabPageIndicators.Name = "tabPageIndicators";
             this.tabPageIndicators.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageIndicators.Size = new System.Drawing.Size(781, 355);
+            this.tabPageIndicators.Size = new System.Drawing.Size(779, 352);
             this.tabPageIndicators.TabIndex = 0;
             this.tabPageIndicators.Text = "Показатели";
             this.tabPageIndicators.UseVisualStyleBackColor = true;
@@ -435,15 +433,16 @@
             this.tabPageProcurement.Location = new System.Drawing.Point(4, 22);
             this.tabPageProcurement.Name = "tabPageProcurement";
             this.tabPageProcurement.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProcurement.Size = new System.Drawing.Size(781, 355);
+            this.tabPageProcurement.Size = new System.Drawing.Size(779, 352);
             this.tabPageProcurement.TabIndex = 1;
             this.tabPageProcurement.Text = "Закупки";
             this.tabPageProcurement.UseVisualStyleBackColor = true;
             // 
             // buttonPurchaseExcel
             // 
+            this.buttonPurchaseExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPurchaseExcel.Enabled = false;
-            this.buttonPurchaseExcel.Location = new System.Drawing.Point(645, 90);
+            this.buttonPurchaseExcel.Location = new System.Drawing.Point(644, 90);
             this.buttonPurchaseExcel.Name = "buttonPurchaseExcel";
             this.buttonPurchaseExcel.Size = new System.Drawing.Size(127, 23);
             this.buttonPurchaseExcel.TabIndex = 6;
@@ -453,6 +452,7 @@
             // 
             // buttonCancelPurchase
             // 
+            this.buttonCancelPurchase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancelPurchase.Enabled = false;
             this.buttonCancelPurchase.Location = new System.Drawing.Point(644, 61);
             this.buttonCancelPurchase.Name = "buttonCancelPurchase";
@@ -464,6 +464,7 @@
             // 
             // buttonClosePurchase
             // 
+            this.buttonClosePurchase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClosePurchase.Enabled = false;
             this.buttonClosePurchase.Location = new System.Drawing.Point(644, 32);
             this.buttonClosePurchase.Name = "buttonClosePurchase";
@@ -475,6 +476,7 @@
             // 
             // buttonAddPurchase
             // 
+            this.buttonAddPurchase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddPurchase.Location = new System.Drawing.Point(644, 3);
             this.buttonAddPurchase.Name = "buttonAddPurchase";
             this.buttonAddPurchase.Size = new System.Drawing.Size(127, 23);
@@ -485,6 +487,9 @@
             // 
             // listViewProcurement
             // 
+            this.listViewProcurement.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewProcurement.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderPurchases1,
             this.columnHeaderPurchases2,
@@ -511,12 +516,12 @@
             // columnHeaderPurchases1
             // 
             this.columnHeaderPurchases1.Text = "Штрихкод";
-            this.columnHeaderPurchases1.Width = 80;
+            this.columnHeaderPurchases1.Width = 62;
             // 
             // columnHeaderPurchases2
             // 
             this.columnHeaderPurchases2.Text = "Дата исполнения";
-            this.columnHeaderPurchases2.Width = 104;
+            this.columnHeaderPurchases2.Width = 102;
             // 
             // columnHeaderPurchases3
             // 
@@ -541,12 +546,12 @@
             // columnHeaderPurchases7
             // 
             this.columnHeaderPurchases7.Text = "Статус";
-            this.columnHeaderPurchases7.Width = 58;
+            this.columnHeaderPurchases7.Width = 55;
             // 
             // columnHeaderPurchases8
             // 
             this.columnHeaderPurchases8.Text = "Примечание";
-            this.columnHeaderPurchases8.Width = 75;
+            this.columnHeaderPurchases8.Width = 76;
             // 
             // tabPageSales
             // 
@@ -558,15 +563,16 @@
             this.tabPageSales.Location = new System.Drawing.Point(4, 22);
             this.tabPageSales.Name = "tabPageSales";
             this.tabPageSales.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSales.Size = new System.Drawing.Size(781, 355);
+            this.tabPageSales.Size = new System.Drawing.Size(779, 352);
             this.tabPageSales.TabIndex = 2;
             this.tabPageSales.Text = "Продажи";
             this.tabPageSales.UseVisualStyleBackColor = true;
             // 
             // buttonSaleExcel
             // 
+            this.buttonSaleExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSaleExcel.Enabled = false;
-            this.buttonSaleExcel.Location = new System.Drawing.Point(645, 90);
+            this.buttonSaleExcel.Location = new System.Drawing.Point(644, 90);
             this.buttonSaleExcel.Name = "buttonSaleExcel";
             this.buttonSaleExcel.Size = new System.Drawing.Size(127, 23);
             this.buttonSaleExcel.TabIndex = 9;
@@ -576,6 +582,7 @@
             // 
             // buttonCancelSale
             // 
+            this.buttonCancelSale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancelSale.Enabled = false;
             this.buttonCancelSale.Location = new System.Drawing.Point(644, 61);
             this.buttonCancelSale.Name = "buttonCancelSale";
@@ -587,6 +594,9 @@
             // 
             // listViewSale
             // 
+            this.listViewSale.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewSale.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderSale1,
             this.columnHeaderSale2,
@@ -612,7 +622,7 @@
             // columnHeaderSale1
             // 
             this.columnHeaderSale1.Text = "Штрихкод";
-            this.columnHeaderSale1.Width = 73;
+            this.columnHeaderSale1.Width = 66;
             // 
             // columnHeaderSale2
             // 
@@ -627,7 +637,7 @@
             // columnHeaderSale4
             // 
             this.columnHeaderSale4.Text = "Наименование";
-            this.columnHeaderSale4.Width = 92;
+            this.columnHeaderSale4.Width = 89;
             // 
             // columnHeaderSale5
             // 
@@ -642,7 +652,7 @@
             // columnHeaderSale7
             // 
             this.columnHeaderSale7.Text = "Статус";
-            this.columnHeaderSale7.Width = 62;
+            this.columnHeaderSale7.Width = 51;
             // 
             // columnHeaderSale8
             // 
@@ -651,6 +661,7 @@
             // 
             // buttonAddSale
             // 
+            this.buttonAddSale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddSale.Enabled = false;
             this.buttonAddSale.Location = new System.Drawing.Point(644, 3);
             this.buttonAddSale.Name = "buttonAddSale";
@@ -662,6 +673,7 @@
             // 
             // buttonCloseSale
             // 
+            this.buttonCloseSale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCloseSale.Enabled = false;
             this.buttonCloseSale.Location = new System.Drawing.Point(644, 32);
             this.buttonCloseSale.Name = "buttonCloseSale";
@@ -677,13 +689,14 @@
             this.tabPageInventory.Controls.Add(this.listViewInventory);
             this.tabPageInventory.Location = new System.Drawing.Point(4, 22);
             this.tabPageInventory.Name = "tabPageInventory";
-            this.tabPageInventory.Size = new System.Drawing.Size(781, 355);
+            this.tabPageInventory.Size = new System.Drawing.Size(779, 352);
             this.tabPageInventory.TabIndex = 4;
             this.tabPageInventory.Text = "Инвентарь";
             this.tabPageInventory.UseVisualStyleBackColor = true;
             // 
             // buttonInventoryExcel
             // 
+            this.buttonInventoryExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonInventoryExcel.Enabled = false;
             this.buttonInventoryExcel.Location = new System.Drawing.Point(644, 3);
             this.buttonInventoryExcel.Name = "buttonInventoryExcel";
@@ -695,6 +708,9 @@
             // 
             // listViewInventory
             // 
+            this.listViewInventory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewInventory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderInventory1,
             this.columnHeaderInventory2,
@@ -715,12 +731,12 @@
             // columnHeaderInventory1
             // 
             this.columnHeaderInventory1.Text = "Штрихкод";
-            this.columnHeaderInventory1.Width = 112;
+            this.columnHeaderInventory1.Width = 190;
             // 
             // columnHeaderInventory2
             // 
             this.columnHeaderInventory2.Text = "Наименование";
-            this.columnHeaderInventory2.Width = 246;
+            this.columnHeaderInventory2.Width = 219;
             // 
             // columnHeaderInventory3
             // 
@@ -739,13 +755,14 @@
             this.tabPageTransactions.Location = new System.Drawing.Point(4, 22);
             this.tabPageTransactions.Name = "tabPageTransactions";
             this.tabPageTransactions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTransactions.Size = new System.Drawing.Size(781, 355);
+            this.tabPageTransactions.Size = new System.Drawing.Size(779, 352);
             this.tabPageTransactions.TabIndex = 3;
             this.tabPageTransactions.Text = "Транзакции";
             this.tabPageTransactions.UseVisualStyleBackColor = true;
             // 
             // buttonTransactionExcel
             // 
+            this.buttonTransactionExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonTransactionExcel.Enabled = false;
             this.buttonTransactionExcel.Location = new System.Drawing.Point(644, 3);
             this.buttonTransactionExcel.Name = "buttonTransactionExcel";
@@ -757,6 +774,9 @@
             // 
             // listViewTransactions
             // 
+            this.listViewTransactions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewTransactions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderTransactions0,
             this.columnHeaderTransactions1,
@@ -814,12 +834,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 398);
+            this.ClientSize = new System.Drawing.Size(787, 378);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Система складского учёта";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
+            this.SizeChanged += new System.EventHandler(this.MainWindow_SizeChanged);
             this.tabControl.ResumeLayout(false);
             this.tabPageIndicators.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

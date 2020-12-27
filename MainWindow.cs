@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Data;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
@@ -31,6 +32,7 @@ namespace programmingWF
             data.Inventory.CollectionChanged += CollectionChanged;
             data.Transactions.CollectionChanged += CollectionChanged;
 
+            MainWindow_SizeChanged(this, EventArgs.Empty);
             LabelChange(labelBalanceCount, data.Balance + " руб.");
         }
 
@@ -42,6 +44,23 @@ namespace programmingWF
                     return index;
                 else index++;
             return -1;
+        }
+
+        protected internal void LabelChange(Label label, string str)
+        {
+            label.Text = str;
+            label.Font = new Font(Font.Name,
+                100 / (str.Length / 2 == 0 ? 1 : str.Length / 2) > 24 ?
+                    24 :
+                    100 / (str.Length / 2 == 0 ? 1 : str.Length / 2));
+        }
+
+        protected internal void ButtonCheck()
+        {
+            buttonPurchaseExcel.Enabled = data.Procurements.Count != 0;
+            buttonSaleExcel.Enabled = data.Sales.Count != 0;
+            buttonInventoryExcel.Enabled = buttonAddSale.Enabled = data.Inventory.Count != 0;
+            buttonTransactionExcel.Enabled = data.Transactions.Count != 0;
         }
 
         private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -93,7 +112,13 @@ namespace programmingWF
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Недостаточно средств для закрытия сделки.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Недостаточно средств для закрытия сделки.", "Ошибка", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+            }
+            catch (MissingPrimaryKeyException)
+            {
+                MessageBox.Show("Имя товара или штрихкод не совпадает с уже существующим товаром на складе.", "Ошибка", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             }
         }
 
@@ -176,15 +201,6 @@ namespace programmingWF
             Deserialize();
         }
 
-        protected internal void LabelChange(Label label, string str)
-        {
-            label.Text = str;
-            label.Font = new Font(Font.Name, 
-                100 / (str.Length / 2 == 0 ? 1 : str.Length / 2) > 24 ? 
-                    24 : 
-                    100 / (str.Length / 2 == 0 ? 1 : str.Length / 2));
-        }
-
         private void Serialize()
         {
             var saveFileDialog = new SaveFileDialog
@@ -204,6 +220,8 @@ namespace programmingWF
 
         private bool Deserialize()
         {
+            SaveWareHouse();
+
             var openFileDialog = new OpenFileDialog()
             {
                 Filter = "bin files (*.bin)|*.bin"
@@ -220,6 +238,11 @@ namespace programmingWF
                         var formatter = new BinaryFormatter();
                         data = (Data)formatter.Deserialize(fs);
                     }
+
+                    listViewProcurement.Items.Clear();
+                    listViewSale.Items.Clear();
+                    listViewInventory.Items.Clear();
+                    listViewTransactions.Items.Clear();
 
                     foreach (var elm in data.Procurements)
                         listViewProcurement.Items.Add(elm.GetListViewItem());
@@ -247,6 +270,8 @@ namespace programmingWF
 
                     ButtonCheck();
 
+                    MainWindow_SizeChanged(this, EventArgs.Empty);
+
                     MessageBox.Show("Склад успешно загружен.", "Загрузка склада", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
@@ -270,15 +295,20 @@ namespace programmingWF
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
+            SaveWareHouse();
+            e.Cancel = false;
+        }
+
+        private void SaveWareHouse()
+        {
             var dialog = MessageBox.Show(
-                "Сохранить склад?",
+                "Сохранить текущий склад?",
                 "Предупреждение",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
             if (dialog == DialogResult.Yes)
                 Serialize();
-            e.Cancel = false;
         }
 
         private void SaveExcel(ListView listView)
@@ -329,12 +359,12 @@ namespace programmingWF
             SaveExcel(listViewTransactions);
         }
 
-        protected internal void ButtonCheck()
+        private void MainWindow_SizeChanged(object sender, EventArgs e)
         {
-            buttonPurchaseExcel.Enabled = data.Procurements.Count != 0;
-            buttonSaleExcel.Enabled = data.Sales.Count != 0;
-            buttonInventoryExcel.Enabled = buttonAddSale.Enabled = data.Inventory.Count != 0;
-            buttonTransactionExcel.Enabled = data.Transactions.Count != 0;
+            listViewProcurement.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            listViewSale.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            listViewInventory.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            listViewTransactions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
     }
 }

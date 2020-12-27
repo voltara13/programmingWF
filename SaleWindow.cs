@@ -21,9 +21,8 @@ namespace programmingWF
                     {
                         var item = parent.data.Inventory[comboBoxName.SelectedIndex];
 
-                        numericCount.Maximum = item.Count;
-
-                        if (Convert.ToDouble(textBoxCostSale.Text) < 0 || 
+                        if (Convert.ToDouble(textBoxCostSale.Text) < 0 ||
+                            Convert.ToInt32(numericCount.Value) > item.Count ||
                             textBoxOrganization.Text == "")
                             throw new FormatException();
 

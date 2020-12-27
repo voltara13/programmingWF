@@ -73,6 +73,7 @@ namespace programmingWF
             this.Controls.Add(this.textBoxBalance);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NewWareHouse";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Введите баланс склада";
             this.ResumeLayout(false);
             this.PerformLayout();
