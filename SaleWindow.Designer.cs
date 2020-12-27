@@ -210,8 +210,12 @@ namespace programmingWF
             this.Controls.Add(this.textBoxOrganization);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(267, 231);
+            this.MinimumSize = new System.Drawing.Size(267, 231);
             this.Name = "SaleWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Продажа";
             ((System.ComponentModel.ISupportInitialize)(this.numericCount)).EndInit();
             this.ResumeLayout(false);
