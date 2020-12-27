@@ -220,8 +220,6 @@ namespace programmingWF
 
         private bool Deserialize()
         {
-            SaveWareHouse();
-
             var openFileDialog = new OpenFileDialog()
             {
                 Filter = "bin files (*.bin)|*.bin"
@@ -326,11 +324,15 @@ namespace programmingWF
                         ws.Cells[1, ia + 1] = listView.Columns[ia].Text;
                 }
                 var i = 2;
+
                 foreach (ListViewItem item in listView.Items)
                 {
                     var k = 1;
                     foreach (ListViewItem.ListViewSubItem elm in item.SubItems)
+                    {
+                        ws.Cells[i, k].NumberFormat = "@";
                         ws.Cells[i, k++] = elm.Text;
+                    }
                     i++;
                 }
                 wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, false, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
