@@ -43,11 +43,11 @@ namespace programmingWF
         protected internal string BarCode { get; }
         /*Цена*/
         protected internal double Cost { get; }
-        /*Абстрактная функция возврата действительной таблицы*/
+        /*Абстрактный метод возврата действительной таблицы*/
         protected internal abstract ListView GetListView(MainWindow parent);
-        /*Виртуальная функция изменения статуса позиции*/
+        /*Виртуальный метод изменения статуса позиции*/
         protected internal virtual void WareHouseSet(Status status, int index, MainWindow parent) {}
-        /*Виртуальная функция возврата строки для таблицы*/
+        /*Виртуальный метод возврата строки для таблицы*/
         protected internal virtual ListViewItem GetListViewItem()
         {
             var item = new ListViewItem(BarCode);
@@ -60,7 +60,7 @@ namespace programmingWF
             item.SubItems.Add(Note);
             return item;
         }
-        /*Функция возврата статуса в виде строки*/
+        /*Метод возврата статуса в виде строки*/
         protected internal string GetStatusString()
         {
             switch (CurStatus) 
@@ -75,12 +75,12 @@ namespace programmingWF
                     throw new ArgumentOutOfRangeException();
             }
         }
-        /*Виртуальная функция сравнения*/
+        /*Виртуальный метод сравнения*/
         protected internal virtual bool Comparison(string str)
         {
             return str == Num;
         }
-        /*Функция поиска элемента по какому-либо значению
+        /*Метод поиска элемента по какому-либо значению
          в заданном массиве и дальнейшего вывода его индекса*/
         protected internal static int Search(ObservableCollection<WareHouse> array, string criterion)
         {

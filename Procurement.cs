@@ -16,12 +16,12 @@ namespace programmingWF
             Note = note;
             DueDate = dueDate;
         }
-        /*Абстрактная функция возврата действительной таблицы*/
+        /*Абстрактный метод возврата действительной таблицы*/
         protected internal override ListView GetListView(MainWindow parent)
         {
             return parent.listViewProcurement;
         }
-        /*Виртуальная функция изменения статуса позиции*/
+        /*Виртуальный метод изменения статуса позиции*/
         protected internal override void WareHouseSet(Status status, int index, MainWindow parent)
         {
             /*Если новый статус не равен завершенному, то функция заканчивается*/

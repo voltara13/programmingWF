@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace programmingWF
 {
-    public partial class ProcurementWindow : Form
+    internal partial class ProcurementWindow : Form
     {
-        public ProcurementWindow(MainWindow parent)
+        protected internal ProcurementWindow(MainWindow parent)
         {
             InitializeComponent();
 

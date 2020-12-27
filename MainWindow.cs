@@ -12,11 +12,10 @@ namespace programmingWF
 {
     public partial class MainWindow : Form
     {
-        /*Создаем объект класса,
-         в котором буду хранится сохраняемые данные*/
+        /*Поле, в котором буду хранится сохраняемые данные*/
         protected internal Data data = new Data();
         /*Конструктор главного окна*/
-        public MainWindow()
+        protected internal MainWindow()
         {
             InitializeComponent();
             /*Диалоговое окно создания нового склада
@@ -40,7 +39,7 @@ namespace programmingWF
             MainWindow_SizeChanged(this, EventArgs.Empty);
             LabelChange(labelBalanceCount, data.Balance + " руб.");
         }
-        /*Функция обновления текста у подписи.
+        /*Метод обновления текста у подписи.
          Размер текста меняется в соответствии с его длиной*/
         protected internal void LabelChange(Label label, string str)
         {
@@ -50,7 +49,7 @@ namespace programmingWF
                     24 :
                     100 / (str.Length / 2 == 0 ? 1 : str.Length / 2));
         }
-        /*Функция обновления состояния кнопок*/
+        /*Метод обновления состояния кнопок*/
         protected internal void ButtonCheck()
         {
             buttonPurchaseExcel.Enabled = data.Procurements.Count != 0;
@@ -222,7 +221,7 @@ namespace programmingWF
             /*Проводим десериализацию*/
             Deserialize();
         }
-        /*Функция сериализации*/
+        /*Метод сериализации*/
         private void Serialize()
         {
             /*Диалоговое окно сохранения файла*/
@@ -240,7 +239,7 @@ namespace programmingWF
                 MessageBox.Show("Склад успешно сохранен.", "Сохранение склада", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /*Функция десериализации*/
+        /*Метод десериализации*/
         private bool Deserialize()
         {
             /*Диалоговое окно открытия файла*/
@@ -303,7 +302,7 @@ namespace programmingWF
                 }
             }
         }
-        /*Функция изменения состояния позиции*/
+        /*Метод изменения состояния позиции*/
         private WareHouse ButtonClick(WareHouse.Status status, ObservableCollection<WareHouse> array, ListView listView)
         {
             var index = listView.SelectedIndices[0];
@@ -321,7 +320,7 @@ namespace programmingWF
             SaveWareHouse();
             e.Cancel = false;
         }
-        /*Функция предупреждения о сохранении*/
+        /*Метод предупреждения о сохранении*/
         private void SaveWareHouse()
         {
             var dialog = MessageBox.Show(
@@ -333,7 +332,7 @@ namespace programmingWF
             if (dialog == DialogResult.Yes)
                 Serialize();
         }
-        /*Функция сохранения таблицы в файл Excel*/
+        /*Метод сохранения таблицы в файл Excel*/
         private void SaveExcel(ListView listView)
         {
             using (var sfd = new SaveFileDialog() { Filter = "Excel|*.xlsx", ValidateNames = true })

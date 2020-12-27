@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace programmingWF
 {
-    public partial class NewWareHouse : Form
+    internal partial class NewWareHouse : Form
     {
-        public NewWareHouse(MainWindow parent)
+        protected internal NewWareHouse(MainWindow parent)
         {
             InitializeComponent();
 

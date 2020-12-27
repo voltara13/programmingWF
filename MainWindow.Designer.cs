@@ -1,6 +1,6 @@
 ﻿namespace programmingWF
 {
-    partial class MainWindow
+    public partial class MainWindow
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -911,7 +911,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderSale8;
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions1;
         private System.Windows.Forms.TabPage tabPageInventory;
-        public System.Windows.Forms.ListView listViewInventory;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory1;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory2;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory3;
@@ -934,6 +933,7 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Button buttonPurchaseExcel;
         private System.Windows.Forms.Button buttonSaleExcel;
+        protected internal System.Windows.Forms.ListView listViewInventory;
     }
 }
 

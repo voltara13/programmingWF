@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
   <Class Name="programmingWF.Data" Collapsed="true">
-    <Position X="29.25" Y="0.75" Width="1.5" />
+    <Position X="22.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACIAAAAAAAAAAgQAAiABAAIAAAAgAAAAAAAAgAAACA=</HashCode>
       <FileName>Data.cs</FileName>
@@ -14,43 +14,43 @@
       <FileName>Inventory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="programmingWF.MainWindow" Collapsed="true">
-    <Position X="31" Y="0.75" Width="1.5" />
+  <Class Name="programmingWF.MainWindow">
+    <Position X="21" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ZjCgoCQkITFMjxKBggCE/4QOACJIABSE9CCwHwRhASU=</HashCode>
       <FileName>MainWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.NewWareHouse" Collapsed="true">
-    <Position X="32.75" Y="0.75" Width="1.5" />
+    <Position X="22.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAABAAAACAAAACAAAIAAAEAAAAAAAAAAA=</HashCode>
       <FileName>NewWareHouse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Procurement">
-    <Position X="6.25" Y="10.25" Width="7.25" />
+    <Position X="6.25" Y="9.75" Width="7.25" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Procurement.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="programmingWF.ProcurementWindow" Collapsed="true">
-    <Position X="29.25" Y="1.75" Width="1.5" />
+  <Class Name="programmingWF.ProcurementWindow">
+    <Position X="13.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAACAAABACACCAAAgCABAAAAAAAAAAAAAAwCA=</HashCode>
       <FileName>ProcurementWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="programmingWF.Program" Collapsed="true">
-    <Position X="31" Y="1.75" Width="1.5" />
+  <Class Name="programmingWF.Program">
+    <Position X="22.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Sale">
-    <Position X="21" Y="7.5" Width="6.75" />
+    <Position X="6.75" Y="11.75" Width="6.75" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -59,8 +59,8 @@
       <FileName>Sale.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="programmingWF.SaleWindow" Collapsed="true">
-    <Position X="29.25" Y="2.75" Width="1.5" />
+  <Class Name="programmingWF.SaleWindow">
+    <Position X="11.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAACAAABACACCAAAgCABAAAAAAQAAAAAAAQAA=</HashCode>
       <FileName>SaleWindow.cs</FileName>
@@ -101,16 +101,20 @@
     </TypeIdentifier>
   </Class>
   <Class Name="programmingWF.Properties.Resources" Collapsed="true">
-    <Position X="32.75" Y="1.75" Width="1.5" />
+    <Position X="22.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAEAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="programmingWF.Properties.Settings" Collapsed="true">
-    <Position X="31" Y="2.75" Width="1.5" />
+  <Class Name="programmingWF.Properties.Settings">
+    <Position X="22.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="22.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

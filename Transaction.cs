@@ -25,7 +25,7 @@ namespace programmingWF
         protected internal readonly double Sum;
         /*Поле типа транзакции*/
         private readonly Type CurType;
-        /*Виртуальная функция возврата строки для таблицы*/
+        /*Виртуальный метод возврата строки для таблицы*/
         protected internal override ListViewItem GetListViewItem()
         {
             var item = new ListViewItem(Num);
@@ -39,12 +39,12 @@ namespace programmingWF
             item.SubItems[4].ForeColor = GetColor();
             return item;
         }
-        /*Абстрактная функция возврата действительной таблицы*/
+        /*Абстрактный метод возврата действительной таблицы*/
         protected internal override ListView GetListView(MainWindow parent)
         {
             return parent.listViewTransactions;
         }
-        /*Функция возврата типа транзакции в виде строки*/
+        /*Метод возврата типа транзакции в виде строки*/
         private string GetTypeString()
         {
             switch (CurType)
@@ -57,7 +57,7 @@ namespace programmingWF
                     throw new ArgumentOutOfRangeException();
             }
         }
-        /*Функция возврата необходимого цвета*/
+        /*Метод возврата необходимого цвета*/
         private Color GetColor()
         {
             switch (CurType)
@@ -70,7 +70,7 @@ namespace programmingWF
                     throw new ArgumentOutOfRangeException();
             }
         }
-        /*Функция смены статуса транзакции*/
+        /*Метод смены статуса транзакции*/
         protected internal static void TransactionSet(Status status, string num, MainWindow parent)
         {
             var indexTransaction = Search(parent.data.Transactions, num);

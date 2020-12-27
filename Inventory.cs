@@ -8,7 +8,7 @@ namespace programmingWF
     {
         /*Конструктор дочернего класса с вызовом родительского конструктора*/
         protected internal Inventory(string barCode, string name, double cost, int count) : base(barCode, name, count, cost) {}
-        /*Виртуальная функция возврата строки для таблицы*/
+        /*Виртуальный метод возврата строки для таблицы*/
         protected internal override ListViewItem GetListViewItem()
         {
             var item = new ListViewItem(BarCode);
@@ -17,12 +17,12 @@ namespace programmingWF
             item.SubItems.Add(Cost.ToString());
             return item;
         }
-        /*Абстрактная функция возврата действительной таблицы*/
+        /*Абстрактный метод возврата действительной таблицы*/
         protected internal override ListView GetListView(MainWindow parent)
         {
             return parent.listViewInventory;
         }
-        /*Виртуальная функция сравнения*/
+        /*Виртуальный метод сравнения*/
         protected internal override bool Comparison(string str)
         {
             return str == BarCode;
