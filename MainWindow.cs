@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Drawing;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using Font = System.Drawing.Font;
+using Label = System.Windows.Forms.Label;
 
 namespace programmingWF
 {
@@ -15,12 +17,20 @@ namespace programmingWF
         {
             InitializeComponent();
 
+            var dialog = MessageBox.Show(
+                "Загрузить склад?",
+                "Добро пожаловать",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information
+            );
+            if (dialog == DialogResult.No || dialog == DialogResult.Yes && !Deserialize())
+                new NewWareHouse(this);
+
             data.Procurements.CollectionChanged += CollectionChanged;
             data.Sales.CollectionChanged += CollectionChanged;
             data.Inventory.CollectionChanged += CollectionChanged;
             data.Transactions.CollectionChanged += CollectionChanged;
 
-            new NewWareHouse(this);
             LabelChange(labelBalanceCount, data.Balance + " руб.");
         }
 
@@ -67,34 +77,24 @@ namespace programmingWF
 
         private void buttonCloseProcurement_Click(object sender, EventArgs e)
         {
-            var item = ButtonClick(WareHouse.Status.Completed, data.Procurements, listViewProcurement);
-
-            var indexInventory = Search(data.Inventory, item.BarCode);
-            if (indexInventory != -1)
+            try
             {
-                var itemInventory = data.Inventory[indexInventory];
-                itemInventory.Count += item.Count;
-                data.Inventory[indexInventory] = itemInventory;
+                var item = ButtonClick(WareHouse.Status.Completed, data.Procurements, listViewProcurement);
+
+                data.Balance -= item.Count * item.Cost;
+
+                LabelChange(labelBidCount, data.Inventory.Count.ToString());
+                LabelChange(labelProcurementCount1, (data.CountProc += 1).ToString());
+                LabelChange(labelProcurementCount2, (data.CountWaitProc -= 1).ToString());
+                LabelChange(labelBalanceCount, data.Balance + " руб.");
+                if (DateTime.Now.Date > item.DueDate.Date)
+                    LabelChange(labelProcurementCount3, (data.CountOverDueProc += 1).ToString());
+                ButtonCheck();
             }
-            else
+            catch (ArgumentException)
             {
-                data.Inventory.Add(new Inventory(
-                    item.BarCode,
-                    item.Name,
-                    item.Note,
-                    item.Cost,
-                    item.Count));
+                MessageBox.Show("Недостаточно средств для закрытия сделки.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-            data.Balance -= item.Count * item.Cost;
-
-            LabelChange(labelBidCount, data.Inventory.Count.ToString());
-            LabelChange(labelProcurementCount1, (data.CountProc += 1).ToString());
-            LabelChange(labelProcurementCount2, (data.CountWaitProc -= 1).ToString());
-            LabelChange(labelBalanceCount, data.Balance + " руб.");
-            if (DateTime.Now.Date > item.DueDate.Date)
-                LabelChange(labelProcurementCount3, (data.CountOverDueProc += 1).ToString());
-            buttonAddSale.Enabled = true;
         }
 
         private void buttonCancelProcurement_Click(object sender, EventArgs e)
@@ -125,26 +125,24 @@ namespace programmingWF
 
         private void buttonCloseSale_Click(object sender, EventArgs e)
         {
-            var item = ButtonClick(WareHouse.Status.Completed, data.Sales, listViewSale);
-
-            var indexInventory = Search(data.Inventory, item.BarCode);
-            if (item.Count < data.Inventory[indexInventory].Count)
+            try
             {
-                var itemInventory = data.Inventory[indexInventory];
-                itemInventory.Count -= item.Count;
-                data.Inventory[indexInventory] = itemInventory;
+                var item = ButtonClick(WareHouse.Status.Completed, data.Sales, listViewSale);
+
+                data.Balance += item.Count * item.Cost;
+
+                LabelChange(labelBidCount, data.Inventory.Count.ToString());
+                LabelChange(labelSaleCount1, (data.CountSale += 1).ToString());
+                LabelChange(labelSaleCount2, (data.CountWaitSale -= 1).ToString());
+                LabelChange(labelBalanceCount, data.Balance + " руб.");
+                if (DateTime.Now.Date > item.DueDate.Date)
+                    labelSaleCount3.Text = (data.CountOverDueSale += 1).ToString();
+                ButtonCheck();
             }
-            else data.Inventory.RemoveAt(indexInventory);
-
-            data.Balance += item.Count * item.Cost;
-
-            LabelChange(labelBidCount, data.Inventory.Count.ToString());
-            LabelChange(labelSaleCount1, (data.CountSale += 1).ToString());
-            LabelChange(labelSaleCount2, (data.CountWaitSale -= 1).ToString());
-            LabelChange(labelBalanceCount, data.Balance + " руб.");
-            if (DateTime.Now.Date > item.DueDate.Date)
-                labelSaleCount3.Text = (data.CountOverDueSale += 1).ToString();
-            if (data.Inventory.Count == 0) buttonAddSale.Enabled = false;
+            catch (ArgumentException)
+            {
+                MessageBox.Show("На складе недостаточно товара.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void buttonCancelSale_Click(object sender, EventArgs e)
@@ -170,6 +168,25 @@ namespace programmingWF
 
         private void buttonExport_Click(object sender, EventArgs e)
         {
+            Serialize();
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+            Deserialize();
+        }
+
+        protected internal void LabelChange(Label label, string str)
+        {
+            label.Text = str;
+            label.Font = new Font(Font.Name, 
+                100 / (str.Length / 2 == 0 ? 1 : str.Length / 2) > 24 ? 
+                    24 : 
+                    100 / (str.Length / 2 == 0 ? 1 : str.Length / 2));
+        }
+
+        private void Serialize()
+        {
             var saveFileDialog = new SaveFileDialog
             {
                 Filter = "bin files (*.bin)|*.bin"
@@ -181,10 +198,11 @@ namespace programmingWF
             {
                 var formatter = new BinaryFormatter();
                 formatter.Serialize(fs, data);
+                MessageBox.Show("Склад успешно сохранен.", "Сохранение склада", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
-        private void buttonImport_Click(object sender, EventArgs e)
+        private bool Deserialize()
         {
             var openFileDialog = new OpenFileDialog()
             {
@@ -193,7 +211,7 @@ namespace programmingWF
 
             while (true)
             {
-                if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+                if (openFileDialog.ShowDialog(this) != DialogResult.OK) return false;
 
                 try
                 {
@@ -227,9 +245,10 @@ namespace programmingWF
                     LabelChange(labelTotalCount, (data.Procurements.Count + data.Sales.Count).ToString());
                     LabelChange(labelBalanceCount, data.Balance + " руб.");
 
-                    buttonAddSale.Enabled = data.Inventory.Count != 0;
+                    ButtonCheck();
 
-                    return;
+                    MessageBox.Show("Склад успешно загружен.", "Загрузка склада", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
                 }
                 catch (System.Runtime.Serialization.SerializationException)
                 {
@@ -238,20 +257,13 @@ namespace programmingWF
             }
         }
 
-        protected internal void LabelChange(Label label, string str)
-        {
-            label.Text = str;
-            label.Font = new Font(Font.Name, 
-                100 / (str.Length / 2 == 0 ? 1 : str.Length / 2) > 24 ? 
-                    24 : 
-                    100 / (str.Length / 2 == 0 ? 1 : str.Length / 2));
-        }
-
         private WareHouse ButtonClick(WareHouse.Status status, ObservableCollection<WareHouse> array, ListView listView)
         {
             var index = listView.SelectedIndices[0];
             var item = array[index];
-            item.WareHouseSet(status, index, array);
+            item.WareHouseSet(status, index, this);
+            item.CurStatus = status;
+            array[index] = item;
             Transaction.TransactionSet(status, item.Num, this);
             return item;
         }
@@ -265,8 +277,64 @@ namespace programmingWF
                 MessageBoxIcon.Warning
             );
             if (dialog == DialogResult.Yes)
-                buttonExport_Click(this, EventArgs.Empty);
+                Serialize();
             e.Cancel = false;
+        }
+
+        private void SaveExcel(ListView listView)
+        {
+            using (var sfd = new SaveFileDialog() { Filter = "Excel|*.xlsx", ValidateNames = true })
+            {
+                if (sfd.ShowDialog() != DialogResult.OK) return;
+                var app = new Microsoft.Office.Interop.Excel.Application();
+                var wb = app.Workbooks.Add(XlSheetType.xlWorksheet);
+                var ws = (Worksheet)app.ActiveSheet;
+                app.Visible = false;
+                foreach (ListViewItem item in listViewProcurement.Items)
+                {
+                    for (int ia = 0; ia < listView.Columns.Count; ia++)
+                        ws.Cells[1, ia + 1] = listView.Columns[ia].Text;
+                }
+                var i = 2;
+                foreach (ListViewItem item in listView.Items)
+                {
+                    var k = 1;
+                    foreach (ListViewItem.ListViewSubItem elm in item.SubItems)
+                        ws.Cells[i, k++] = elm.Text;
+                    i++;
+                }
+                wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, false, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+                app.Quit();
+                MessageBox.Show("Таблица успешно сохранена.", "Сохранение таблицы", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void buttonPurchaseExcel_Click(object sender, EventArgs e)
+        {
+            SaveExcel(listViewProcurement);
+        }
+
+        private void buttonSaleExcel_Click(object sender, EventArgs e)
+        {
+            SaveExcel(listViewSale);
+        }
+
+        private void buttonInventoryExcel_Click(object sender, EventArgs e)
+        {
+            SaveExcel(listViewInventory);
+        }
+
+        private void buttonTransactionExcel_Click(object sender, EventArgs e)
+        {
+            SaveExcel(listViewTransactions);
+        }
+
+        protected internal void ButtonCheck()
+        {
+            buttonPurchaseExcel.Enabled = data.Procurements.Count != 0;
+            buttonSaleExcel.Enabled = data.Sales.Count != 0;
+            buttonInventoryExcel.Enabled = buttonAddSale.Enabled = data.Inventory.Count != 0;
+            buttonTransactionExcel.Enabled = data.Transactions.Count != 0;
         }
     }
 }

@@ -29,6 +29,7 @@ namespace programmingWF
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProcurementWindow));
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -227,6 +228,7 @@ namespace programmingWF
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxBarcode);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProcurementWindow";
             this.Text = "Закупка";
             ((System.ComponentModel.ISupportInitialize)(this.numericCount)).EndInit();

@@ -6,10 +6,7 @@ namespace programmingWF
     [Serializable]
     internal class Inventory : WareHouse
     {
-        protected internal Inventory(string barCode, string name, string note, double cost, int count) : base(barCode, name, count, cost)
-        {
-            Note = note;
-        }
+        protected internal Inventory(string barCode, string name, double cost, int count) : base(barCode, name, count, cost) {}
 
         protected internal override ListViewItem GetListViewItem()
         {
@@ -17,7 +14,6 @@ namespace programmingWF
             item.SubItems.Add(Name);
             item.SubItems.Add(Count.ToString());
             item.SubItems.Add(Cost.ToString());
-            item.SubItems.Add(Note);
             return item;
         }
 

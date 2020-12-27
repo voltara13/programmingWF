@@ -34,11 +34,7 @@ namespace programmingWF
             Completed
         }
 
-        protected internal void WareHouseSet(Status status, int index, ObservableCollection<WareHouse> array)
-        {
-            CurStatus = status;
-            array[index] = this;
-        }
+        protected internal virtual void WareHouseSet(Status status, int index, MainWindow parent) {}
 
         protected internal virtual ListViewItem GetListViewItem()
         {

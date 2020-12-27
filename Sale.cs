@@ -18,5 +18,20 @@ namespace programmingWF
         {
             return parent.listViewSale;
         }
+
+        protected internal override void WareHouseSet(Status status, int index, MainWindow parent)
+        {
+            if (status != Status.Completed) return;
+            var indexInventory = parent.Search(parent.data.Inventory, BarCode);
+            if (Count < parent.data.Inventory[indexInventory].Count)
+            {
+                var itemInventory = parent.data.Inventory[indexInventory];
+                itemInventory.Count -= Count;
+                parent.data.Inventory[indexInventory] = itemInventory;
+            }
+            else if (Count > parent.data.Inventory[indexInventory].Count)
+                throw new ArgumentException();
+            else parent.data.Inventory.RemoveAt(indexInventory);
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace programmingWF
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewWareHouse));
             this.textBoxBalance = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -70,6 +71,7 @@ namespace programmingWF
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxBalance);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NewWareHouse";
             this.Text = "Введите баланс склада";
             this.ResumeLayout(false);

@@ -18,5 +18,26 @@ namespace programmingWF
         {
             return parent.listViewProcurement;
         }
+
+        protected internal override void WareHouseSet(Status status, int index, MainWindow parent)
+        {
+            if (status != Status.Completed) return;
+            if (Count * Cost > parent.data.Balance)
+                throw new ArgumentException();
+
+            var indexInventory = parent.Search(parent.data.Inventory, BarCode);
+            if (indexInventory != -1)
+            {
+                var itemInventory = parent.data.Inventory[indexInventory];
+                itemInventory.Count += Count;
+                parent.data.Inventory[indexInventory] = itemInventory;
+            }
+            else
+                parent.data.Inventory.Add(new Inventory(
+                    BarCode,
+                    Name,
+                    Cost,
+                    Count));
+        }
     }
 }

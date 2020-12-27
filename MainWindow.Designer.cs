@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageIndicators = new System.Windows.Forms.TabPage();
             this.buttonImport = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             this.labelSale3 = new System.Windows.Forms.Label();
             this.labelSaleCount3 = new System.Windows.Forms.Label();
             this.tabPageProcurement = new System.Windows.Forms.TabPage();
+            this.buttonPurchaseExcel = new System.Windows.Forms.Button();
             this.buttonCancelPurchase = new System.Windows.Forms.Button();
             this.buttonClosePurchase = new System.Windows.Forms.Button();
             this.buttonAddPurchase = new System.Windows.Forms.Button();
@@ -69,6 +71,7 @@
             this.columnHeaderPurchases7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderPurchases8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageSales = new System.Windows.Forms.TabPage();
+            this.buttonSaleExcel = new System.Windows.Forms.Button();
             this.buttonCancelSale = new System.Windows.Forms.Button();
             this.listViewSale = new System.Windows.Forms.ListView();
             this.columnHeaderSale1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -82,13 +85,14 @@
             this.buttonAddSale = new System.Windows.Forms.Button();
             this.buttonCloseSale = new System.Windows.Forms.Button();
             this.tabPageInventory = new System.Windows.Forms.TabPage();
+            this.buttonInventoryExcel = new System.Windows.Forms.Button();
             this.listViewInventory = new System.Windows.Forms.ListView();
             this.columnHeaderInventory1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInventory2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInventory3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderInventory4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderInventory5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageTransactions = new System.Windows.Forms.TabPage();
+            this.buttonTransactionExcel = new System.Windows.Forms.Button();
             this.listViewTransactions = new System.Windows.Forms.ListView();
             this.columnHeaderTransactions0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderTransactions1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -97,7 +101,6 @@
             this.columnHeaderTransactions4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderTransactions5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderTransactions6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderTransactions7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl.SuspendLayout();
             this.tabPageIndicators.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -124,7 +127,7 @@
             this.tabControl.Location = new System.Drawing.Point(13, 13);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(790, 381);
+            this.tabControl.Size = new System.Drawing.Size(789, 381);
             this.tabControl.TabIndex = 0;
             // 
             // tabPageIndicators
@@ -139,7 +142,7 @@
             this.tabPageIndicators.Location = new System.Drawing.Point(4, 22);
             this.tabPageIndicators.Name = "tabPageIndicators";
             this.tabPageIndicators.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageIndicators.Size = new System.Drawing.Size(782, 355);
+            this.tabPageIndicators.Size = new System.Drawing.Size(781, 355);
             this.tabPageIndicators.TabIndex = 0;
             this.tabPageIndicators.Text = "Показатели";
             this.tabPageIndicators.UseVisualStyleBackColor = true;
@@ -187,7 +190,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(261, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(217, 338);
+            this.groupBox1.Size = new System.Drawing.Size(217, 337);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Общее";
@@ -424,6 +427,7 @@
             // 
             // tabPageProcurement
             // 
+            this.tabPageProcurement.Controls.Add(this.buttonPurchaseExcel);
             this.tabPageProcurement.Controls.Add(this.buttonCancelPurchase);
             this.tabPageProcurement.Controls.Add(this.buttonClosePurchase);
             this.tabPageProcurement.Controls.Add(this.buttonAddPurchase);
@@ -431,15 +435,26 @@
             this.tabPageProcurement.Location = new System.Drawing.Point(4, 22);
             this.tabPageProcurement.Name = "tabPageProcurement";
             this.tabPageProcurement.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProcurement.Size = new System.Drawing.Size(782, 355);
+            this.tabPageProcurement.Size = new System.Drawing.Size(781, 355);
             this.tabPageProcurement.TabIndex = 1;
             this.tabPageProcurement.Text = "Закупки";
             this.tabPageProcurement.UseVisualStyleBackColor = true;
             // 
+            // buttonPurchaseExcel
+            // 
+            this.buttonPurchaseExcel.Enabled = false;
+            this.buttonPurchaseExcel.Location = new System.Drawing.Point(645, 90);
+            this.buttonPurchaseExcel.Name = "buttonPurchaseExcel";
+            this.buttonPurchaseExcel.Size = new System.Drawing.Size(127, 23);
+            this.buttonPurchaseExcel.TabIndex = 6;
+            this.buttonPurchaseExcel.Text = "Экспорт таблицы";
+            this.buttonPurchaseExcel.UseVisualStyleBackColor = true;
+            this.buttonPurchaseExcel.Click += new System.EventHandler(this.buttonPurchaseExcel_Click);
+            // 
             // buttonCancelPurchase
             // 
             this.buttonCancelPurchase.Enabled = false;
-            this.buttonCancelPurchase.Location = new System.Drawing.Point(647, 64);
+            this.buttonCancelPurchase.Location = new System.Drawing.Point(644, 61);
             this.buttonCancelPurchase.Name = "buttonCancelPurchase";
             this.buttonCancelPurchase.Size = new System.Drawing.Size(127, 23);
             this.buttonCancelPurchase.TabIndex = 5;
@@ -450,7 +465,7 @@
             // buttonClosePurchase
             // 
             this.buttonClosePurchase.Enabled = false;
-            this.buttonClosePurchase.Location = new System.Drawing.Point(647, 35);
+            this.buttonClosePurchase.Location = new System.Drawing.Point(644, 32);
             this.buttonClosePurchase.Name = "buttonClosePurchase";
             this.buttonClosePurchase.Size = new System.Drawing.Size(127, 23);
             this.buttonClosePurchase.TabIndex = 4;
@@ -460,7 +475,7 @@
             // 
             // buttonAddPurchase
             // 
-            this.buttonAddPurchase.Location = new System.Drawing.Point(647, 6);
+            this.buttonAddPurchase.Location = new System.Drawing.Point(644, 3);
             this.buttonAddPurchase.Name = "buttonAddPurchase";
             this.buttonAddPurchase.Size = new System.Drawing.Size(127, 23);
             this.buttonAddPurchase.TabIndex = 3;
@@ -515,13 +530,13 @@
             // 
             // columnHeaderPurchases5
             // 
-            this.columnHeaderPurchases5.Text = "Количество";
-            this.columnHeaderPurchases5.Width = 79;
+            this.columnHeaderPurchases5.Text = "Количество, шт.";
+            this.columnHeaderPurchases5.Width = 93;
             // 
             // columnHeaderPurchases6
             // 
-            this.columnHeaderPurchases6.Text = "Цена";
-            this.columnHeaderPurchases6.Width = 56;
+            this.columnHeaderPurchases6.Text = "Цена, руб.";
+            this.columnHeaderPurchases6.Width = 66;
             // 
             // columnHeaderPurchases7
             // 
@@ -535,6 +550,7 @@
             // 
             // tabPageSales
             // 
+            this.tabPageSales.Controls.Add(this.buttonSaleExcel);
             this.tabPageSales.Controls.Add(this.buttonCancelSale);
             this.tabPageSales.Controls.Add(this.listViewSale);
             this.tabPageSales.Controls.Add(this.buttonAddSale);
@@ -542,15 +558,26 @@
             this.tabPageSales.Location = new System.Drawing.Point(4, 22);
             this.tabPageSales.Name = "tabPageSales";
             this.tabPageSales.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSales.Size = new System.Drawing.Size(782, 355);
+            this.tabPageSales.Size = new System.Drawing.Size(781, 355);
             this.tabPageSales.TabIndex = 2;
             this.tabPageSales.Text = "Продажи";
             this.tabPageSales.UseVisualStyleBackColor = true;
             // 
+            // buttonSaleExcel
+            // 
+            this.buttonSaleExcel.Enabled = false;
+            this.buttonSaleExcel.Location = new System.Drawing.Point(645, 90);
+            this.buttonSaleExcel.Name = "buttonSaleExcel";
+            this.buttonSaleExcel.Size = new System.Drawing.Size(127, 23);
+            this.buttonSaleExcel.TabIndex = 9;
+            this.buttonSaleExcel.Text = "Экспорт таблицы";
+            this.buttonSaleExcel.UseVisualStyleBackColor = true;
+            this.buttonSaleExcel.Click += new System.EventHandler(this.buttonSaleExcel_Click);
+            // 
             // buttonCancelSale
             // 
             this.buttonCancelSale.Enabled = false;
-            this.buttonCancelSale.Location = new System.Drawing.Point(647, 64);
+            this.buttonCancelSale.Location = new System.Drawing.Point(644, 61);
             this.buttonCancelSale.Name = "buttonCancelSale";
             this.buttonCancelSale.Size = new System.Drawing.Size(127, 23);
             this.buttonCancelSale.TabIndex = 8;
@@ -604,12 +631,13 @@
             // 
             // columnHeaderSale5
             // 
-            this.columnHeaderSale5.Text = "Количество";
-            this.columnHeaderSale5.Width = 79;
+            this.columnHeaderSale5.Text = "Количество, шт.";
+            this.columnHeaderSale5.Width = 94;
             // 
             // columnHeaderSale6
             // 
-            this.columnHeaderSale6.Text = "Цена";
+            this.columnHeaderSale6.Text = "Цена, руб.";
+            this.columnHeaderSale6.Width = 65;
             // 
             // columnHeaderSale7
             // 
@@ -624,7 +652,7 @@
             // buttonAddSale
             // 
             this.buttonAddSale.Enabled = false;
-            this.buttonAddSale.Location = new System.Drawing.Point(647, 6);
+            this.buttonAddSale.Location = new System.Drawing.Point(644, 3);
             this.buttonAddSale.Name = "buttonAddSale";
             this.buttonAddSale.Size = new System.Drawing.Size(127, 23);
             this.buttonAddSale.TabIndex = 6;
@@ -635,7 +663,7 @@
             // buttonCloseSale
             // 
             this.buttonCloseSale.Enabled = false;
-            this.buttonCloseSale.Location = new System.Drawing.Point(647, 35);
+            this.buttonCloseSale.Location = new System.Drawing.Point(644, 32);
             this.buttonCloseSale.Name = "buttonCloseSale";
             this.buttonCloseSale.Size = new System.Drawing.Size(127, 23);
             this.buttonCloseSale.TabIndex = 7;
@@ -645,13 +673,25 @@
             // 
             // tabPageInventory
             // 
+            this.tabPageInventory.Controls.Add(this.buttonInventoryExcel);
             this.tabPageInventory.Controls.Add(this.listViewInventory);
             this.tabPageInventory.Location = new System.Drawing.Point(4, 22);
             this.tabPageInventory.Name = "tabPageInventory";
-            this.tabPageInventory.Size = new System.Drawing.Size(782, 355);
+            this.tabPageInventory.Size = new System.Drawing.Size(781, 355);
             this.tabPageInventory.TabIndex = 4;
             this.tabPageInventory.Text = "Инвентарь";
             this.tabPageInventory.UseVisualStyleBackColor = true;
+            // 
+            // buttonInventoryExcel
+            // 
+            this.buttonInventoryExcel.Enabled = false;
+            this.buttonInventoryExcel.Location = new System.Drawing.Point(644, 3);
+            this.buttonInventoryExcel.Name = "buttonInventoryExcel";
+            this.buttonInventoryExcel.Size = new System.Drawing.Size(127, 23);
+            this.buttonInventoryExcel.TabIndex = 10;
+            this.buttonInventoryExcel.Text = "Экспорт таблицы";
+            this.buttonInventoryExcel.UseVisualStyleBackColor = true;
+            this.buttonInventoryExcel.Click += new System.EventHandler(this.buttonInventoryExcel_Click);
             // 
             // listViewInventory
             // 
@@ -659,8 +699,7 @@
             this.columnHeaderInventory1,
             this.columnHeaderInventory2,
             this.columnHeaderInventory3,
-            this.columnHeaderInventory4,
-            this.columnHeaderInventory5});
+            this.columnHeaderInventory4});
             this.listViewInventory.FullRowSelect = true;
             this.listViewInventory.GridLines = true;
             this.listViewInventory.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -668,7 +707,7 @@
             this.listViewInventory.Location = new System.Drawing.Point(3, 3);
             this.listViewInventory.MultiSelect = false;
             this.listViewInventory.Name = "listViewInventory";
-            this.listViewInventory.Size = new System.Drawing.Size(773, 343);
+            this.listViewInventory.Size = new System.Drawing.Size(635, 343);
             this.listViewInventory.TabIndex = 9;
             this.listViewInventory.UseCompatibleStateImageBehavior = false;
             this.listViewInventory.View = System.Windows.Forms.View.Details;
@@ -681,33 +720,40 @@
             // columnHeaderInventory2
             // 
             this.columnHeaderInventory2.Text = "Наименование";
-            this.columnHeaderInventory2.Width = 219;
+            this.columnHeaderInventory2.Width = 246;
             // 
             // columnHeaderInventory3
             // 
-            this.columnHeaderInventory3.Text = "Количество";
-            this.columnHeaderInventory3.Width = 95;
+            this.columnHeaderInventory3.Text = "Количество, шт.";
+            this.columnHeaderInventory3.Width = 93;
             // 
             // columnHeaderInventory4
             // 
-            this.columnHeaderInventory4.Text = "Цена закупочная";
-            this.columnHeaderInventory4.Width = 178;
-            // 
-            // columnHeaderInventory5
-            // 
-            this.columnHeaderInventory5.Text = "Примечание";
-            this.columnHeaderInventory5.Width = 165;
+            this.columnHeaderInventory4.Text = "Цена закупочная, руб.";
+            this.columnHeaderInventory4.Width = 127;
             // 
             // tabPageTransactions
             // 
+            this.tabPageTransactions.Controls.Add(this.buttonTransactionExcel);
             this.tabPageTransactions.Controls.Add(this.listViewTransactions);
             this.tabPageTransactions.Location = new System.Drawing.Point(4, 22);
             this.tabPageTransactions.Name = "tabPageTransactions";
             this.tabPageTransactions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTransactions.Size = new System.Drawing.Size(782, 355);
+            this.tabPageTransactions.Size = new System.Drawing.Size(781, 355);
             this.tabPageTransactions.TabIndex = 3;
             this.tabPageTransactions.Text = "Транзакции";
             this.tabPageTransactions.UseVisualStyleBackColor = true;
+            // 
+            // buttonTransactionExcel
+            // 
+            this.buttonTransactionExcel.Enabled = false;
+            this.buttonTransactionExcel.Location = new System.Drawing.Point(644, 3);
+            this.buttonTransactionExcel.Name = "buttonTransactionExcel";
+            this.buttonTransactionExcel.Size = new System.Drawing.Size(127, 23);
+            this.buttonTransactionExcel.TabIndex = 11;
+            this.buttonTransactionExcel.Text = "Экспорт таблицы";
+            this.buttonTransactionExcel.UseVisualStyleBackColor = true;
+            this.buttonTransactionExcel.Click += new System.EventHandler(this.buttonTransactionExcel_Click);
             // 
             // listViewTransactions
             // 
@@ -718,15 +764,14 @@
             this.columnHeaderTransactions3,
             this.columnHeaderTransactions4,
             this.columnHeaderTransactions5,
-            this.columnHeaderTransactions6,
-            this.columnHeaderTransactions7});
+            this.columnHeaderTransactions6});
             this.listViewTransactions.FullRowSelect = true;
             this.listViewTransactions.GridLines = true;
             this.listViewTransactions.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewTransactions.HideSelection = false;
             this.listViewTransactions.Location = new System.Drawing.Point(3, 3);
             this.listViewTransactions.Name = "listViewTransactions";
-            this.listViewTransactions.Size = new System.Drawing.Size(776, 343);
+            this.listViewTransactions.Size = new System.Drawing.Size(635, 343);
             this.listViewTransactions.TabIndex = 8;
             this.listViewTransactions.UseCompatibleStateImageBehavior = false;
             this.listViewTransactions.View = System.Windows.Forms.View.Details;
@@ -757,7 +802,7 @@
             // 
             // columnHeaderTransactions5
             // 
-            this.columnHeaderTransactions5.Text = "Сумма в рублях";
+            this.columnHeaderTransactions5.Text = "Сумма, руб.";
             this.columnHeaderTransactions5.Width = 105;
             // 
             // columnHeaderTransactions6
@@ -765,17 +810,13 @@
             this.columnHeaderTransactions6.Text = "Статус";
             this.columnHeaderTransactions6.Width = 72;
             // 
-            // columnHeaderTransactions7
-            // 
-            this.columnHeaderTransactions7.Text = "Примечание";
-            this.columnHeaderTransactions7.Width = 139;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 398);
+            this.ClientSize = new System.Drawing.Size(804, 398);
             this.Controls.Add(this.tabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
             this.Text = "Система складского учёта";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
@@ -842,7 +883,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions4;
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions5;
         private System.Windows.Forms.ColumnHeader columnHeaderTransactions6;
-        private System.Windows.Forms.ColumnHeader columnHeaderTransactions7;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ColumnHeader columnHeaderPurchases8;
@@ -854,10 +894,8 @@
         private System.Windows.Forms.ColumnHeader columnHeaderInventory2;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory3;
         private System.Windows.Forms.ColumnHeader columnHeaderInventory4;
-        private System.Windows.Forms.ColumnHeader columnHeaderInventory5;
         protected internal System.Windows.Forms.ListView listViewSale;
         protected internal System.Windows.Forms.ListView listViewProcurement;
-        protected internal System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.Button buttonExport;
         private System.Windows.Forms.Button buttonImport;
         protected internal System.Windows.Forms.Label labelBidCount;
@@ -869,6 +907,11 @@
         protected internal System.Windows.Forms.Label labelProcurementCount3;
         protected internal System.Windows.Forms.Label labelSaleCount3;
         protected internal System.Windows.Forms.Label labelBalanceCount;
+        private System.Windows.Forms.Button buttonInventoryExcel;
+        private System.Windows.Forms.Button buttonTransactionExcel;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.Button buttonPurchaseExcel;
+        private System.Windows.Forms.Button buttonSaleExcel;
     }
 }
 

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
 
 namespace programmingWF
 {
