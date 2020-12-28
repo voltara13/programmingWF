@@ -20,7 +20,7 @@ namespace programmingWF
                         if (textBoxOrganization.Text == "" ||
                             textBoxName.Text == "" ||
                             !textBoxBarcode.Text.Any(char.IsDigit) ||
-                            Convert.ToDouble(textBoxCostBuy.Text) < 0)
+                            Convert.ToDouble(textBoxCostBuy.Text.Replace('.', ',')) < 0)
                             throw new System.FormatException();
                         /*Добавляем позицию в таблицу покупки*/
                         parent.data.Procurements.Add(new Procurement(
@@ -28,7 +28,7 @@ namespace programmingWF
                             textBoxOrganization.Text,
                             textBoxName.Text,
                             textBoxNote.Text,
-                            Convert.ToDouble(textBoxCostBuy.Text.Replace(',', '.')),
+                            Convert.ToDouble(textBoxCostBuy.Text.Replace('.', ',')),
                             dateTimePicker.Value,
                             Convert.ToInt32(numericCount.Value)));
                         /*Добавляем позицию в таблицу транзакций*/
@@ -36,7 +36,7 @@ namespace programmingWF
                             textBoxBarcode.Text,
                             textBoxOrganization.Text,
                             textBoxName.Text,
-                            Convert.ToDouble(textBoxCostBuy.Text.Replace(',', '.')),
+                            Convert.ToDouble(textBoxCostBuy.Text.Replace('.', ',')),
                             Convert.ToInt32(numericCount.Value),
                             Transaction.Type.Purchase,
                             parent.data.Procurements.Last().Num));

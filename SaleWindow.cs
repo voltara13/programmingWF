@@ -10,8 +10,7 @@ namespace programmingWF
         {
             InitializeComponent();
             /*Наполняем список наименований существующими в инвентаре*/
-            foreach (var elm in parent.data.Inventory)
-                comboBoxName.Items.Add(elm.Name);
+            comboBoxName.DataSource = (from i in parent.data.Inventory select i.Name).ToArray();
 
             while (true)
             {
@@ -19,12 +18,9 @@ namespace programmingWF
                 {
                     try
                     {
-                        if (comboBoxName.SelectedIndex == - 1)
-                            throw new FormatException();
                         var item = parent.data.Inventory[comboBoxName.SelectedIndex];
                         /*Проверяем введенные данные*/
-                        if (Convert.ToDouble(textBoxCostSale.Text) < 0 ||
-                            Convert.ToInt32(numericCount.Value) > item.Count ||
+                        if (Convert.ToDouble(textBoxCostSale.Text.Replace('.', ',')) < 0 ||
                             textBoxOrganization.Text == "")
                             throw new FormatException();
                         /*Добавляем позицию в таблицу продажи*/
@@ -33,7 +29,7 @@ namespace programmingWF
                             textBoxOrganization.Text,
                             item.Name,
                             textBoxNote.Text,
-                            Convert.ToDouble(textBoxCostSale.Text.Replace(',', '.')),
+                            Convert.ToDouble(textBoxCostSale.Text.Replace('.', ',')),
                             dateTimePicker.Value.Date,
                             Convert.ToInt32(numericCount.Value)));
                         /*Добавляем позицию в таблицу транзакций*/
@@ -41,7 +37,7 @@ namespace programmingWF
                             item.BarCode,
                             textBoxOrganization.Text,
                             item.Name,
-                            Convert.ToDouble(textBoxCostSale.Text.Replace(',', '.')),
+                            Convert.ToDouble(textBoxCostSale.Text.Replace('.', ',')),
                             Convert.ToInt32(numericCount.Value),
                             Transaction.Type.Sale,
                             parent.data.Sales.Last().Num));
